@@ -12,6 +12,8 @@
             h4 {color: pink}
             h5 {color: yellow}
             h6 {color: green}
+
+            #table{color: green}
         </style>
 
     </head>
@@ -30,11 +32,14 @@
         
         <img src="img/iran.webp" alt="iran" width="500px" height="100px" />
 
-        <table border="2">
+        <a href="#table">table</a>
+        <a href="#list">list</a>
+
+        <table id="table" border="2">
             <tr>
-                <td>ID</td>
-                <td>Title</td>
-                <td>URL</td>
+                <th style="width:30%;">ID</th>
+                <th>Title</th>
+                <th>URL</th>
             </tr>
             <tr>
                 <td>1</td>
@@ -56,11 +61,19 @@
             </tr>
         </table>
 
-<!-- colspan rowspan -->
+        <ol id="list" style="font-size:40px;">
+            <li>Apple</li>
+            <li>Banana</li>
+            <li>Mango</li>
+            <li>Lemon</li>
+        </ol>
 
-
-
-
+        <ul id="table" style="font-size:40px;">
+            <li>Apple</li>
+            <li>Banana</li>
+            <li>Mango</li>
+            <li>Lemon</li>
+        </ul>
 
 
         <!-- Mỗi bạn sẽ tạo repository riêng
@@ -68,6 +81,9 @@
         Code rồi commit -> push lên repository 
 
         Shift + Atl + mũi tên lên xuống
+        Chọn chuỗi -> Ctrl + D để chọn nhiều chuỗi giống nhau
+
+        
         -->
 
         <script>
