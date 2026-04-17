@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Đại học khoa học tự nhiên</title>
+        <style>
+            #box1 {
+                background-color: red;
+                width: 300px;
+                height: 500px;
+            }
+            #box2 {
+                background-color: blue;
+                width: 300px;
+                min-height: 100px;
+
+                margin-top: 15px;
+                margin-left: 15px;
+                padding: 15px 30px;
+            }
+            .textBox2 {
+                color:white;
+            }
+            .textBox2::before {
+                content: "Read this: ";
+            }
+            .textBox2::after {
+                content: " Thank you!";
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box1"></div>
+        <div id="box2">
+            <p class="textBox2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+    </body>
+</html>
