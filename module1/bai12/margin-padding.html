@@ -1,23 +1,41 @@
 <html>
     <head>
         <title>Đại học khoa học tự nhiên</title>
+        <link rel="stylesheet" href="css/style.css">
         <style>
+            main {
+                width: 500px !important;
+            }
             #box1 {
-                background-color: red;
+                background-color: white;
                 width: 300px;
                 height: 500px;
+
+                border: 8px double rgba(100, 100, 100, 1);
+                border-radius: 16px;
             }
             #box2 {
-                background-color: blue;
                 width: 300px;
                 min-height: 100px;
 
-                margin-top: 15px;
+                margin-top: 55px;
                 margin-left: 15px;
                 padding: 15px 30px;
+                text-align: right;
+                text-transform: capitalize;
+
+                font-family: "Arial", Times, serif;
+
+                border: 8px double rgba(100, 100, 100, 1);
+                border-radius: 16px;
             }
             .textBox2 {
-                color:white;
+                font-style: italic;
+            }
+            .textSpan {
+                color: red;
+                font-style: inherit;
+                font-weight:750;
             }
             .textBox2::before {
                 content: "Read this: ";
@@ -25,12 +43,52 @@
             .textBox2::after {
                 content: " Thank you!";
             }
+            #gototop {
+                position: relative;
+                left: 80%;
+                border: 3px solid #73AD21;
+            }
+            #gototop a{
+                color: black;
+                font-size: 30px;
+                text-decoration: none;
+            }
+            #listUL {
+                list-style-type: none; 
+            }
+            #colorRed {color: red;}
+            .colorBlue {color: blue;}
+
         </style>
     </head>
     <body>
-        <div id="box1"></div>
-        <div id="box2">
-            <p class="textBox2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        </div>
+        <main>
+            <div id="box1"></div>
+            <div id="box2">
+                <p class="textBox2"><b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. 
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                    <span class="textSpan">
+                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                    </span>
+                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+
+            <div id="gototop">
+                <a href="#" class="cd-top text-replace js-cd-top">Top</a>
+            </div>
+
+            <ul id="listUL">
+                <li>Apple</li>
+                <li>Orange</li>
+                <li>Lemon</li>
+            </ul>
+
+            <p id="colorRed" class="colorBlue">ID before Class</p>
+            <p class="colorBlue" id="colorRed">Class before ID</p>
+
+
+
+        </main>
+
     </body>
 </html>

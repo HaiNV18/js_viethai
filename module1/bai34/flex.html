@@ -1,0 +1,110 @@
+<html>
+<head>
+    <title>DHKHTN</title>
+    <link rel="stylesheet" href="css/style-flex.css">
+
+    <style>
+        nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            background: black;
+            color: white;
+        }
+        /* nav {
+            position: sticky;
+            top: 0;
+            background: yellow;
+        } */
+
+        .box-static {
+            position: static; 
+            width:100px; 
+            border: 1px solid #000;
+        }
+
+        .box-relative {
+            position: relative;
+            top: 20px; left: 30px;
+            width:100px; border: 1px solid #000;
+        }
+        
+        .box-scroll-top {
+            position: relative; /* Vị trí tương đối */
+            top: 80%; left: 80%;
+            width:80px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        Trang Chủ | Tin Tức | Liên Hệ
+    </nav>
+
+    <h2>Flexbox Demo</h2>
+    <div class="container-1">
+        <div class="item-1">Item 1</div>
+        <div class="item-1">Item 2</div>
+        <div class="item-1">Item 3</div>
+    </div>
+
+    <div class="container-2">
+        <div class="item-2">Item 1</div>
+        <div class="item-2">Item 2</div>
+        <div class="item-2">Item 3</div>
+    </div>
+
+    <div class="container-3">
+        <div class="box">Center</div>
+    </div>
+
+    <div class="container-4">
+        <div class="item-4">Item 1</div>
+        <div class="item-4">Item 2</div>
+        <div class="item-4">Item 3</div>
+        <div class="item-4">Item 4</div>
+        <div class="item-4">Item 5</div>
+        <div class="item-4">Item 6</div>
+    </div>
+
+    <h3>Danh sách đối tác</h3>
+
+    <div class="container-partner">
+        <div class="item-partner"><img src="img/fpt-logo.png" width="200px"/></div>
+        <div class="item-partner"><img src="img/logo.png" width="100px"/></div>
+        <div class="item-partner"><img src="img/logo.png" width="100px"/></div>
+        <div class="item-partner"><img src="img/logo.png" width="100px"/></div>
+        <div class="item-partner"><img src="img/logo.png" width="100px"/></div>
+        <div class="item-partner"><img src="img/logo.png" width="100px"/></div>
+    </div>
+
+    <div class="container-avatar">
+        <div class="item-avatar">
+            <img src="img/avatar-circle.png" width="100px"/>
+            <h3>Tên Partner</h3>
+            <p class="colorBrown">Finacial Analytics</p>
+            <p class="textSize14">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        </div>
+        <div class="item-avatar">
+            <img src="img/avatar-circle.png" width="100px"/>
+            <h3>Tên Partner</h3>
+            <p class="colorBrown">Finacial Analytics</p>
+            <p class="textSize14">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        </div>
+        <div class="item-avatar">
+            <img src="img/avatar-circle.png" width="100px"/>
+            <h3>Tên Partner</h3>
+            <p class="colorBrown">Finacial Analytics</p>
+            <p class="textSize14">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        </div>
+        <div class="item-avatar">
+            <img src="img/avatar-circle.png" width="100px"/>
+            <h3>Tên Partner</h3>
+            <p class="colorBrown">Finacial Analytics</p>
+            <p class="textSize14">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        </div>
+    </div>
+
+</body>
+</html>

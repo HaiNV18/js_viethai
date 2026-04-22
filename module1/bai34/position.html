@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>DHKHTN</title>
+
+    <style>
+        nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            background: black;
+            color: white;
+        }
+        /* nav {
+            position: sticky;
+            top: 0;
+            background: yellow;
+        } */
+
+        .box-static {
+            position: static; 
+            width:100px; 
+            border: 1px solid #000;
+        }
+
+        .box-relative {
+            position: relative;
+            top: 20px; left: 30px;
+            width:100px; border: 1px solid #000;
+        }
+        
+        .box-scroll-top {
+            position: relative; /* Vị trí tương đối */
+            top: 80%; left: 80%;
+            width:80px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        Trang Chủ | Tin Tức | Liên Hệ
+    </nav>
+
+    <h2>Position</h2>
+    <div class="box-static">Box Static</div>
+    <div class="box-relative">Box Relative</div>
+
+    <div class="box-scroll-top">
+        <img src="img/scroll-top.png" onclick="scrollToTop()" alt="scroll top" width="100%" />
+    </div>
+
+    <div style="width: 100px;height: 1000px;"></div>
+    
+    <script>
+        function scrollToTop() {
+            alert(`scroll to top`)
+            // Viết JS scroll to top
+        }
+    </script>
+</body>
+</html>
