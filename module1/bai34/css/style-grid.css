@@ -1,0 +1,40 @@
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.box-grid {
+    /*không có kích thước width height*/
+    background: green;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.otherElement {
+    height: 500px;
+}
+
+.bgElement
+{
+    height: 500px;
+    background-image: url('https://webcode.tools/img/ottawa.jpg') !important;
+
+    background-position:center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    margin-bottom: 5px;
+}
+
+.bgElement h3 {
+    color: white;
+    font-size: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-text-stroke: 5px black; /* Border width and color */
+
+    text-align: center;
+    padding: 200px;
+}
