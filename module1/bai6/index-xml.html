@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>JavaScript</title>
+    </head>
+    <body>
+
+        <button onclick="loadData()">Load Data</button>
+        <div id="demo"></div>
+
+
+
+
+
+        <script>
+            function loadData(){
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        document.getElementById("demo").innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.open("GET", "http://localhost:5500/data.txt", true);
+                xhr.send();
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>JavaScript</title>
+    </head>
+    <body>
+
+        <h3 id="message">Chào mọi người!</h3>
+
+        <button onclick="doiMau()">Đổi màu</button>
+
+        <button onclick="inNoiDung()">In nội dung</button>
+
+        <button onclick="inNoiDungCu()">Quay lại nội dung cũ</button>
+
+        <script>
+            function doiMau() {
+                var element = document.getElementById("message");
+
+                if (element.style.color == 'blue') {
+                    element.style.color = 'red';
+                } else {
+                    element.style.color = 'blue';
+                }
+            }
+
+            function inNoiDung() {
+                document.getElementById("message").innerHTML = "Chào tất cả mọi người";
+            }
+
+            function inNoiDungCu() {
+                document.getElementById("message").innerHTML = "Chào mọi người!";
+            }
+
+        </script>
+
+    </body>
+</html>

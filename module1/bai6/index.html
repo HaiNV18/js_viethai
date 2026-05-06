@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>JavaScript</title>
+        <script src="script.js"></script>
+    </head>
+    <body>
+
+        <button onclick="hello('Van')">Thực hiện event onclick</button>
+        <br><br>
+        <button onclick="phepNhan()">Thực hiện phép nhân</button>
+
+        <input type="number" id="giatriA" value="2" />
+        <input type="number" id="giatriB" value="3" />
+        <p id="ketqua"></p>
+
+        <script>
+            function hello(fullname) {
+                alert("Hello " + fullname)
+            }
+
+            function phepNhan() {
+                let a = document.getElementById('giatriA').value;
+                let b = document.getElementById('giatriB').value;
+
+                var convertA = null;
+                var convertB = null;
+
+                if (a === 2) {
+                    console.log("Đây là số number"); //true
+                } else {
+                    console.log("Đây là chuỗi string"); //false
+                    convertA = parseInt(a);
+                }
+                
+                if (b === 3) {
+                    console.log("Đây là số number"); //true
+                } else {
+                    console.log("Đây là chuỗi string"); //false
+                    convertB = parseInt(b);
+                }
+                console.log(convertA);
+                console.log(convertB);
+
+                // Kiểu dữ liệu (data type)
+                // Số là number
+                // Chuỗi là 1 đoạn văn bản text
+                // Boolean là true hoặc false
+
+                let c = convertA * convertB;
+                document.getElementById('ketqua').innerHTML = c;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+            function myAge() {
+                return 38;
+            }
+
+            function yourAge(yourBirthYear) {
+                return 2026 - yourBirthYear;
+            }
+
+            let x = myAge() + yourAge(1990); // 38 + (2026 - 1990) = 74
+            let y = yourAge(myAge()); // 2026 - 38 = 1988
+
+            console.log(x);
+            console.log(y);
+
+
+        </script>
+
+    </body>
+</html>
