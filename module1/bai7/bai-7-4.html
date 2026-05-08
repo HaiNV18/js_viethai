@@ -1,0 +1,162 @@
+<html>
+<head>
+    <title>JS</title>
+</head>
+<body>
+
+    <h2>Quản lý sản phẩm</h2>
+
+    <div>
+        <button onclick="oderProduct()">Đặt hàng</button>
+    </div>
+
+    <table border="1" width="600">
+        <thead>
+            <tr>
+                <th><input type="checkbox" onclick="checkAll(this)"></th>
+                <th>Điện thoại</th>
+                <th>Giá</th>
+                <th>Hình ảnh</th>
+                <th>Số lượng</th>
+            </tr>
+        </thead>
+        <tbody id="product-table"></tbody>
+    </table>
+    
+    <h2>Sản phẩm đã đặt</h2>
+
+    <table border="1" width="600">
+        <thead>
+            <tr>
+                <th>Điện thoại</th>
+                <th>Số lượng</th>
+                <th>Tổng tiền</th>
+            </tr>
+        </thead>
+        <tbody id="order-table"></tbody>
+    </table>
+
+
+    <script>
+        var products = [];
+        var html = "";
+
+        window.onload = function() {
+            loadProduct();
+        }
+
+        function loadProduct() {
+            let xhr = new XMLHttpRequest;
+            xhr.open("GET", "products.json", true);
+
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    products = JSON.parse(xhr.responseText);
+                    renderProductTable();
+                }
+            }
+            xhr.send();
+        }
+
+        function renderProductTable() {
+            let table = document.getElementById("product-table");
+
+            products.forEach((product, index) => {
+                let row = `
+                    <tr>
+                        <td><input type="checkbox" class="checkbox"></td>
+                        <td>${product.name}</td>
+                        <td class="price">${product.price}</td>
+                        <td>${product.img}</td>
+                        <td><input type="number" value="1" min="1" class="quantity"></td>
+                    </tr>
+                `
+                table.innerHTML += row;
+            });
+        }
+
+        function checkAll() {
+            let checkboxes = document.querySelectorAll(".checkbox");
+            checkboxes.forEach(cb => {
+                cb.checked = source.checked
+            })
+        }
+
+        function oderProduct() {
+            let rows = document.querySelectorAll("#product-table tr td");
+            let selectedProducts = [];
+
+            rows.forEach((row, index) => {
+                
+                let checkbox = row.querySelector(".checkbox");
+
+                // console.log(row)
+            
+                if (checkbox && checkbox.checked) {
+            
+                    let quantity = row.querySelector(".quantity");
+                    // let quantity = row.querySelector("input .quantity").value;
+                    console.log(products[index].name)
+
+                    let priceNumber = row.querySelector(".price");
+
+
+                    selectedProducts.push({
+                        name: products[index].name,
+                        price: priceNumber,
+                        quantity: Number(quantity)
+                    })
+                }
+
+            });
+
+            if (selectedProducts.length == 0) {
+                alert("bạn chưa chọn sản phẩm");
+                return;
+            }
+
+            shuffleProduct(selectedProducts, function(shuffledList) {
+                renderOrderAsync(shuffledList).then(result => renderOrderTable(result));
+            })
+        }
+
+        function shuffleProduct(list, callback) {
+            let shuffled = [...list];
+            shuffled.sort(() => Math.random - 0.5);
+            callback(shuffled)
+        }
+
+        function renderOrderAsync(list) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(list);
+                }, 1000);
+            })
+        }
+
+        function renderOrderTable(list) {
+            let orderTable = document.getElementById("order-table");
+            orderTable.innerHTML = "";
+
+            list.forEach(product => {
+
+                console.log(product.quantity)
+
+                let total = product.price * product.quantity;
+                let row = `
+                    <tr>
+                        <td>${product.name}</td>
+                        <td>${product.quantity}</td>
+                        <td>${total} VND</td>
+                    </tr>
+                `
+                orderTable.innerHTML += row;
+            });
+
+
+        }
+
+    </script>
+
+</body>
+</html>

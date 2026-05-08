@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>JS</title>
+</head>
+<body>
+
+    <button onclick="batDongBo()">Chạy bất đồng bộ</button>
+
+    <div id="step"></div>
+
+    <script>
+        
+        function batDongBo() {
+            setTimeout(() => {
+                document.getElementById("step").innerHTML = "bước 2";
+            }, 2000)
+
+            setTimeout(() => {
+                document.getElementById("step").innerHTML = "bước 3";
+            }, 2000)
+
+            document.getElementById("step").innerHTML = "bước 1";
+        }
+
+
+
+
+
+
+
+        // function nganHang(callback) {
+        //     console.log("Lấy số thứ tự...");
+        //     setTimeout(function() {
+        //         console.log("Đến lượt bạn!");
+        //         callback("Hai");
+        //     }, 3000);
+        // }
+
+        // function khachHang(name) {
+        //     console.log("Khách hàng " + name + " vào giao dịch");
+        // }
+
+        // function khachHangKhac() {
+        //     console.log("Khách hàng vào giao dịch");
+        // }
+
+        // nganHang(khachHang);
+        // nganHang(khachHangKhac);
+    </script>
+
+</body>
+</html>

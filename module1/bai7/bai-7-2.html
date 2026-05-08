@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>JS</title>
+</head>
+<body>
+
+    <h2>Danh sách điện thoại</h2>
+
+    <div id="product-list"></div>
+
+    <div style="float:left; width: 100%; text-align: center;">
+        <div id="loading"></div>
+        <button id="loadBtn" onclick="showMore()">Show more</button>
+    </div>
+
+
+    <script>
+        var products = [];
+        var currentIndex = 0;
+        var step = 3; // so luong item
+        var html = "";
+
+        window.onload = function() {
+            loadProduct();
+        }
+
+        function loadProduct() {
+            let xhr = new XMLHttpRequest;
+            xhr.open("GET", "products.json", true);
+
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    products = JSON.parse(xhr.responseText);
+                    showProducts();
+                }
+            }
+            xhr.send();
+        }
+
+        function showProducts() {
+            let nextIndex = currentIndex + step;
+
+            let list = products.slice(currentIndex, nextIndex);
+
+            list.forEach(product => {
+                html += `
+                    <div style="float:left; width: 25%; text-align: center;">
+                        <img src="${product.img}" width="120" />
+                        <p>${product.name}</p>
+                        <p>${product.price}</p>
+                        <hr>
+                    </div>
+                `;
+            })
+
+            document.getElementById("product-list").innerHTML = html;
+            currentIndex = nextIndex;
+        }
+
+        function showMore() {
+
+            document.getElementById("loading").innerHTML = `<img src="img/loading.gif" width="50">`;
+            document.getElementById("loadBtn").disabled = true;
+
+            setTimeout(() => {
+                showProducts()
+
+                document.getElementById("loading").innerHTML = "";
+                document.getElementById("loadBtn").disabled = false;
+
+                console.log(currentIndex)
+                console.log(currentIndex >= products.length)
+
+                if (currentIndex >= products.length) {
+                    document.getElementById("loadBtn").style.display = "none";
+                    document.getElementById("loading").innerHTML = "Đã load hết sản phẩm";
+                }
+            }, 2000)
+
+        }
+
+    </script>
+
+</body>
+</html>
