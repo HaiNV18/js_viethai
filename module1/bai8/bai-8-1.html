@@ -21,21 +21,28 @@
 
     <script>
         // Tạo dữ liệu giỏ hàng
-        var cart = [
+        // var cart = [
+        //     { name: "Iphone 15", price: 1500, qty: 1, img: "img/iphone15.jpg", checked: false },
+        //     { name: "Samsung S24", price: 25, qty: 2, img: "img/samsung-s24.png", checked: false },
+        //     { name: "Xiaomi 14", price: 70, qty: 1, img: "img/xiaomi14.png", checked: false }
+        // ];
+
+        let cart = JSON.parse(localStorage.getItem("cart") || [
             { name: "Iphone 15", price: 1500, qty: 1, img: "img/iphone15.jpg", checked: false },
             { name: "Samsung S24", price: 25, qty: 2, img: "img/samsung-s24.png", checked: false },
             { name: "Xiaomi 14", price: 70, qty: 1, img: "img/xiaomi14.png", checked: false }
-        ];
+        ]);
+        localStorage.setItem("cart", JSON.stringify(cart));
 
         console.log(localStorage.getItem("cart"))
 
         // Kiểm tra cart đã tồn tại chưa
-        if (localStorage.getItem('cart') == null) {
-            localStorage.setItem("cart", JSON.stringify(cart));
-        }
+        // if (localStorage.getItem('cart') == null) {
+        //     localStorage.setItem("cart", JSON.stringify(cart));
+        // }
 
         // Lấy dữ liệu ra
-        var cartData = JSON.parse(localStorage.getItem("cart")) || [];
+        // var cartData = JSON.parse(localStorage.getItem("cart")) || [];
 
         // Xóa localstorage
         function clearAll() {
@@ -46,19 +53,26 @@
         function renderCart() {
             var tableBody = document.getElementById("cart-table");
             let html = "";
-        
-            cartData.forEach((item, index) => {
+
+            if (cart.length === 0) {
                 html += `<tr>
-                <td><input type="checkbox" 
-                            ${item.checked ? "checked" : "" }
-                            onchange="toggleItem(${index}, this.checked)" 
-                            /></td>
-                <td>${item.name}</td>
-                <td>${item.price}</td>
-                <td><input type="number" name="qty" onchange="updateQty(${index}, this.value)" value="${item.qty}" /></td>
-                <td><center><img src="${item.img}" width="50%" /></center></td>
+                    <th colspan="5">Không có sản phẩm</th>
                 </tr> `;
-            }); 
+            } else {
+                cart.forEach((item, index) => {
+                    html += `<tr>
+                    <td><input type="checkbox" 
+                                ${item.checked ? "checked" : "" }
+                                onchange="toggleItem(${index}, this.checked)" 
+                                /></td>
+                    <td>${item.name}</td>
+                    <td>${item.price}</td>
+                    <td><input type="number" name="qty" onchange="updateQty(${index}, this.value)" value="${item.qty}" /></td>
+                    <td><center><img src="${item.img}" width="50%" /></center></td>
+                    </tr> `;
+                }); 
+            }
+        
             tableBody.innerHTML = html;
         }
 
