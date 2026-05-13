@@ -1,0 +1,100 @@
+<html>
+<head>
+    <title>JS</title>
+</head>
+<body>
+    <table border="1" width="400">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="checkAll" onchange="toggleCheckAll(this)" /></th>
+                <th>Tên</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Hình ảnh</th>
+            </tr>
+        </thead>
+        <tbody id="cart-table"></tbody>
+    </table>
+
+    <button onclick="clearAll()">Xóa hết giỏ hàng</button>
+    <button onclick="deletedChecked()">Xóa kết quả được chọn</button>
+
+    <script>
+        // Tạo dữ liệu giỏ hàng
+        var cart = [
+            { name: "Iphone 15", price: 1500, qty: 1, img: "img/iphone15.jpg", checked: false },
+            { name: "Samsung S24", price: 25, qty: 2, img: "img/samsung-s24.png", checked: false },
+            { name: "Xiaomi 14", price: 70, qty: 1, img: "img/xiaomi14.png", checked: false }
+        ];
+
+        console.log(localStorage.getItem("cart"))
+
+        // Kiểm tra cart đã tồn tại chưa
+        if (localStorage.getItem('cart') == null) {
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+
+        // Lấy dữ liệu ra
+        var cartData = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Xóa localstorage
+        function clearAll() {
+            localStorage.clear();
+        }
+
+        // Hiển thị trên table
+        function renderCart() {
+            var tableBody = document.getElementById("cart-table");
+            let html = "";
+        
+            cartData.forEach((item, index) => {
+                html += `<tr>
+                <td><input type="checkbox" 
+                            ${item.checked ? "checked" : "" }
+                            onchange="toggleItem(${index}, this.checked)" 
+                            /></td>
+                <td>${item.name}</td>
+                <td>${item.price}</td>
+                <td><input type="number" name="qty" onchange="updateQty(${index}, this.value)" value="${item.qty}" /></td>
+                <td><center><img src="${item.img}" width="50%" /></center></td>
+                </tr> `;
+            }); 
+            tableBody.innerHTML = html;
+        }
+
+        renderCart();
+
+        function toggleItem(index, checked) {
+            cart[index].checked = checked;
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+
+        function toggleCheckAll(checkbox) {
+            console.log(checkbox.checked)
+            cart.forEach(item => {
+                item.checked = checkbox.checked;
+            })
+            console.log(cart)
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+        }
+        // var checkAllChecked = false;
+        // Update số lượng
+        function updateQty(index, newQty) {
+            cart[index].qty = Number(newQty);
+            localStorage.clear();
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+
+        function deletedChecked() {
+            cart = cart.filter(item => item.checked === false); // Lấy tất cả kết quả chưa check
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+        }
+
+
+    </script> 
+
+</body>
+</html>
+
