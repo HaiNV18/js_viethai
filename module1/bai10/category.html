@@ -52,14 +52,21 @@
     </div>
 
     <div class="container mt-5">
-        <div id="product-table" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div id="product-list" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        </div>
+
+        <div class="row">
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div id="loading"></div>
+                <div class="text-center"><button id="loadBtn" onclick="showMore()">Show more</button></div>
+            </div>
         </div>
     </div>
 
     <footer class="py-5 bg-dark">
         <div class="container px-4 px-lg-5">
             <div class="row" style="color:white !important"> 
-                <div class="col-6 col-md-2 mb-3"> 
+                <div class="col-6 col-md-2 mb-3">
                     <h5>Section</h5> 
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
@@ -107,7 +114,11 @@
     <script src="asset/bootstrap/js/bootstrap.min.js"></script>
     
     <script>
-        let products = [];
+        var products = [];
+        var currentIndex = 0;
+        var step = 4; // so luong item
+        var html = "";
+        
         // load dữ liệu khi mở trang
         window.onload = function() {
             loadProducts();
@@ -127,10 +138,12 @@
         }
 
         function renderProductTable() {
-            let html = "";
+            let nextIndex = currentIndex + step;
 
-            products.forEach((product, index) => {
-                html = html + `
+            let list = products.slice(currentIndex, nextIndex);
+
+            list.forEach(product => {
+                html += `
                     <div class="col mb-5">
                         <div class="card h-100">
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
@@ -153,9 +166,11 @@
                             </div>
                         </div>
                     </div>
-                `
-            });
-            document.getElementById("product-table").innerHTML = html;
+                `;
+            })
+
+            document.getElementById("product-list").innerHTML = html;
+            currentIndex = nextIndex;
         }
 
         function sortProducts(type) {
@@ -166,6 +181,29 @@
             }
             renderProductTable(products);
         }
+
+        function showMore() {
+
+            document.getElementById("loading").innerHTML = `<img src="asset/img/loading.gif" width="50">`;
+            document.getElementById("loadBtn").disabled = true;
+
+            setTimeout(() => {
+                renderProductTable()
+
+                document.getElementById("loading").innerHTML = "";
+                document.getElementById("loadBtn").disabled = false;
+
+                console.log(currentIndex)
+                console.log(currentIndex >= products.length)
+
+                if (currentIndex >= products.length) {
+                    document.getElementById("loadBtn").style.display = "none";
+                    document.getElementById("loading").innerHTML = "Đã load hết sản phẩm";
+                }
+            }, 2000)
+
+        }
+
     </script>
 </body>
 </html>

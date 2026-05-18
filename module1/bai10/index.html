@@ -47,7 +47,7 @@
     </header>
 
     <div class="container">
-        <div id="product-table" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div id="product-list" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
         </div>
     </div>
@@ -124,7 +124,7 @@
         }
 
         function renderProductTable() {
-            let table = document.getElementById("product-table");
+            let table = document.getElementById("product-list");
 
             products.forEach((product, index) => {
                 let row = `
