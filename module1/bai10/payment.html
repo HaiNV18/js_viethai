@@ -35,26 +35,43 @@
     </nav>
 
     <div class="container">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <h2 class="fw-bolder mb-4 mt-5">Giỏ hàng</h2>
-            <table class="table table-striped-columns">
-                <tr>
-                    <td>Hình ảnh</td>
-                    <td>Tên sản phẩm</td>
-                    <td>Số lượng</td>
-                </tr>
-                <tr>
-                    <td><img src="asset/img/products/samsung-s24-1.png" alt="..." width="150"></td>
-                    <td>Samsung S24</td>
-                    <td><input type="number" min="1" value="3"></td>
-                </tr>
-            </table>
+        <div class="row mt-5">
+            <div class="col-xl-8">
+                <!-- Account details card-->
+                <div class="card mb-5">
+                    <div class="card-header">Account Payment</div>
+                    <div class="card-body p-5">
+                        <div class="card-subtitle mb-4">Review and update your account information below.</div>
+                        <form>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Địa chỉ" aria-label="Address" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="note">Ghi chú</label>
+                                <textarea class="form-control" id="note"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+
     <footer class="py-5 bg-dark">
         <div class="container px-4 px-lg-5">
-        
             <div class="row" style="color:white !important"> 
                 <div class="col-6 col-md-2 mb-3"> 
                     <h5>Section</h5> 
@@ -100,12 +117,8 @@
             </div>
         </div>
     </footer>
-    
-    <div class="box-scroll-top">
-        <img src="img/scroll-top.png" onclick="scrollToTop()" alt="scroll top" width="100%" />
-    </div>
 
-    <script src="asset/bootstrap/js/bootstrap.min.js"></script> 
+    <script src="asset/bootstrap/js/bootstrap.min.js"></script>
+    <script src="asset/js/script.js"></script>
 </body>
 </html>
-
