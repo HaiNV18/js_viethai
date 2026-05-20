@@ -24,7 +24,7 @@
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
+                    <button class="btn btn-outline-dark" type="button" onclick="window.location.href='cart.html'">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
@@ -38,16 +38,15 @@
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <h2 class="fw-bolder mb-4 mt-5">Giỏ hàng</h2>
             <table class="table table-striped-columns">
-                <tr>
-                    <td>Hình ảnh</td>
-                    <td>Tên sản phẩm</td>
-                    <td>Số lượng</td>
-                </tr>
-                <tr>
-                    <td><img src="asset/img/products/samsung-s24-1.png" alt="..." width="150"></td>
-                    <td>Samsung S24</td>
-                    <td><input type="number" min="1" value="3"></td>
-                </tr>
+                <thead>
+                    <tr>
+                        <td>Hình ảnh</td>
+                        <td>Tên sản phẩm</td>
+                        <td>Giá</td>
+                        <td>Số lượng</td>
+                    </tr>
+                </thead>
+                <tbody id="cart-table"></tbody>
             </table>
         </div>
     </div>
@@ -100,12 +99,68 @@
             </div>
         </div>
     </footer>
-    
-    <div class="box-scroll-top">
-        <img src="img/scroll-top.png" onclick="scrollToTop()" alt="scroll top" width="100%" />
-    </div>
 
-    <script src="asset/bootstrap/js/bootstrap.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="asset/bootstrap/js/bootstrap.min.js"></script>
+    <script src="asset/js/cart.js"></script>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        localStorage.setItem("cart", JSON.stringify(cart));
+        
+        window.onload = function() {
+            updateCartCount();
+        }
+
+        function renderCart() {
+            var tableBody = document.getElementById("cart-table");
+            let html = "";
+
+            if (cart.length === 0) {
+                html += `<tr>
+                    <th colspan="5">Không có sản phẩm</th>
+                </tr> `;
+            } else {
+                cart.forEach((item, index) => {
+                    html += `
+                    <tr>
+                        <td><img src="${item.img}" alt="${item.name}" width="150"></td>
+                        <td>${item.name}</td>
+                        <td>${item.price}</td>
+                        <td><input type="number" name="qty" onchange="updateQty(${index}, this.value)" value="${item.qty}" /></td>
+                        <td><button onclick="removeToCart(${index})">Xóa</button></td>
+                    </tr>
+                    `;
+                }); 
+            }
+
+            tableBody.innerHTML = html;
+        }
+
+        renderCart();
+        
+        function updateQty(index, newQty) {
+            cart[index].qty = Number(newQty);
+            localStorage.clear();
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+
+        function removeToCart(index) {
+            let arrCart = JSON.parse(localStorage.getItem("cart")) || []; // Lấy giỏ hàng lúc đầu
+
+            arrCart.forEach((item, i) => {
+                if (item.id == cart[index].id) {
+                    arrCart.splice(i, 1);
+                }
+            });
+
+            localStorage.setItem("cart", JSON.stringify(arrCart)); // cập nhật giỏ hàng trong localStorage
+            updateCartCount(); // update số lượng
+
+            // reload the current page
+            window.location.reload();
+        }
+    </script>
 </body>
 </html>
 
