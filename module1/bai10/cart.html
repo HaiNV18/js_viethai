@@ -133,7 +133,7 @@
                     html += `
                     <tr>
                         <td><img src="${item.img}" alt="${item.name}" width="150"></td>
-                        <td>${item.name}</td>
+                        <td><a href="detail.html?id=${item.id}">${item.name}</a></td>
                         <td>${item.price}</td>
                         <td><input type="number" name="qty" onchange="updateQty(${index}, this.value)" value="${item.qty}" /></td>
                         <td><button type="button" class="btn btn-danger" onclick="removeToCart(${index})">Xóa</button></td>
