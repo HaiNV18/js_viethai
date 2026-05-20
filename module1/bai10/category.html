@@ -24,7 +24,7 @@
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
+                    <button class="btn btn-outline-dark" type="button" onclick="window.location.href='cart.html'">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
@@ -112,16 +112,19 @@
     </footer>
 
     <script src="asset/bootstrap/js/bootstrap.min.js"></script>
+    <script src="asset/js/cart.js"></script>
     
     <script>
         var products = [];
         var currentIndex = 0;
         var step = 4; // so luong item
         var html = "";
+        var indexRender = 0;
         
         // load dữ liệu khi mở trang
         window.onload = function() {
             loadProducts();
+            updateCartCount();
         }
 
         function loadProducts() {
@@ -142,7 +145,7 @@
 
             let list = products.slice(currentIndex, nextIndex);
 
-            list.forEach(product => {
+            list.forEach((product, index) => {
                 html += `
                     <div class="col mb-5">
                         <div class="card h-100">
@@ -162,11 +165,12 @@
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="addToCart(${indexRender}, 1)">Add to cart</a></div>
                             </div>
                         </div>
                     </div>
                 `;
+                indexRender += 1;
             })
 
             document.getElementById("product-list").innerHTML = html;
