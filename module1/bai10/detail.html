@@ -42,7 +42,7 @@
                     <!-- Post header-->
                     <header class="mb-4">
                         <!-- Post title-->
-                        <h1 class="fw-bolder mb-1">Samsung Galaxy A17</h1>
+                        <h1 id="detail-product-name" class="fw-bolder mb-1">Samsung Galaxy A17</h1>
                         <!-- Post meta content-->
                         <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div>
                         <!-- Post categories-->
@@ -55,7 +55,7 @@
                     
                     <!-- Post content-->
                     <section class="mb-5">
-                        <p class="fs-5 mb-4"><strong>Samsung Galaxy A17 5G</strong> là mẫu smartphone tầm trung nổi bật với sức mạnh từ chipset Exynos 1330 cùng công nghệ chống rung OIS trên camera chính 50MP, giúp tối ưu hiệu năng và chất lượng ảnh chụp. Thiết bị sở hữu viên pin 5.000mAh bền bỉ kèm sạc nhanh 25W, đáp ứng trọn vẹn nhu cầu sử dụng cả ngày dài. Với thiết kế tinh tế gồm 3 gam màu thời thượng, A17 5G hứa hẹn là lựa chọn hàng đầu trong phân khúc năm 2026.</p>
+                        <p id="detail-product-desc" class="fs-5 mb-4"></p>
 
                         <h2 class="fw-bolder mb-4 mt-5">Thông số kỹ thuật</h2>
                         
@@ -188,15 +188,16 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <ul class="list-unstyled mb-0">
-                                    <li><a href="category.html">Apple</a></li>
-                                    <li><a href="category.html">Samsung</a></li>
-                                    <li><a href="category.html">OPPO</a></li>
+                                    <li><a href="category.html?brand=apple">Apple</a></li>
+                                    <li><a href="category.html?brand=samsung">Samsung</a></li>
+                                    <li><a href="category.html?brand=oppo">OPPO</a></li>
                                 </ul>
                             </div>
                             <div class="col-sm-6">
                                 <ul class="list-unstyled mb-0">
-                                    <li><a href="category.html">Realme</a></li>
-                                    <li><a href="category.html">Vivo</a></li>
+                                    <li><a href="category.html?brand=realme">Realme</a></li>
+                                    <li><a href="category.html?brand=vivo">Vivo</a></li>
+                                    <li><a href="category.html?brand=xiaomi">Xiaomi</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -268,9 +269,13 @@
 
     <script>
         var products = [];
+        var detailProduct = null;
         var currentIndex = 0;
         var step = 4; // so luong item
         var html = "";
+        
+        let params = new URLSearchParams(document.location.search); // lấy tham số từ URL
+        let idProduct = params.get("id"); // lấy tham số id
 
         window.onload = function() {
             loadProduct();
@@ -283,11 +288,23 @@
 
             xhr.onload = function() {
                 if (xhr.status == 200) {
-                    products = JSON.parse(xhr.responseText);
+                    listProducts = JSON.parse(xhr.responseText);
+
+                    listProducts.forEach(item => {
+                        if (item.id == idProduct) {
+                            detailProduct = item
+                        }
+                    });
+                    renderDetailProduct();
                     renderProductTable();
                 }
             }
             xhr.send();
+        }
+
+        function renderDetailProduct() {
+            document.getElementById("detail-product-name").innerText = detailProduct.name;
+            document.getElementById("detail-product-desc").innerHTML = detailProduct.description;
         }
 
         function renderProductTable() {

@@ -37,7 +37,7 @@
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Điện thoại Apple</h1>
+                <h1 id="brand-header" class="display-4 fw-bolder">Điện thoại Apple</h1>
                 <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
             </div>
         </div>
@@ -120,6 +120,11 @@
         var step = 4; // so luong item
         var html = "";
         var indexRender = 0;
+
+        let params = new URLSearchParams(document.location.search); // lấy tham số từ URL
+        let brand = params.get("brand"); // lấy tham số brand
+
+        document.getElementById("brand-header").innerHTML = "ĐIỆN THOẠI " + brand.toUpperCase();
         
         // load dữ liệu khi mở trang
         window.onload = function() {
@@ -133,7 +138,14 @@
 
             xhr.onload = function() {
                 if (xhr.status == 200) {
-                    products = JSON.parse(xhr.responseText);
+                    listProduct = JSON.parse(xhr.responseText);
+
+                    listProduct.forEach(item => {
+                        if (item.brand == brand) {
+                            products.push(item)
+                        }
+                    });
+
                     renderProductTable(products);
                 }
             };
