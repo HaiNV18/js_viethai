@@ -5,7 +5,7 @@
         "description": "Mô tả",
         "brand": "apple",
         "price": 9000,
-        "img": "asset/img/products/iphone13.jpg"
+        "thumbnail": "asset/img/products/iphone13.jpg"
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
         "description": "Mô tả",
         "brand": "apple",
         "price": 9000,
-        "img": "asset/img/products/iphone15-1.jpg"
+        "thumbnail": "asset/img/products/iphone15-1.jpg"
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@
         "description": "<strong>Samsung S24</strong> là mẫu smartphone tầm trung nổi bật với sức mạnh từ chipset Exynos 1330 cùng công nghệ chống rung OIS trên camera chính 50MP, giúp tối ưu hiệu năng và chất lượng ảnh chụp. Thiết bị sở hữu viên pin 5.000mAh bền bỉ kèm sạc nhanh 25W, đáp ứng trọn vẹn nhu cầu sử dụng cả ngày dài. Với thiết kế tinh tế gồm 3 gam màu thời thượng, A17 5G hứa hẹn là lựa chọn hàng đầu trong phân khúc năm 2026.",
         "brand": "samsung",
         "price": 6000,
-        "img": "asset/img/products/samsung-s24.png"
+        "thumbnail": "asset/img/products/samsung-s24.png"
     },
     {
         "id": 4,
@@ -29,7 +29,7 @@
         "description": "Mô tả",
         "brand": "xiaomi",
         "price": 5000,
-        "img": "asset/img/products/xiaomi14.png"
+        "thumbnail": "asset/img/products/xiaomi14.png"
     },
     {
         "id": 5,
@@ -37,7 +37,7 @@
         "description": "Mô tả",
         "brand": "oppo",
         "price": 9000,
-        "img": "asset/img/products/oppo-find-x.jpg"
+        "thumbnail": "asset/img/products/oppo-find-x.jpg"
     },
     {
         "id": 6,
@@ -45,6 +45,6 @@
         "description": "Mô tả",
         "brand": "xiaomi",
         "price": 11000,
-        "img": "asset/img/products/xiaomi15.png"
+        "thumbnail": "asset/img/products/xiaomi15.png"
     }
 ]

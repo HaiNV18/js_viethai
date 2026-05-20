@@ -15,3 +15,8 @@
     background-size: cover; /* Ảnh nền phủ kín toàn bộ phần tử. */
     background-attachment: fixed; /* Làm cho ảnh nền cố định khi cuộn trang. */
 }
+
+.text-hover:hover {
+    font-size: 22px;
+    color:red;
+}

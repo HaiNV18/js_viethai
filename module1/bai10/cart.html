@@ -36,7 +36,9 @@
 
     <div class="container">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
             <h2 class="fw-bolder mb-4 mt-5">Giỏ hàng</h2>
+
             <table class="table table-striped-columns">
                 <thead>
                     <tr>
@@ -48,6 +50,11 @@
                 </thead>
                 <tbody id="cart-table"></tbody>
             </table>
+            
+            <div class="col-lg-12">
+                <p class="mb-4 mt-5">Total <span id="total-price">0</span></p>
+            </div>
+
         </div>
     </div>
 
@@ -110,6 +117,7 @@
         
         window.onload = function() {
             updateCartCount();
+            totalPrice();
         }
 
         function renderCart() {
@@ -128,7 +136,7 @@
                         <td>${item.name}</td>
                         <td>${item.price}</td>
                         <td><input type="number" name="qty" onchange="updateQty(${index}, this.value)" value="${item.qty}" /></td>
-                        <td><button onclick="removeToCart(${index})">Xóa</button></td>
+                        <td><button type="button" class="btn btn-danger" onclick="removeToCart(${index})">Xóa</button></td>
                     </tr>
                     `;
                 }); 
@@ -145,20 +153,31 @@
             localStorage.setItem("cart", JSON.stringify(cart));
         }
 
-        function removeToCart(index) {
-            let arrCart = JSON.parse(localStorage.getItem("cart")) || []; // Lấy giỏ hàng lúc đầu
-
-            arrCart.forEach((item, i) => {
-                if (item.id == cart[index].id) {
-                    arrCart.splice(i, 1);
-                }
+        function totalPrice() {
+            let totalPrice = 0;
+            cart.forEach(item => {
+                totalPrice = totalPrice + (item.price * item.qty)
             });
+            document.getElementById("total-price").innerText = totalPrice;
+        }
 
-            localStorage.setItem("cart", JSON.stringify(arrCart)); // cập nhật giỏ hàng trong localStorage
-            updateCartCount(); // update số lượng
+        function removeToCart(index) {
 
-            // reload the current page
-            window.location.reload();
+            if (confirm("Bạn có chắc muốn xóa không?") == true) {
+                let arrCart = JSON.parse(localStorage.getItem("cart")) || []; // Lấy giỏ hàng lúc đầu
+
+                arrCart.forEach((item, i) => {
+                    if (item.id == cart[index].id) {
+                        arrCart.splice(i, 1);
+                    }
+                });
+
+                localStorage.setItem("cart", JSON.stringify(arrCart)); // cập nhật giỏ hàng trong localStorage
+                updateCartCount(); // update số lượng
+
+                // reload the current page
+                window.location.reload();
+            }
         }
     </script>
 </body>
