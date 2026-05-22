@@ -2,7 +2,6 @@
 <head>
     <title>JS</title>
     <link rel="stylesheet" type="text/css" href="asset/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="asset/css/style.css">
 </head>
 <body>
 
@@ -41,39 +40,19 @@
         </div>
     </nav>
 
-    <header class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 id="brand-header" class="display-4 fw-bolder">Điện thoại Apple</h1>
-                <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-            </div>
-        </div>
-    </header>
-    
-    <div class="container mt-4">
-        <h2>Danh sách điện thoại</h2>
-        <select class="form-select w-25 mb-3" onchange="sortProducts(this.value)">
-            <option value="asc">Giá tăng dần</option>
-            <option value="desc">Giá giảm dần</option>
-        </select>
-    </div>
+    <div class="container">
+        <div class="row gx-4 gx-lg-5 justify-content-center text-center">
 
-    <div class="container mt-5">
-        <div id="product-list" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-        </div>
+            <h2 class="fw-bolder mb-4 mt-5">Thanh toán thành công</h2>
 
-        <div class="row">
-            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div id="loading"></div>
-                <div class="text-center"><button id="loadBtn" onclick="showMore()">Show more</button></div>
-            </div>
         </div>
     </div>
 
     <footer class="py-5 bg-dark">
         <div class="container px-4 px-lg-5">
+        
             <div class="row" style="color:white !important"> 
-                <div class="col-6 col-md-2 mb-3">
+                <div class="col-6 col-md-2 mb-3"> 
                     <h5>Section</h5> 
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
@@ -119,115 +98,7 @@
     </footer>
 
     <script src="asset/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="asset/js/cart.js"></script>
 
-    <script>
-        var products = [];
-        var currentIndex = 0;
-        var step = 4; // so luong item
-        var html = "";
-        var indexRender = 0;
-
-        let params = new URLSearchParams(document.location.search); // lấy tham số từ URL
-        let brand = params.get("brand"); // lấy tham số brand
-
-        document.getElementById("brand-header").innerHTML = "ĐIỆN THOẠI " + brand.toUpperCase();
-        
-        // load dữ liệu khi mở trang
-        window.onload = function() {
-            loadProducts();
-            updateCartCount();
-        }
-
-        function loadProducts() {
-            let xhr = new XMLHttpRequest();
-            xhr.open("GET", "products.json", true);
-
-            xhr.onload = function() {
-                if (xhr.status == 200) {
-                    listProduct = JSON.parse(xhr.responseText);
-
-                    listProduct.forEach(item => {
-                        if (item.brand == brand) {
-                            products.push(item)
-                        }
-                    });
-
-                    renderProductTable(products);
-                }
-            };
-            xhr.send();
-        }
-
-        function renderProductTable() {
-            let nextIndex = currentIndex + step;
-
-            let list = products.slice(currentIndex, nextIndex);
-
-            list.forEach((product, index) => {
-                html += `
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <img class="card-img-top" src="${product.thumbnail}" alt="...">
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder text-hover">${product.name}</h5>
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>${product.price}
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#" onclick="addToCart(${indexRender}, 1)">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                indexRender += 1;
-            })
-
-            document.getElementById("product-list").innerHTML = html;
-            currentIndex = nextIndex;
-        }
-
-        function sortProducts(type) {
-            if (type == 'asc') {
-                products.sort((a,b) => a.price - b.price);
-            } else {
-                products.sort((a,b) => b.price - a.price);
-            }
-            renderProductTable(products);
-        }
-
-        function showMore() {
-
-            document.getElementById("loading").innerHTML = `<img src="asset/img/loading.gif" width="50">`;
-            document.getElementById("loadBtn").disabled = true;
-
-            setTimeout(() => {
-                renderProductTable()
-
-                document.getElementById("loading").innerHTML = "";
-                document.getElementById("loadBtn").disabled = false;
-
-                console.log(currentIndex)
-                console.log(currentIndex >= products.length)
-
-                if (currentIndex >= products.length) {
-                    document.getElementById("loadBtn").style.display = "none";
-                    document.getElementById("loading").innerHTML = "Đã load hết sản phẩm";
-                }
-            }, 2000)
-
-        }
-
-    </script>
 </body>
 </html>
 
