@@ -82,12 +82,11 @@
         </div>
     </div>
 
-
     <footer class="py-5 bg-dark">
         <div class="container px-4 px-lg-5">
-            <div class="row" style="color:white !important"> 
-                <div class="col-6 col-md-2 mb-3"> 
-                    <h5>Section</h5> 
+            <div class="row" style="color:white !important">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
@@ -135,29 +134,22 @@
     <script src="asset/js/script.js"></script>
 
     <script>
-        const formElement = document.querySelector('#formPayment');
+        const formElement = document.querySelector("#formPayment");
 
         formElement.addEventListener('submit', (e) => {
             e.preventDefault();
-            let data = new FormData(formElement); // lay du lieu cua form
+            let data = new FormData(formElement);
 
-            let firstName = data.get('firstname'); // lay du lieu cua input trong form
-            let lastname = data.get('lastname');
-            let phone = data.get('phone');
-            let email = data.get('email');
-            let address = data.get('address');
-            let note = data.get('note');
-
-            // add data to localStorage
-            window.localStorage.setItem('firstName', firstName) 
-            window.localStorage.setItem('lastname', lastname)
-            window.localStorage.setItem('phone', phone)
-            window.localStorage.setItem('email', email)
-            window.localStorage.setItem('address', address)
-            window.localStorage.setItem('note', note)
+            localStorage.setItem('firstName', data.get('firstname'))
+            localStorage.setItem('lastName', data.get('lastname'))
+            localStorage.setItem('phone', data.get('phone'))
+            localStorage.setItem('email', data.get('email'))
+            localStorage.setItem('address', data.get('address'))
+            localStorage.setItem('note', data.get('note'))
 
             window.location.href = "payment-success.html";
-        });
+        })
+
     </script>
 </body>
 </html>

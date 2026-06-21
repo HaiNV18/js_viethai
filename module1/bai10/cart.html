@@ -5,26 +5,28 @@
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="index.html">Start Bootstrap</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="javascript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Brand
-                        </a>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Brand</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <!-- <li><a class="dropdown-item" href="#!">All Products</a></li>
-                            <li><hr class="dropdown-divider"></li> -->
+                            <li><a class="dropdown-item" href="category.html?brand=all">All Products</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="category.html?brand=apple">Apple</a></li>
                             <li><a class="dropdown-item" href="category.html?brand=samsung">Samsung</a></li>
-                            <li><a class="dropdown-item" href="category.html?brand=oppo">OPPO</a></li>
-                            <li><a class="dropdown-item" href="category.html?brand=realme">Realme</a></li>
-                            <li><a class="dropdown-item" href="category.html?brand=vivo">Vivo</a></li>
                             <li><a class="dropdown-item" href="category.html?brand=xiaomi">Xiaomi</a></li>
+                            <li><a class="dropdown-item" href="category.html?brand=oppo">OPPO</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
@@ -56,13 +58,9 @@
                 </thead>
                 <tbody id="cart-table"></tbody>
             </table>
-            
-            <div class="col-lg-12">
-                <p class="mb-4 mt-5">Total <span id="total-price">0</span></p>
-            </div>
 
-            <div class="col-lg-12">
-                <a href="payment.html" target="_blank">Thanh toán</p>
+            <div class="col-lg-12 mb-2">
+                <button type="button" onclick="window.location.href='payment.html'" class="btn btn-primary mt-3">Thanh toán</button>
             </div>
 
         </div>
@@ -70,10 +68,10 @@
 
     <footer class="py-5 bg-dark">
         <div class="container px-4 px-lg-5">
-        
-            <div class="row" style="color:white !important"> 
-                <div class="col-6 col-md-2 mb-3"> 
-                    <h5>Section</h5> 
+
+            <div class="row" style="color:white !important">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
@@ -123,7 +121,7 @@
     <script>
         let cart = JSON.parse(localStorage.getItem("cart"));
         localStorage.setItem("cart", JSON.stringify(cart));
-        
+
         window.onload = function() {
             updateCartCount();
             totalPrice();
@@ -135,60 +133,56 @@
 
             if (cart.length === 0) {
                 html += `<tr>
-                    <th colspan="5">Không có sản phẩm</th>
+                    <th colspan="5"><center>Không có sản phẩm</center></th>
                 </tr> `;
             } else {
                 cart.forEach((item, index) => {
                     html += `
-                    <tr>
-                        <td><img src="${item.img}" alt="${item.name}" width="150"></td>
-                        <td><a href="detail.html?id=${item.id}">${item.name}</a></td>
-                        <td>${item.price}</td>
-                        <td><input type="number" name="qty" onchange="updateQty(${index}, this.value)" value="${item.qty}" /></td>
-                        <td><button type="button" class="btn btn-danger" onclick="removeToCart(${index})">Xóa</button></td>
-                    </tr>
+                        <tr>
+                            <td><img src="${item.thumbnail}" alt="${item.name}" width="150"></td>
+                            <td><a href="detail.html?id=${item.id}">${item.name}</a></td>
+                            <td>${item.price}</td>
+                            <td><input type="number" name="qty" onchange="updateQty(${index}, this.value)" value="${item.qty}" /></td>
+                            <td><button type="button" class="btn btn-danger" onclick="removeToCart(${index})">Xóa</button></td>
+                        </tr>
                     `;
-                }); 
+                });
             }
-
-            tableBody.innerHTML = html;
+            tableBody.innerHTML = html + `<th colspan="5" id="total-price"></th>`;
         }
-
         renderCart();
-        
+
         function updateQty(index, newQty) {
             cart[index].qty = Number(newQty);
             localStorage.clear();
             localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
         }
 
         function totalPrice() {
             let totalPrice = 0;
             cart.forEach(item => {
-                totalPrice = totalPrice + (item.price * item.qty)
-            });
-            document.getElementById("total-price").innerText = totalPrice;
+                totalPrice = totalPrice + (item.price * item.qty);
+            })
+            document.getElementById("total-price").innerText = "Total: " + totalPrice;
         }
 
         function removeToCart(index) {
-
             if (confirm("Bạn có chắc muốn xóa không?") == true) {
-                let arrCart = JSON.parse(localStorage.getItem("cart")) || []; // Lấy giỏ hàng lúc đầu
+                let arrCart = JSON.parse(localStorage.getItem("cart")) || [];
 
                 arrCart.forEach((item, i) => {
-                    if (item.id == cart[index].id) {
+                    if (item.id == arrCart[index].id) {
                         arrCart.splice(i, 1);
                     }
-                });
-
-                localStorage.setItem("cart", JSON.stringify(arrCart)); // cập nhật giỏ hàng trong localStorage
-                updateCartCount(); // update số lượng
+                })
+                localStorage.setItem("cart", JSON.stringify(arrCart));
 
                 // reload the current page
                 window.location.reload();
             }
         }
+
     </script>
 </body>
 </html>
-

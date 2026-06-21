@@ -44,7 +44,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-centerx">
 
             <h2 class="text-center mb-4 mt-5">Thanh toán thành công</h2>
-            
+
             <h3 class="fw-bolder mb-4 mt-5">Thông tin khách hàng</h3>
 
             <table class="table table-striped-columns">
@@ -87,20 +87,16 @@
                 </thead>
                 <tbody id="cart-table"></tbody>
             </table>
-            
-            <div class="col-lg-12">
-                <p class="mb-4 mt-5"><b>Total</b> <span id="total-price">0</span></p>
-            </div>
 
         </div>
     </div>
 
     <footer class="py-5 bg-dark">
         <div class="container px-4 px-lg-5">
-        
-            <div class="row" style="color:white !important"> 
-                <div class="col-6 col-md-2 mb-3"> 
-                    <h5>Section</h5> 
+
+            <div class="row" style="color:white !important">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
@@ -145,12 +141,20 @@
     </footer>
 
     <script src="asset/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
+    <script src="asset/js/cart.js"></script>
+
     <script>
+        document.getElementById("firstname").innerText = localStorage.getItem("firstName");
+        document.getElementById("lastname").innerText = localStorage.getItem("lastName");
+        document.getElementById("phone").innerText = localStorage.getItem("phone");
+        document.getElementById("email").innerText = localStorage.getItem("email");
+        document.getElementById("address").innerText = localStorage.getItem("address");
+        document.getElementById("note").innerText = localStorage.getItem("note");
+
         let cart = JSON.parse(localStorage.getItem("cart"));
-        localStorage.setItem("cart", JSON.stringify(cart));
-        
+
         window.onload = function() {
+            updateCartCount();
             totalPrice();
         }
 
@@ -158,24 +162,23 @@
             var tableBody = document.getElementById("cart-table");
             let html = "";
 
-            if (cart.length === 0) {
+            if (cart.lenght === 0) {
                 html += `<tr>
                     <th colspan="5">Không có sản phẩm</th>
                 </tr> `;
             } else {
                 cart.forEach((item, index) => {
                     html += `
-                    <tr>
-                        <td><img src="${item.img}" alt="${item.name}" width="150"></td>
-                        <td><a href="detail.html?id=${item.id}">${item.name}</a></td>
-                        <td>${item.price}</td>
-                        <td>${item.qty}</td>
-                    </tr>
+                        <tr>
+                            <td><img src="${item.thumbnail}" alt="${item.name}" width="150"></td>
+                            <td><a href="detail.html?id=${item.id}">${item.name}</a></td>
+                            <td>${item.price}</td>
+                            <td>${item.qty}</td>
+                        </tr>
                     `;
-                }); 
+                });
             }
-
-            tableBody.innerHTML = html;
+            tableBody.innerHTML = html + `<th colspan="5" id="total-price"></th>`;
         }
 
         renderCart();
@@ -183,20 +186,10 @@
         function totalPrice() {
             let totalPrice = 0;
             cart.forEach(item => {
-                totalPrice = totalPrice + (item.price * item.qty)
-            });
-            document.getElementById("total-price").innerText = totalPrice;
+                totalPrice = totalPrice + (item.price * item.qty);
+            })
+            document.getElementById("total-price").innerText = "Total: " + totalPrice;
         }
-
-        // get data from localStorage
-        document.getElementById("firstname").innerHTML = localStorage.getItem("firstName");
-        document.getElementById("lastname").innerHTML = localStorage.getItem('lastname');
-        document.getElementById("phone").innerHTML = localStorage.getItem('phone');
-        document.getElementById("email").innerHTML = localStorage.getItem('email');
-        document.getElementById("address").innerHTML = localStorage.getItem('address');
-        document.getElementById("note").innerHTML = localStorage.getItem('note');
-
     </script>
 </body>
 </html>
-
