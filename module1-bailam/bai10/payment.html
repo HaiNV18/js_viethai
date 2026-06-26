@@ -12,7 +12,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">Start Bootstrap</a>
+            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -46,10 +46,48 @@
         </div>
     </nav>
 
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-xl-8">
 
+                <div class="card mb-5">
+                    <div class="card-header">Account Payment</div>
+                    <div class="card-body p-5">
+                        <div class="card-subtitle mb-4">Review and update your account information below.</div>
+                        <form id="formPayment">
+                            <div class="input-group mb-3">
+                                <input type="text" name="firstname" class="form-control" placeholder="Firstname" value="Hai" aria-label="firstname" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <input type="text" name="lastname" class="form-control" placeholder="Lastname" value="Nguyen Viet" aria-label="lastname" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <input type="text" name="phone" class="form-control" placeholder="Phone" value="0123456789" aria-label="phone" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <input type="email" name="email" class="form-control" placeholder="Email" value="hai@gmail.com" aria-label="email" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <input type="text" name="address" class="form-control" placeholder="Địa chỉ" value="DHKHTN" aria-label="address" aria-describedby="basic-addon1">
+                            </div>
 
+                            <div class="form-group">
+                                <label for="note">Ghi chú</label>
+                                <textarea class="form-control" id="note" name="note" rows="3"></textarea>
+                            </div>
 
+                            <button type="submit" class="btn btn-primary mt-3">Thanh toán</button>
+                        </form>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    </div>
 
 
 
@@ -118,7 +156,22 @@
     <script src="asset/js/cart.js"></script>
 
     <script>
+        const formElement = document.querySelector("#formPayment");
 
+        formElement.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            let data = new FormData(formElement);
+
+            localStorage.setItem("firstname", data.get('firstname'));
+            localStorage.setItem("lastname", data.get('lastname'));
+            localStorage.setItem("phone", data.get('phone'));
+            localStorage.setItem("email", data.get('email'));
+            localStorage.setItem("address", data.get('address'));
+            localStorage.setItem("note", data.get('note'));
+
+            window.location.href = "payment-success.html";
+        })
     </script>
 </body>
 

@@ -12,7 +12,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">Start Bootstrap</a>
+            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -47,10 +47,56 @@
     </nav>
 
 
+    <div class="container">
+        <div class="row gx-4 gx-lg-5 justify-content-centerx">
 
+            <h2 class="text-center mb-4 mt-5">Thanh toán thành công</h2>
 
+            <h3 class="fw-bolder mb-4 mt-5">Thông tin khách hàng</h3>
 
+            <table class="table table-striped-columns">
+                <tr>
+                    <td>Họ</td>
+                    <td id="firstname"></td>
+                </tr>
+                <tr>
+                    <td>Tên</td>
+                    <td id="lastname"></td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại</td>
+                    <td id="phone"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td id="email"></td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ</td>
+                    <td id="address"></td>
+                </tr>
+                <tr>
+                    <td>Ghi chú</td>
+                    <td id="note"></td>
+                </tr>
+            </table>
+            
+            <h3 class="fw-bolder mb-4 mt-5">Thông tin đơn hàng</h3>
 
+            <table class="table table-striped-columns">
+                <thead>
+                    <tr>
+                        <td>Hình ảnh</td>
+                        <td>Tên sản phẩm</td>
+                        <td>Giá</td>
+                        <td>Số lượng</td>
+                    </tr>
+                </thead>
+                <tbody id="cart-table"></tbody>
+            </table>
+
+        </div>
+    </div>
 
 
     <!-- Footer -->
@@ -118,6 +164,57 @@
     <script src="asset/js/cart.js"></script>
 
     <script>
+        document.getElementById("firstname").innerHTML = localStorage.getItem("firstname");
+        document.getElementById("lastname").innerHTML = localStorage.getItem("lastname");
+        document.getElementById("phone").innerHTML = localStorage.getItem("phone");
+        document.getElementById("email").innerHTML = localStorage.getItem("email");
+        document.getElementById("address").innerHTML = localStorage.getItem("address");
+        document.getElementById("note").innerHTML = localStorage.getItem("note");
+
+        let cart = JSON.parse(localStorage.getItem("cart")); // string to object
+        localStorage.setItem("cart", JSON.stringify(cart)); // object to JSON
+
+        window.onload = function() {
+            updateCartCount();
+            totalPrice();
+        }
+
+        function renderCart() {
+            var tableBody = document.getElementById("cart-table");
+            let html = "";
+
+            console.log(cart.length)
+
+            if (cart.length === 0) {
+                html = `<tr>
+                    <th colspan="5"><center>Không có sản phẩm</center></th>
+                </tr>
+                `;
+            } else {
+                cart.forEach((item, index) => {
+                    html += `
+                        <tr>
+                            <td><img src="${item.thumbnail}" alt="${item.name}" width="150"></td>
+                            <td>${item.name}</td>
+                            <td>${item.price}</td>
+                            <td>${item.qty}</td>
+                        </tr>
+                    `;
+                });
+            }
+
+            tableBody.innerHTML = html + `<tr><th colspan="5" id="total-price"></th></tr>`;
+        }
+        renderCart();
+
+        function totalPrice() {
+            let totalPrice = 0;
+            cart.forEach(item  => {
+                totalPrice = totalPrice + (item.price * item.qty);
+            });
+            document.getElementById("total-price").innerHTML = "Tổng cộng: " + totalPrice;
+        }
+
 
     </script>
 </body>
