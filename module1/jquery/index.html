@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Menu Active JQuery</title>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        ul.menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            gap: 10px;
+        }
+
+        ul.menu li {
+            padding: 10px 20px;
+            background: #eee;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: .3s;
+        }
+
+        ul.menu li.active {
+            background: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+	<ul class="menu">
+		<li class="active">Trang chủ</li>
+		<li>Giới thiệu</li>
+		<li>Dịch vụ</li>
+		<li>Liên hệ</li>
+	</ul>
+
+	<script>
+        $(document).ready(function () {
+            $('.menu li').click(function () {
+                $('.menu li').removeClass('active'); // Xóa tất cả class active
+                $(this).addClass('active'); // Thêm class active vào button được click
+            });
+        });
+	</script>
+</body>
+</html>
