@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Corner - Cửa Hàng Sách Trực Tuyến Hàng Đầu</title>
+  <meta name="description" content="Khám phá hàng ngàn tựa sách hay nhất về văn học, thiếu nhi, giáo trình và khoa học kỹ thuật tại Book Corner. Miễn phí giao hàng, nhiều ưu đãi hấp dẫn.">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="header" id="main-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Book Corner Logo" class="logo-img">
+        <span class="logo-text">Book<span>Corner</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link active">Trang Chủ</a></li>
+          <li><a href="books.html" class="nav-link">Sản Phẩm</a></li>
+          <li><a href="contact.html" class="nav-link">Liên Hệ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <div class="action-btn" id="wishlist-btn" title="Danh sách yêu thích">
+          <i data-lucide="heart"></i>
+          <span class="badge-count" id="wishlist-count">0</span>
+        </div>
+        <div class="action-btn" id="cart-btn" title="Giỏ hàng">
+          <i data-lucide="shopping-cart"></i>
+          <span class="badge-count" id="cart-count">0</span>
+        </div>
+        <div class="menu-toggle" id="hamburger-menu" title="Menu">
+          <i data-lucide="menu"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-header">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Book Corner Logo" style="height: 35px;">
+        <span class="logo-text" style="font-size: 1.2rem;">Book<span>Corner</span></span>
+      </a>
+      <div class="close-btn" id="mobile-nav-close">
+        <i data-lucide="x"></i>
+      </div>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link active">Trang Chủ</a></li>
+      <li><a href="books.html" class="mobile-nav-link">Sản Phẩm</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Liên Hệ</a></li>
+    </ul>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 16px;">
+      <div class="btn btn-outline" style="width: 100%;">
+        <i data-lucide="heart" style="width: 18px;"></i> Yêu Thích (<span id="mobile-wishlist-count">0</span>)
+      </div>
+      <div class="btn btn-primary" style="width: 100%;">
+        <i data-lucide="shopping-cart" style="width: 18px;"></i> Giỏ Hàng (<span id="mobile-cart-count">0</span>)
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Overlay for Drawer & Modals -->
+  <div class="overlay-bg" id="overlay-bg"></div>
+
+  <!-- Hero Carousel Section -->
+  <section class="hero-section">
+    <div class="carousel-container" id="hero-carousel">
+      
+      <!-- Slide 1 -->
+      <div class="carousel-slide active">
+        <div class="carousel-image-wrapper">
+          <img src="images/banner-1.jpg" alt="Thế giới sách" class="carousel-img">
+        </div>
+        <div class="container" style="height: 100%; display: flex; align-items: center;">
+          <div class="carousel-content">
+            <span class="carousel-tag">Thế Giới Sách Mới</span>
+            <h1 class="carousel-title">Khám Phá Thế Giới Qua Từng Trang Sách</h1>
+            <p class="carousel-desc">Tìm thấy những tác phẩm kinh điển, giáo trình chuyên ngành và những cuốn sách thiếu nhi đầy màu sắc chỉ có tại Book Corner.</p>
+            <a href="books.html" class="btn btn-secondary">Khám Phá Ngay <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-slide">
+        <div class="carousel-image-wrapper">
+          <img src="images/banner-2.jpg" alt="Tri thức tương lai" class="carousel-img">
+        </div>
+        <div class="container" style="height: 100%; display: flex; align-items: center;">
+          <div class="carousel-content">
+            <span class="carousel-tag">Sách Khoa Học & AI</span>
+            <h1 class="carousel-title font-heading">Đón Đầu Xu Hướng Tri Thức Mới</h1>
+            <p class="carousel-desc">Cập nhật ngay các đầu sách công nghệ, lập trình và AI đỉnh cao nhất của năm 2026. Nâng tầm tri thức của bạn ngay hôm nay.</p>
+            <a href="books.html?category=4" class="btn btn-secondary">Xem Sách Khoa Học <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-slide">
+        <div class="carousel-image-wrapper">
+          <img src="images/banner-3.jpg" alt="Văn học nghệ thuật" class="carousel-img">
+        </div>
+        <div class="container" style="height: 100%; display: flex; align-items: center;">
+          <div class="carousel-content">
+            <span class="carousel-tag">Tuổi Thơ Ký Ức</span>
+            <h1 class="carousel-title">Đánh Thức Tâm Hồn Tuổi Thơ Dữ Dội</h1>
+            <p class="carousel-desc">Những bộ sách truyện thiếu nhi, tiểu thuyết văn học Việt Nam kinh điển được tái bản chất lượng cao, lưu giữ trọn vẹn kỷ niệm.</p>
+            <a href="books.html?category=1" class="btn btn-secondary">Xem Sách Thiếu Nhi <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-btn carousel-btn-prev" id="carousel-prev" aria-label="Slide trước">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      <button class="carousel-btn carousel-btn-next" id="carousel-next" aria-label="Slide tiếp theo">
+        <i data-lucide="chevron-right"></i>
+      </button>
+
+      <!-- Indicators -->
+      <div class="carousel-dots" id="carousel-indicators">
+        <div class="carousel-dot active" data-slide="0"></div>
+        <div class="carousel-dot" data-slide="1"></div>
+        <div class="carousel-dot" data-slide="2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Categories Overview -->
+  <section class="categories-preview">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Danh Mục Nổi Bật</h2>
+        <p class="section-subtitle">Lựa chọn sách theo sở thích và nhu cầu học tập của bạn</p>
+      </div>
+
+      <div class="category-grid">
+        <!-- Thiếu nhi -->
+        <a href="books.html?category=1" class="category-card">
+          <img src="images/products/mu_10.jpg" alt="Thiếu Nhi" class="category-card-bg" style="filter: brightness(0.65);">
+          <div class="category-card-info">
+            <h3 class="category-card-title">Thiếu Nhi</h3>
+            <span class="category-card-count" id="count-cat-1">... cuốn sách</span>
+          </div>
+        </a>
+
+        <!-- Văn học -->
+        <a href="books.html?category=2" class="category-card">
+          <img src="images/products/bia-2d_ho-diep-va-kinh-ngu_17307.jpg" alt="Văn Học" class="category-card-bg" style="filter: brightness(0.65);">
+          <div class="category-card-info">
+            <h3 class="category-card-title">Văn Học</h3>
+            <span class="category-card-count" id="count-cat-2">... cuốn sách</span>
+          </div>
+        </a>
+
+        <!-- Giáo trình -->
+        <a href="books.html?category=3" class="category-card">
+          <img src="images/products/8935279153367.jpg" alt="Giáo Trình" class="category-card-bg" style="filter: brightness(0.65);">
+          <div class="category-card-info">
+            <h3 class="category-card-title">Giáo Trình</h3>
+            <span class="category-card-count" id="count-cat-3">... cuốn sách</span>
+          </div>
+        </a>
+
+        <!-- Khoa học Kỹ thuật -->
+        <a href="books.html?category=4" class="category-card">
+          <img src="images/products/25_9_1.jpg" alt="Khoa học Kỹ thuật" class="category-card-bg" style="filter: brightness(0.65);">
+          <div class="category-card-info">
+            <h3 class="category-card-title">Khoa học Kỹ thuật</h3>
+            <span class="category-card-count" id="count-cat-4">... cuốn sách</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Products Section -->
+  <section class="latest-products">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Sản Phẩm Mới Nhất</h2>
+        <p class="section-subtitle">Cập nhật những tựa sách mới xuất bản, được đón đọc nhiều nhất</p>
+      </div>
+
+      <!-- Book Grid rendered dynamically -->
+      <div class="books-grid" id="latest-books-grid">
+        <!-- Skeletons will show before JS loads -->
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+
+      <div style="text-align: center; margin-top: 50px;">
+        <a href="books.html" class="btn btn-primary">Xem Toàn Bộ Cửa Hàng <i data-lucide="store" style="width: 18px;"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advantages Benefits Section -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Tại Sao Chọn Book Corner?</h2>
+        <p class="section-subtitle">Chúng tôi cam kết cung cấp dịch vụ tốt nhất cùng trải nghiệm đọc sách trọn vẹn</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="truck"></i>
+          </div>
+          <h3 class="feature-title">Vận Chuyển Nhanh Chóng</h3>
+          <p class="feature-desc">Giao hàng hỏa tốc trong nội thành và hỗ trợ giao nhanh trên toàn quốc với mức phí tối ưu nhất.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="shield-check"></i>
+          </div>
+          <h3 class="feature-title">Sách Chính Hãng 100%</h3>
+          <p class="feature-desc">Cam kết tất cả sách bán ra đều là sách thật nhập trực tiếp từ các nhà xuất bản uy tín trong và ngoài nước.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="refresh-cw"></i>
+          </div>
+          <h3 class="feature-title">Đổi Trả Dễ Dàng</h3>
+          <p class="feature-desc">Hỗ trợ đổi trả sách trong vòng 7 ngày nếu xảy ra lỗi do nhà sản xuất hoặc đóng gói vận chuyển.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner Section -->
+  <section class="promo-section">
+    <div class="container">
+      <div class="promo-container">
+        <div class="promo-text">
+          <h2>Nhận Ngay Ưu Đãi <span>10%</span> Cho Lần Mua Đầu Tiên</h2>
+          <p>Đăng ký nhận bản tin để không bỏ lỡ thông tin về sách mới và các sự kiện giao lưu tác giả đặc sắc tại Book Corner.</p>
+        </div>
+        <div class="promo-action">
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" placeholder="Nhập email của bạn..." class="newsletter-input" required id="newsletter-input">
+            <button type="submit" class="newsletter-btn" aria-label="Đăng ký">
+              <i data-lucide="send"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="index.html" class="footer-logo">
+            <img src="images/logo.png" alt="Book Corner Logo" style="height: 45px;">
+            <span class="footer-logo-text">Book<span>Corner</span></span>
+          </a>
+          <p style="margin-bottom: 20px;">Góc nhỏ tri thức nuôi dưỡng tâm hồn. Chúng tôi đồng hành cùng bạn trên con đường chinh phục kho tàng tri thức của nhân loại.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i data-lucide="facebook"></i></a>
+            <a href="#" class="social-link"><i data-lucide="instagram"></i></a>
+            <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+            <a href="#" class="social-link"><i data-lucide="youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Khám Phá</h3>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Trang Chủ</a></li>
+            <li><a href="books.html" class="footer-link">Tất Cả Sách</a></li>
+            <li><a href="books.html?category=1" class="footer-link">Sách Thiếu Nhi</a></li>
+            <li><a href="books.html?category=2" class="footer-link">Sách Văn Học</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Hỗ Trợ</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html" class="footer-link">Liên Hệ Góp Ý</a></li>
+            <li><a href="#" class="footer-link">Chính Sách Giao Hàng</a></li>
+            <li><a href="#" class="footer-link">Chính Sách Bảo Mật</a></li>
+            <li><a href="#" class="footer-link">Điều Khoản Sử Dụng</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Thông Tin Liên Hệ</h3>
+          <div class="footer-contact-item">
+            <i data-lucide="map-pin" style="width: 18px;"></i>
+            <span>123 Đường Sách Nguyễn Văn Bình, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="phone" style="width: 18px;"></i>
+            <span>0123 456 789</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="mail" style="width: 18px;"></i>
+            <span>contact@bookcorner.vn</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="clock" style="width: 18px;"></i>
+            <span>Mở cửa: 8:00 - 21:30 hàng ngày</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Book Corner Bookstore. Thiết kế & phát triển bởi Antigravity. Bảo lưu mọi quyền.</p>
+        <p>Mã Số Doanh Nghiệp: 0102030405 cấp ngày 27/06/2026 bởi Sở KHĐT TP.HCM</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Detail Modal Container (Shared) -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal-box">
+      <div class="modal-close" id="modal-close-btn" title="Đóng">
+        <i data-lucide="x"></i>
+      </div>
+      <div class="modal-layout" id="modal-content">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Books Data object fallback -->
+  <script src="js/books-data.js"></script>
+  <!-- Main Logic Script -->
+  <script src="js/main.js"></script>
+</body>
+</html>

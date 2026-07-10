@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liên Hệ - Book Corner</title>
+  <meta name="description" content="Liên hệ với Book Corner. Gửi ý kiến đóng góp, phản hồi hoặc liên hệ hợp tác với cửa hàng sách của chúng tôi qua biểu mẫu trực tuyến hoặc hotline chăm sóc khách hàng.">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="header" id="main-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Book Corner Logo" class="logo-img">
+        <span class="logo-text">Book<span>Corner</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Trang Chủ</a></li>
+          <li><a href="books.html" class="nav-link">Sản Phẩm</a></li>
+          <li><a href="contact.html" class="nav-link active">Liên Hệ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <div class="action-btn" id="wishlist-btn" title="Danh sách yêu thích">
+          <i data-lucide="heart"></i>
+          <span class="badge-count" id="wishlist-count">0</span>
+        </div>
+        <div class="action-btn" id="cart-btn" title="Giỏ hàng">
+          <i data-lucide="shopping-cart"></i>
+          <span class="badge-count" id="cart-count">0</span>
+        </div>
+        <div class="menu-toggle" id="hamburger-menu" title="Menu">
+          <i data-lucide="menu"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-header">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Book Corner Logo" style="height: 35px;">
+        <span class="logo-text" style="font-size: 1.2rem;">Book<span>Corner</span></span>
+      </a>
+      <div class="close-btn" id="mobile-nav-close">
+        <i data-lucide="x"></i>
+      </div>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link">Trang Chủ</a></li>
+      <li><a href="books.html" class="mobile-nav-link">Sản Phẩm</a></li>
+      <li><a href="contact.html" class="mobile-nav-link active">Liên Hệ</a></li>
+    </ul>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 16px;">
+      <div class="btn btn-outline" style="width: 100%;">
+        <i data-lucide="heart" style="width: 18px;"></i> Yêu Thích (<span id="mobile-wishlist-count">0</span>)
+      </div>
+      <div class="btn btn-primary" style="width: 100%;">
+        <i data-lucide="shopping-cart" style="width: 18px;"></i> Giỏ Hàng (<span id="mobile-cart-count">0</span>)
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Overlay for Drawer & Modals -->
+  <div class="overlay-bg" id="overlay-bg"></div>
+
+  <!-- Page Banner -->
+  <section class="page-banner">
+    <div class="container">
+      <div class="page-banner-content">
+        <h1>Liên Hệ & Góp Ý</h1>
+        <div class="breadcrumb">
+          <a href="index.html">Trang chủ</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Liên hệ</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Feedback Form Section -->
+  <section class="container section-padding">
+    <div class="contact-layout">
+      
+      <!-- Left Column: Contact Cards & Mock Map -->
+      <div class="contact-info-panel">
+        
+        <!-- Info cards -->
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <i data-lucide="map-pin"></i>
+          </div>
+          <div class="contact-card-content">
+            <h3>Địa Chỉ Cửa Hàng</h3>
+            <p>123 Đường Sách Nguyễn Văn Bình, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <i data-lucide="phone"></i>
+          </div>
+          <div class="contact-card-content">
+            <h3>Điện Thoại / Hotline</h3>
+            <p><strong>Hotline:</strong> 0123 456 789<br><strong>Hỗ trợ kỹ thuật:</strong> 0987 654 321</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <i data-lucide="mail"></i>
+          </div>
+          <div class="contact-card-content">
+            <h3>Địa Chỉ Email</h3>
+            <p><strong>Chăm sóc khách hàng:</strong> contact@bookcorner.vn<br><strong>Liên hệ hợp tác:</strong> partner@bookcorner.vn</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <i data-lucide="clock"></i>
+          </div>
+          <div class="contact-card-content">
+            <h3>Giờ Làm Việc</h3>
+            <p>Thứ Hai - Chủ Nhật: 8:00 AM - 9:30 PM<br>(Mở cửa tất cả các ngày lễ Tết)</p>
+          </div>
+        </div>
+
+        <!-- Stylized Mock Map (Offline-friendly, looks stunning) -->
+        <div class="map-container">
+          <div class="mock-map">
+            <div class="map-grid-overlay"></div>
+            <!-- Bouncing Map Pin -->
+            <div class="mock-pin">
+              <i data-lucide="book-open"></i>
+            </div>
+            <div class="mock-map-label">Book Corner - Nguyễn Văn Bình</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Feedback Form Card -->
+      <div class="feedback-card">
+        <h2 class="feedback-card-title">Gửi Ý Kiến Phản Hồi</h2>
+        <p class="feedback-card-subtitle">Chúng tôi luôn trân quý và ghi nhận mọi đóng góp của quý độc giả để cải thiện chất lượng dịch vụ.</p>
+        
+        <form id="contact-feedback-form" novalidate>
+          <div class="form-grid">
+            
+            <!-- Full Name -->
+            <div class="form-group" id="group-fullname">
+              <label class="form-label" for="contact-name">Họ và Tên *</label>
+              <div class="form-input-wrapper">
+                <i data-lucide="user" class="form-input-icon" style="width: 18px;"></i>
+                <input type="text" id="contact-name" class="form-input" placeholder="Nguyễn Văn A">
+              </div>
+              <div class="form-error-msg" id="error-fullname">
+                <i data-lucide="alert-circle" style="width: 14px;"></i>
+                <span>Họ tên không được để trống</span>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group" id="group-email">
+              <label class="form-label" for="contact-email">Địa chỉ Email *</label>
+              <div class="form-input-wrapper">
+                <i data-lucide="mail" class="form-input-icon" style="width: 18px;"></i>
+                <input type="email" id="contact-email" class="form-input" placeholder="email@vietho.vn">
+              </div>
+              <div class="form-error-msg" id="error-email">
+                <i data-lucide="alert-circle" style="width: 14px;"></i>
+                <span>Email không hợp lệ</span>
+              </div>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group" id="group-phone">
+              <label class="form-label" for="contact-phone">Số Điện Thoại *</label>
+              <div class="form-input-wrapper">
+                <i data-lucide="phone" class="form-input-icon" style="width: 18px;"></i>
+                <input type="tel" id="contact-phone" class="form-input" placeholder="0901234567">
+              </div>
+              <div class="form-error-msg" id="error-phone">
+                <i data-lucide="alert-circle" style="width: 14px;"></i>
+                <span>Số điện thoại phải từ 10 số</span>
+              </div>
+            </div>
+
+            <!-- Subject -->
+            <div class="form-group" id="group-subject">
+              <label class="form-label" for="contact-subject">Tiêu Đề *</label>
+              <div class="form-input-wrapper">
+                <i data-lucide="tag" class="form-input-icon" style="width: 18px;"></i>
+                <input type="text" id="contact-subject" class="form-input" placeholder="Góp ý dịch vụ, hỏi sách...">
+              </div>
+              <div class="form-error-msg" id="error-subject">
+                <i data-lucide="alert-circle" style="width: 14px;"></i>
+                <span>Tiêu đề không được để trống</span>
+              </div>
+            </div>
+
+            <!-- Message Area -->
+            <div class="form-group full-width" id="group-message">
+              <label class="form-label" for="contact-message">Nội Dung Ý Kiến *</label>
+              <textarea id="contact-message" class="form-textarea" placeholder="Nhập ý kiến đóng góp hoặc thắc mắc của bạn ở đây..."></textarea>
+              <div class="form-error-msg" id="error-message">
+                <i data-lucide="alert-circle" style="width: 14px;"></i>
+                <span>Nội dung phản hồi không được để trống</span>
+              </div>
+            </div>
+
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; display: flex; gap: 8px;">
+            Gửi Phản Hồi <i data-lucide="send" style="width: 18px;"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="index.html" class="footer-logo">
+            <img src="images/logo.png" alt="Book Corner Logo" style="height: 45px;">
+            <span class="footer-logo-text">Book<span>Corner</span></span>
+          </a>
+          <p style="margin-bottom: 20px;">Góc nhỏ tri thức nuôi dưỡng tâm hồn. Chúng tôi đồng hành cùng bạn trên con đường chinh phục kho tàng tri thức của nhân loại.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i data-lucide="facebook"></i></a>
+            <a href="#" class="social-link"><i data-lucide="instagram"></i></a>
+            <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+            <a href="#" class="social-link"><i data-lucide="youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Khám Phá</h3>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Trang Chủ</a></li>
+            <li><a href="books.html" class="footer-link">Tất Cả Sách</a></li>
+            <li><a href="books.html?category=1" class="footer-link">Sách Thiếu Nhi</a></li>
+            <li><a href="books.html?category=2" class="footer-link">Sách Văn Học</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Hỗ Trợ</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html" class="footer-link">Liên Hệ Góp Ý</a></li>
+            <li><a href="#" class="footer-link">Chính Sách Giao Hàng</a></li>
+            <li><a href="#" class="footer-link">Chính Sách Bảo Mật</a></li>
+            <li><a href="#" class="footer-link">Điều Khoản Sử Dụng</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Thông Tin Liên Hệ</h3>
+          <div class="footer-contact-item">
+            <i data-lucide="map-pin" style="width: 18px;"></i>
+            <span>123 Đường Sách Nguyễn Văn Bình, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="phone" style="width: 18px;"></i>
+            <span>0123 456 789</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="mail" style="width: 18px;"></i>
+            <span>contact@bookcorner.vn</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="clock" style="width: 18px;"></i>
+            <span>Mở cửa: 8:00 - 21:30 hàng ngày</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Book Corner Bookstore. Thiết kế & phát triển bởi Antigravity. Bảo lưu mọi quyền.</p>
+        <p>Mã Số Doanh Nghiệp: 0102030405 cấp ngày 27/06/2026 bởi Sở KHĐT TP.HCM</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Detail Modal Container (Shared) -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal-box">
+      <div class="modal-close" id="modal-close-btn" title="Đóng">
+        <i data-lucide="x"></i>
+      </div>
+      <div class="modal-layout" id="modal-content">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Books Data object fallback -->
+  <script src="js/books-data.js"></script>
+  <!-- Main Logic Script -->
+  <script src="js/main.js"></script>
+</body>
+</html>
