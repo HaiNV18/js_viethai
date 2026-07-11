@@ -132,14 +132,14 @@ function getPositionClick(event){
 
     // Return the size of an element and its position relative to the viewport.
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
-    var rect = canvas.getBoundingClientRect(); 
+    var rect = canvas.getBoundingClientRect();
 
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
 
     console.log(x,y);
-    
-    addPlayingPiece(x,y); 
+
+    addPlayingPiece(x,y);
 }
 
 // Step 2: draw the pieces X O on position
@@ -210,7 +210,7 @@ function addPlayingPiece(clickX,clickY)
  * Check win được cho vào đúng ô vừa click xong
  * Hàm này sẽ kiểm tra tất cả trường hợp thắng bắt đầu từ ô vừa click.
  * Kiểm tra bằng cách xét màu sắc.
- * After player click and draw X/O, check row 
+ * After player click and draw X/O, check row
  */
 function checkWinRow(xCordinate,yCordinate,colorPiece)
 {
@@ -225,7 +225,7 @@ function checkWinRow(xCordinate,yCordinate,colorPiece)
      * Xét bên trái, mỗi ô cùng màu cho n += 1 Xét bên phải cũng vậy.
      * Nếu số lượng phần tử >= 4 là thắng. (4 + ô vừa click = 5)
      * Nếu không, cho n = 0 rồi xét hàng dọc, hàng chéo tương tự
-     * Check left and right, if the left square have same color -> n += 1 
+     * Check left and right, if the left square have same color -> n += 1
      * If sum of square in left and right have same color >= 4 -> win (4 square + 1 square has just click)
 	 * If not, n=0 and check row, diagonal
      */
@@ -269,7 +269,7 @@ function checkWinRow(xCordinate,yCordinate,colorPiece)
         if (checkArray.length + 1 >= numberOfPiecesToWin)
         {
             // Kiểm tra các phần tử có liên tiếp không - Check elements of array are consecutive
-            // Đầu tiên là sắp xếp mảng - array sort: from min to max 
+            // Đầu tiên là sắp xếp mảng - array sort: from min to max
             var max;
             for (var i=1; i< checkArray.length; i++)
             {
@@ -288,7 +288,7 @@ function checkWinRow(xCordinate,yCordinate,colorPiece)
 
             // Nếu phần tử nhỏ - phần tử lớn = sectionSize thì các quân liên tiếp nhau
             // Nếu click vào giữa 1 dòng XXXX X, phải kiểm tra 2 ô sát bên trái và phải
-			
+
 			// Case 1: If checkArray[i+1] - checkArray[i] = sectionSize => 2 pieces are consecutive
 			// Case 2: If player click on between rows XXXX X
             for (var i=0; i< checkArray.length; i++)
@@ -302,12 +302,12 @@ function checkWinRow(xCordinate,yCordinate,colorPiece)
 
             // Mảng có 4 phần tử + ô vừa click là 5, nghĩa là 4 lần so sánh.
             // Nếu so sánh cả 4 lần đều đúng, nghĩa là 5 phần tử liên tiếp
-			
+
 			// Array have 4 elements -> 4 times to check
 			// 4 times to check + 1 square which player click = 5 elements are consecutive
             if (right >= checkArray.length -1)
             {
-                // Ô vừa click - 1 square which player click 
+                // Ô vừa click - 1 square which player click
                 drawXwin(xCordinate,yCordinate);
                 // Các ô còn lại - other squares
                 for (var i = 0; i <= checkArray.length + 1; i++)
@@ -355,7 +355,7 @@ function checkWinRow(xCordinate,yCordinate,colorPiece)
         if (checkArray.length + 1 >= numberOfPiecesToWin)
         {
             // Kiểm tra các phần tử có liên tiếp không - Check elements of array are consecutive
-            // Đầu tiên là sắp xếp mảng - array sort: from min to max 
+            // Đầu tiên là sắp xếp mảng - array sort: from min to max
             var max;
             for (var i=1; i< checkArray.length; i++)
             {
@@ -375,7 +375,7 @@ function checkWinRow(xCordinate,yCordinate,colorPiece)
 
             // Nếu phần tử nhỏ - phần tử lớn = sectionSize thì các quân liên tiếp nhau
             // Nếu click vào giữa 1 dòng XXXX X, phải kiểm tra 2 ô sát bên trái và phải
-			
+
 			// Case 1: If checkArray[i+1] - checkArray[i] = sectionSize => 2 pieces are consecutive
 			// Case 2: If player click on between rows XXXX X
             for (var i=0; i< checkArray.length; i++)
@@ -389,12 +389,12 @@ function checkWinRow(xCordinate,yCordinate,colorPiece)
 
             // Mảng có 4 phần tử + ô vừa click là 5, nghĩa là 4 lần so sánh.
             // Nếu so sánh cả 4 lần đều đúng, nghĩa là 5 phần tử liên tiếp
-			
+
 			// Array have 4 elements -> 4 times to check
 			// 4 times to check + 1 square which player click = 5 elements are consecutive
             if (right == checkArray.length - 1)
             {
-                // Ô vừa click - 1 square which player click 
+                // Ô vừa click - 1 square which player click
                 drawOwin(xCordinate,yCordinate);
                 // Các ô còn lại - other squares
                 for (var i = 0; i <= checkArray.length + 1; i++)
@@ -445,7 +445,7 @@ function checkWinColumn(xCordinate,yCordinate,colorPiece)
         if (checkArray.length + 1 >= numberOfPiecesToWin)
         {
             // Kiểm tra các phần tử có liên tiếp không - Check elements of array are consecutive
-            // Đầu tiên là sắp xếp mảng - array sort: from min to max 
+            // Đầu tiên là sắp xếp mảng - array sort: from min to max
             var max;
             for (var i=1; i< checkArray.length; i++)
             {
@@ -473,7 +473,7 @@ function checkWinColumn(xCordinate,yCordinate,colorPiece)
 
             if (right >= checkArray.length - 1)
             {
-                // Ô vừa click - 1 square which player click 
+                // Ô vừa click - 1 square which player click
                 drawXwin(xCordinate,yCordinate);
                 // Các ô còn lại - other squares
                 for (var i = 0; i <= checkArray.length + 1; i++)
@@ -518,7 +518,7 @@ function checkWinColumn(xCordinate,yCordinate,colorPiece)
         if (checkArray.length + 1 >= numberOfPiecesToWin)
         {
             // Kiểm tra các phần tử có liên tiếp không - Check elements of array are consecutive
-            // Đầu tiên là sắp xếp mảng - array sort: from min to max 
+            // Đầu tiên là sắp xếp mảng - array sort: from min to max
             var max;
             for (var i=1; i< checkArray.length; i++)
             {
@@ -546,7 +546,7 @@ function checkWinColumn(xCordinate,yCordinate,colorPiece)
 
             if (right >= checkArray.length - 1)
             {
-                // Ô vừa click - 1 square which player click 
+                // Ô vừa click - 1 square which player click
                 drawOwin(xCordinate,yCordinate);
                 // Các ô còn lại - other squares
                 for (var i = 0; i <= checkArray.length + 1; i++)
@@ -664,7 +664,7 @@ function checkWinDiagonalLeftToRight(xCordinate,yCordinate,colorPiece)
 
             if ((rightX >= checkArrayX.length - 1) && (rightY >= checkArrayY.length - 1))
             {
-                // Ô vừa click - 1 square which player click 
+                // Ô vừa click - 1 square which player click
                 drawXwin(xCordinate,yCordinate);
                 // Các ô còn lại - other squares
                 for (var i = 0; i <= checkArrayX.length + 1; i++)
@@ -768,7 +768,7 @@ function checkWinDiagonalLeftToRight(xCordinate,yCordinate,colorPiece)
             if ((rightX >= checkArrayX.length - 1) && (rightY >= checkArrayY.length - 1))
             {
                 winFlag = true;
-                // Ô vừa click - 1 square which player click 
+                // Ô vừa click - 1 square which player click
                 drawOwin(xCordinate,yCordinate);
                 // Các ô còn lại - other squares
                 for (var i = 0; i <= checkArrayX.length + 1; i++)
@@ -883,7 +883,7 @@ function checkWinDiagonalRightToLeft(xCordinate,yCordinate,colorPiece)
 
             if ((rightX >= checkArrayX.length - 1) && (rightY >= checkArrayY.length - 1))
             {
-                // Ô vừa click - 1 square which player click 
+                // Ô vừa click - 1 square which player click
                 drawXwin(xCordinate,yCordinate);
                 // Các ô còn lại - other squares
                 for (var i = 0; i <= checkArrayX.length + 1; i++)

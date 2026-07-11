@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const latestBooksGrid = document.getElementById('latest-books-grid');
     if (latestBooksGrid) {
       latestBooksGrid.innerHTML = '';
-      
+
       // Sort: Newest (by year desc, then id desc)
       const sortedBooks = [...booksData].sort((a, b) => {
         if (b.year !== a.year) return b.year - a.year;
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('carousel-prev');
     const nextBtn = document.getElementById('carousel-next');
     const dotsContainer = document.getElementById('carousel-indicators');
-    
+
     let currentSlide = 0;
     let slideInterval;
     const intervalTime = 5000;
@@ -194,9 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function goToSlide(index) {
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('active');
-      
+
       currentSlide = (index + slides.length) % slides.length;
-      
+
       slides[currentSlide].classList.add('active');
       dots[currentSlide].classList.add('active');
     }
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event Listeners for Live Filtering
     searchInput.addEventListener('input', filterAndRenderBooks);
-    
+
     priceMinInput.addEventListener('input', filterAndRenderBooks);
     priceMaxInput.addEventListener('input', filterAndRenderBooks);
     sortSelect.addEventListener('change', filterAndRenderBooks);
@@ -336,8 +336,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // 1. Search Query filter (title, author)
       const query = searchInput.value.trim().toLowerCase();
       if (query) {
-        filtered = filtered.filter(b => 
-          b.title.toLowerCase().includes(query) || 
+        filtered = filtered.filter(b =>
+          b.title.toLowerCase().includes(query) ||
           b.author.toLowerCase().includes(query)
         );
       }
@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const checkedCategories = Array.from(catCheckboxes)
           .filter(cb => cb.checked)
           .map(cb => parseInt(cb.value));
-        
+
         if (checkedCategories.length > 0) {
           filtered = filtered.filter(b => checkedCategories.includes(b.categoryId));
         }
@@ -383,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 5. Render to grid
       booksGrid.innerHTML = '';
-      
+
       // Update counters
       document.getElementById('displayed-books-count').innerText = filtered.length;
       document.getElementById('total-books-count').innerText = booksData.length;
@@ -414,8 +414,8 @@ document.addEventListener('DOMContentLoaded', () => {
     card.className = 'book-card';
     card.setAttribute('data-id', book.id);
 
-    const formattedPrice = book.price === 0 
-      ? '<span class="book-card-price free">Miễn phí</span>' 
+    const formattedPrice = book.price === 0
+      ? '<span class="book-card-price free">Miễn phí</span>'
       : `<span class="book-card-price">${book.price.toLocaleString('vi-VN')} đ</span>`;
 
     const categoryName = CATEGORY_MAP[book.categoryId] || 'Khác';
@@ -553,13 +553,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!book) return;
 
     const modalContent = document.getElementById('modal-content');
-    const formattedPrice = book.price === 0 
-      ? '<span class="modal-price free">Miễn phí</span>' 
+    const formattedPrice = book.price === 0
+      ? '<span class="modal-price free">Miễn phí</span>'
       : `<span class="modal-price">${book.price.toLocaleString('vi-VN')} đ</span>`;
 
     const categoryName = CATEGORY_MAP[book.categoryId] || 'Khác';
-    const stockBadge = book.inStock 
-      ? '<span class="badge badge-success">Còn hàng</span>' 
+    const stockBadge = book.inStock
+      ? '<span class="badge badge-success">Còn hàng</span>'
       : '<span class="badge badge-error">Hết hàng</span>';
 
     // Generates star representation
@@ -594,7 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="modal-info">
         <span class="modal-category">${categoryName}</span>
         <h2 class="modal-title">${book.title}</h2>
-        
+
         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
           <div style="display: flex; gap: 2px;">
             ${starsHTML}
@@ -731,7 +731,7 @@ document.addEventListener('DOMContentLoaded', () => {
       Object.keys(fields).forEach(key => {
         const field = fields[key];
         const isValid = field.validate(field.input.value);
-        
+
         if (!isValid) {
           field.group.classList.add('invalid');
           // Update custom error message text
@@ -761,22 +761,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Feedback success visual effect
         showToast(
-          'Gửi Thành Công', 
-          `Cảm ơn ${feedbackData.name}! Phản hồi của bạn đã được chuyển tới Ban quản trị Book Corner.`, 
+          'Gửi Thành Công',
+          `Cảm ơn ${feedbackData.name}! Phản hồi của bạn đã được chuyển tới Ban quản trị Book Corner.`,
           'success'
         );
 
         // Reset form fields
         form.reset();
-        
+
         // Remove error states
         Object.keys(fields).forEach(key => {
           fields[key].group.classList.remove('invalid');
         });
       } else {
         showToast(
-          'Lỗi Nhập Liệu', 
-          'Vui lòng điền đúng và đầy đủ thông tin vào các trường bắt buộc màu đỏ.', 
+          'Lỗi Nhập Liệu',
+          'Vui lòng điền đúng và đầy đủ thông tin vào các trường bắt buộc màu đỏ.',
           'error'
         );
       }
@@ -805,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
 
     container.appendChild(toast);
-    
+
     // Animate Lucide Icons inside Toast
     initLucideIcons();
 

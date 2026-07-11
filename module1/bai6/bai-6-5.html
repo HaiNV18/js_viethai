@@ -14,7 +14,7 @@
         </div>
 
         <div class="row" id="product-list"></div>
-        
+
         <script>
             let products = [];
             // load dữ liệu khi mở trang
@@ -39,7 +39,7 @@
                 let html = "";
 
                 list.forEach(product => {
-                    
+
                     html = html + `
                         <div class="col-md-2">
                             <div class="card mb-3">
@@ -56,7 +56,7 @@
                 });
                 document.getElementById("product-list").innerHTML = html;
             }
-            
+
             function sortProducts(type) {
                 if (type == 'asc') {
                     products.sort((a,b) => a.price - b.price);
