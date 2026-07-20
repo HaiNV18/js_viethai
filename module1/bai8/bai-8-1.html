@@ -61,18 +61,18 @@
             } else {
                 cart.forEach((item, index) => {
                     html += `<tr>
-                    <td><input type="checkbox" 
+                    <td><input type="checkbox"
                                 ${item.checked ? "checked" : "" }
-                                onchange="toggleItem(${index}, this.checked)" 
+                                onchange="toggleItem(${index}, this.checked)"
                                 /></td>
                     <td>${item.name}</td>
                     <td>${item.price}</td>
                     <td><input type="number" name="qty" onchange="updateQty(${index}, this.value)" value="${item.qty}" /></td>
                     <td><center><img src="${item.img}" width="50%" /></center></td>
                     </tr> `;
-                }); 
+                });
             }
-        
+
             tableBody.innerHTML = html;
         }
 
@@ -107,8 +107,7 @@
         }
 
 
-    </script> 
+    </script>
 
 </body>
 </html>
-
