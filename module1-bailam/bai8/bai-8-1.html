@@ -1,9 +1,111 @@
 <html>
     <head>
-        <title>Task 2</title>
+        <title>JS</title>
     </head>
     <body>
+        <h2>Giỏ hàng</h2>
+
+        <button onclick="deleteSelected()">Xóa</button>
+
+        <table border="1" width="400">
+            <thead>
+                <tr>
+                    <th>
+                        <input 
+                            type="checkbox" 
+                            id="checkAll" 
+                            onchange="toggleCheckAll(this)"
+                        >
+                    </th>
+                    <th>Hình ảnh</th>
+                    <th>Tên</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                </tr>
+            </thead>
+            <tbody id="cart-body"></tbody>
+        </table>
+
         <script>
+            var cart = JSON.parse(localStorage.getItem("cart")) || [
+                {
+                    name: "Iphone 15", 
+                    price: 1500,
+                    img: "img/iphone15.jpg",
+                    qty: 1
+                },
+                {
+                    name: "Samsung S24", 
+                    price: 1500,
+                    img: "img/samsung-s24.png",
+                    qty: 1
+                }
+            ]
+
+            function saveCart() {
+                localStorage.setItem("cart", JSON.stringify(cart));
+            }
+
+            function renderCart() {
+                let html = "";
+
+                if (cart.length === 0) {
+                    html = `<tr><th colspan="5">Không có sản phẩm</th></tr>`;
+                } else {
+                    cart.forEach((item, index) => {
+                        html += `
+                            <tr>
+                                <th>
+                                    <input type="checkbox" 
+                                    ${item.checked ? "checked" : ""}
+                                    onchange="toggleItem(${index}, this.checked)">
+                                </th>
+                                <td><img src="${item.img}" width="100"></td>
+                                <td>${item.name}</td>
+                                <td>${item.price}</td>
+                                <td>
+                                    <input 
+                                        type="number" 
+                                        value="${item.qty}" 
+                                        min="1"
+                                        onchange="updateQty(${index}, this.value)"
+                                    >
+                                </td>
+                            </tr>
+                        `
+                    })
+                }
+                
+                document.getElementById("cart-body").innerHTML = html;
+            }
+
+            function updateQty(index, newQty) {
+                cart[index].qty = newQty;
+                saveCart();
+            }
+            renderCart();
+
+            function toggleItem(index, checked) {
+                cart[index].checked = checked;
+                saveCart();
+            }
+            
+            function toggleCheckAll(checkbox) {
+                cart.forEach(item => {
+                    item.checked = checkbox.checked;
+                })
+                saveCart();
+                renderCart();
+            }
+
+            // filter là lọc, lọc hết tất cả sản phẩm đã được check, 
+            // giữ lại sản phẩm không được check
+            function deleteSelected() {
+                cart = cart.filter(item => !item.checked)
+                saveCart();
+                renderCart();
+            }
+
 
         </script>
     </body>
