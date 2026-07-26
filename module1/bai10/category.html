@@ -163,7 +163,11 @@
         let params = new URLSearchParams(document.location.search); // lấy params từ URL
         let brandProduct = params.get("brand"); // lấy tham số brand
 
-        document.getElementById("brand-header").innerHTML = "ĐIỆN THOẠI " + brandProduct.toUpperCase();
+		if (brandProduct == "all") {
+            document.getElementById("brand-header").innerHTML = "ĐIỆN THOẠI SMARTPHONE";
+        } else {
+			document.getElementById("brand-header").innerHTML = "ĐIỆN THOẠI " + brandProduct.toUpperCase();
+        }
 
         // Get data
         function loadProduct() {
