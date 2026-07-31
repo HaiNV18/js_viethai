@@ -36,6 +36,7 @@
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
                 </form>
+                <button type="button" class="btn btn-outline-primary ms-2" onclick="window.location.href='login.html'">Login</button>
             </div>
         </div>
     </nav>
@@ -137,7 +138,7 @@
         const formElement = document.querySelector("#formPayment");
 
         formElement.addEventListener('submit', (e) => {
-            e.preventDefault();
+            e.preventDefault(); // Chặn việc form tự động gửi thông tin
             let data = new FormData(formElement);
 
             localStorage.setItem('firstName', data.get('firstname'))

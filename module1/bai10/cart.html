@@ -38,6 +38,7 @@
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
                 </form>
+                <button type="button" class="btn btn-outline-primary ms-2" onclick="window.location.href='login.html'">Login</button>
             </div>
         </div>
     </nav>
@@ -157,6 +158,7 @@
             localStorage.clear();
             localStorage.setItem("cart", JSON.stringify(cart));
             updateCartCount();
+            totalPrice();
         }
 
         function totalPrice() {
@@ -171,9 +173,9 @@
             if (confirm("Bạn có chắc muốn xóa không?") == true) {
                 let arrCart = JSON.parse(localStorage.getItem("cart")) || [];
 
-                arrCart.forEach((item, i) => {
+                arrCart.forEach((item, idx) => {
                     if (item.id == arrCart[index].id) {
-                        arrCart.splice(i, 1);
+                        arrCart.splice(idx, 1);
                     }
                 })
                 localStorage.setItem("cart", JSON.stringify(arrCart));

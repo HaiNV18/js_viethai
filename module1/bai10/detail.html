@@ -42,6 +42,7 @@
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
                 </form>
+                <button type="button" class="btn btn-outline-primary ms-2" onclick="window.location.href='login.html'">Login</button>
             </div>
         </div>
     </nav>
@@ -365,9 +366,11 @@
         }
 
         function renderProductTable() {
+            // Limit 4 products
+            let newList = products.splice(0, 4);
             let table = document.getElementById("product-list");
 
-            products.forEach((product, index) => {
+            newList.forEach((product, index) => {
                 let row = `
                     <div class="col mb-5">
                         <div class="card h-100">
