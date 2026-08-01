@@ -10,9 +10,12 @@
 
     <h1>DASHBOARD</h1>
 
+    <p id="hello-message">Xin chào ...</p>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-
+        var username = localStorage.getItem("username");
+        document.getElementById("hello-message").innerHTML = "Xin chào " + username;
     </script>
 </body>
 
