@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>JS</title>
+    <title>Contact - Start Bootstrap</title>
     <link rel="stylesheet" type="text/css" href="asset/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="asset/css/style.css">
 </head>
@@ -33,7 +33,8 @@
                             <li><a class="dropdown-item" href="category.html?brand=oppo">OPPO</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="contact.html">Contact</a>
+                    </li>
                 </ul>
                 <form class="d-flex">
                     <button class="btn btn-outline-dark" type="button" onclick="window.location.href='cart.html'">
@@ -42,6 +43,7 @@
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
                 </form>
+                <button type="button" class="btn btn-outline-primary ms-2" onclick="window.location.href='login.html'">Login</button>
             </div>
         </div>
     </nav>
@@ -75,14 +77,19 @@
 
         <!-- Call to Action-->
         <div class="card text-white bg-secondary my-5 py-4 text-center">
-            <div class="card-body"><p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p></div>
+            <div class="card-body">
+                <p class="text-white m-0">This call to action card is a great place to showcase some important
+                    information or display a clever tagline!</p>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark text-white">
-        <div class="container px-4 px-lg-5">
-            <div class="row">
+
+
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <div class="row text-white">
                 <div class="col-6 col-md-2 mb-3">
                     <h5>Section</h5>
                     <ul class="nav flex-column">
@@ -106,38 +113,42 @@
                 <div class="col-6 col-md-2 mb-3">
                     <h5>Section</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a>
-                        </li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
-                        </li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a>
-                        </li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
                     </ul>
                 </div>
                 <div class="col-md-5 offset-md-1 mb-3">
                     <form>
                         <h5>Subscribe to our newsletter</h5>
                         <p>Monthly digest of what's new and exciting from us.</p>
-                        <div class="d-flex flex-column flex-sm-row w-100 gap-2"> <label for="newsletter1"
-                                class="visually-hidden">Email address</label> <input id="newsletter1" type="email"
-                                class="form-control" placeholder="Email address"> <button class="btn btn-primary"
-                                type="button">Subscribe</button> </div>
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                            <label for="newsletter1" class="visually-hidden">Email address</label>
+                            <input id="newsletter1" type="email" class="form-control" placeholder="Email address">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
                     </form>
                 </div>
             </div>
             <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                <p>© 2025 Company, Inc. All rights reserved.</p>
+                <p class="text-white">© 2025 Company, Inc. All rights reserved.</p>
                 <ul class="list-unstyled d-flex">
-                    <li class="ms-3"><a class="link-body-emphasis" href="#" aria-label="Instagram"><svg class="bi"
-                                width="24" height="24">
+                    <li class="ms-3">
+                        <a class="link-body-emphasis" href="#" aria-label="Instagram">
+                            <svg class="bi" width="24" height="24">
                                 <use xlink:href="#instagram"></use>
-                            </svg></a></li>
-                    <li class="ms-3"><a class="link-body-emphasis" href="#" aria-label="Facebook"><svg class="bi"
-                                width="24" height="24" aria-hidden="true">
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="ms-3">
+                        <a class="link-body-emphasis" href="#" aria-label="Facebook">
+                            <svg class="bi" width="24" height="24" aria-hidden="true">
                                 <use xlink:href="#facebook"></use>
-                            </svg></a></li>
+                            </svg>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -147,9 +158,7 @@
     <script src="asset/js/cart.js"></script>
 
     <script>
-        window.onload = function() {
-            updateCartCount();
-        }
+
     </script>
 </body>
 
