@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import ProductItem from "../Product/ProductItem";
+import LikeButton from "../LikeButton/LikeButton";
+import TableProduct from "../TableProduct/TableProduct";
 
 function Content({ name }) {
     const title = "Dashboard";
@@ -35,6 +37,10 @@ function Content({ name }) {
             <ProductItem name={"Smartphone"} price={500}/>
             <ProductItem name={"Tablet"} price={300}/>
             <ProductItem name={"Computer"} price={1500}/>
+
+            <TableProduct />
+
+            <LikeButton />
         </main>
     );
 }

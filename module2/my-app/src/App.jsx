@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Header from "./components/Header/Header";
-import Sidebar from "./components/Sidebar/Sidebar";
-import Content from "./components/Content/Content";
+import Header from "./components/Admin/Header/Header";
+import Sidebar from "./components/Admin/Sidebar/Sidebar";
+import Content from "./components/Admin/Content/Content";
 import './App.css';
 
 function App() {

@@ -1,0 +1,27 @@
+.like-container {
+    margin-top: 20px;
+}
+
+.like-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #1976d2;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.like-container button:hover {
+    opacity: 0.9;
+}
+
+.like-container button.liked {
+    background: #e53935;
+}
+
+.like-container p {
+    margin-top: 10px;
+    font-size: 16px;
+}
