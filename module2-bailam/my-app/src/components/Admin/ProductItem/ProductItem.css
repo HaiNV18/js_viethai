@@ -1,0 +1,26 @@
+.product-item {
+    width: 20%;
+    float: left;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: 0.2s;
+}
+
+.product-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.product-item h3 {
+    color: #1976d2;
+    margin-bottom: 10px;
+}
+
+.product-item p {
+    color: #555;
+}
