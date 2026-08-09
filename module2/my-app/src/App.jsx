@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import Header from "./components/Admin/Header/Header";
-import Sidebar from "./components/Admin/Sidebar/Sidebar";
-import Content from "./components/Admin/Content/Content";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Admin from "./components/Admin/Admin";
+import Login from "./components/Auth/Login/Login";
+import Register from "./components/Auth/Register/Register";
+import ForgotPassword from "./components/Auth/ForgotPassword/ForgotPassword";
 import './App.css';
 
 function App() {
@@ -9,13 +11,29 @@ function App() {
   const [name, setName] = useState("");
 
   return (
-    <>
-      <Header onLogin={setName} />
-      <div className="layout">
-        <Sidebar />
-        <Content name={name} />
-      </div>
-    </>
+    <BrowserRouter>
+        <Routes>
+
+            {/* Trang Login */}
+            <Route path="/login" element={<Login />} />
+
+            {/* Trang Register */}
+            <Route path="/register" element={<Register />} />
+
+            {/* Trang ForgotPassword */}
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+
+            {/* Trang Admin */}
+            <Route path="/admin" element={<Admin />} />
+
+            {/* Route mặc định */}
+            <Route
+                path="*"
+                element={<Navigate to="/login" replace />}
+            />
+
+        </Routes>
+    </BrowserRouter>
   );
 }
 
