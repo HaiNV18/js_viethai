@@ -1,40 +1,103 @@
-import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Admin from "./components/Admin/Admin";
+import {
+    BrowserRouter,
+    Navigate,
+    Routes,
+    Route
+} from "react-router-dom";
+
+import Auth from "./components/Auth/Auth";
+
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
 import ForgotPassword from "./components/Auth/ForgotPassword/ForgotPassword";
-import './App.css';
+
+import Admin from "./components/Admin/Admin";
+import Dashboard from "./components/Admin/Dashboard/Dashboard";
+import ListProduct from "./components/Admin/ListProduct/ListProduct";
+
+import "./App.css";
 
 function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
 
-  const [name, setName] = useState("");
+                {/* =====================
+                    AUTH LAYOUT
+                ====================== */}
 
-  return (
-    <BrowserRouter>
-        <Routes>
+                <Route element={<Auth />}>
 
-            {/* Trang Login */}
-            <Route path="/login" element={<Login />} />
+                    {/* Login */}
+                    <Route
+                        path="/login"
+                        element={<Login />}
+                    />
 
-            {/* Trang Register */}
-            <Route path="/register" element={<Register />} />
+                    {/* Register */}
+                    <Route
+                        path="/register"
+                        element={<Register />}
+                    />
 
-            {/* Trang ForgotPassword */}
-            <Route path="/forgot-password" element={<ForgotPassword />} />
+                    {/* Forgot Password */}
+                    <Route
+                        path="/forgot-password"
+                        element={<ForgotPassword />}
+                    />
 
-            {/* Trang Admin */}
-            <Route path="/admin" element={<Admin />} />
+                </Route>
 
-            {/* Route mặc định */}
-            <Route
-                path="*"
-                element={<Navigate to="/login" replace />}
-            />
 
-        </Routes>
-    </BrowserRouter>
-  );
+                {/* =====================
+                    ADMIN LAYOUT
+                ====================== */}
+
+                <Route element={<Admin />}>
+
+                    {/* Dashboard */}
+                    <Route
+                        path="/dashboard"
+                        element={<Dashboard />}
+                    />
+
+                    {/* List Product */}
+                    <Route
+                        path="/list-product"
+                        element={<ListProduct />}
+                    />
+
+                </Route>
+
+
+                {/* =====================
+                    DEFAULT
+                ====================== */}
+
+                <Route
+                    path="/"
+                    element={
+                        <Navigate
+                            to="/login"
+                            replace
+                        />
+                    }
+                />
+
+                {/* URL không tồn tại */}
+                <Route
+                    path="*"
+                    element={
+                        <Navigate
+                            to="/login"
+                            replace
+                        />
+                    }
+                />
+
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
-export default App
+export default App;

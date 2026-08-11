@@ -1,23 +1,26 @@
-import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+
 import Header from "./Header/Header";
 import Sidebar from "./Sidebar/Sidebar";
-import Content from "./Content/Content";
-import './Admin.css';
+
+import "./Admin.css";
 
 function Admin() {
 
-    const [name, setName] = useState("");
 
     return (
         <>
-            <Header onLogin={setName} />
+            <Header />
+
             <div className="layout">
                 <Sidebar />
-                <Content name={name} />
+
+                <main className="content">
+                    <Outlet />
+                </main>
             </div>
         </>
     );
 }
 
-export default Admin
+export default Admin;
