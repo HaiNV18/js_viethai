@@ -26,6 +26,10 @@ function Login() {
         }
     };
 
+    const handleRegister = () => {
+        navigate("/register");
+    };
+
     return (
         <div className="login-page">
             <form className="login" onSubmit={handleLogin}>
@@ -57,7 +61,11 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
 
+                <p className="mt-10"><a href="/forgot-password">Quên mật khẩu</a></p>
+
                 <button disabled={!isValid}>Đăng nhập</button>
+
+                <p className="mt-10">Chưa có tài khoản? <a href="/register">Đăng ký</a></p>
             </form>
         </div>
     );

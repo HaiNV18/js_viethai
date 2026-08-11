@@ -36,6 +36,8 @@ function ForgotPassword() {
                     )}
 
                     <button type="submit">Gửi mật khẩu mới</button>
+
+                    <p className="mt-10">Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
                 </form>
             </div>
         </div>

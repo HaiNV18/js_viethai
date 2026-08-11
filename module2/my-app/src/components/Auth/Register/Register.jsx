@@ -260,6 +260,7 @@ function Register() {
                     Register
                 </button>
 
+                <p className="mt-10">Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
             </div>
         </div>
     );
