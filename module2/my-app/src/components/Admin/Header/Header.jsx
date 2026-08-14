@@ -40,14 +40,14 @@ function Header() {
         const handleClickOutside = (e) => {
             if (
                 notifyRef.current &&
-                !notifyRef.current.contains(e.target)
+                !notifyRef.current.contains(e.target) // kiểm tra click bên trong hay ngoài notification
             ) {
                 setOpenNotify(false);
             }
 
             if (
                 menuRef.current &&
-                !menuRef.current.contains(e.target)
+                !menuRef.current.contains(e.target) // kiểm tra click bên trong hay ngoài menu
             ) {
                 setOpenMenu(false);
             }
@@ -90,17 +90,13 @@ function Header() {
                                     setOpenMenu(false);
                                 }}
                             >
-                                <IoIosNotifications
-                                    className="notification-icon"
-                                />
+                                <IoIosNotifications className="notification-icon" />
                             </button>
 
                             {openNotify && (
                                 <div className="notification-dropdown">
 
-                                    <div className="notification-title">
-                                        Notifications
-                                    </div>
+                                    <div className="notification-title">Notifications</div>
 
                                     {notifications.map((item) => (
                                         <div
@@ -117,9 +113,7 @@ function Header() {
                                         </div>
                                     ))}
 
-                                    <button className="show-more-btn">
-                                        Show More
-                                    </button>
+                                    <button className="show-more-btn">Show More</button>
 
                                 </div>
                             )}
@@ -144,29 +138,21 @@ function Header() {
                                     className="avatar"
                                 />
 
-                                <span className="username">
-                                    {user.name}
-                                </span>
+                                <span className="username">{user.name}</span>
                             </div>
 
 
                             {openMenu && (
                                 <div className="dropdown-menu">
-
                                     <div className="dropdown-item">
                                         <FaUser />
-                                        <span>
-                                            Profile
-                                        </span>
+                                        <span>Profile</span>
                                     </div>
 
                                     <div className="dropdown-item logout">
                                         <FaSignOutAlt />
-                                        <span>
-                                            Logout
-                                        </span>
+                                        <span>Logout</span>
                                     </div>
-
                                 </div>
                             )}
 
@@ -174,11 +160,7 @@ function Header() {
 
                     </>
                 ) : (
-
-                    <button className="login-btn">
-                        Đăng nhập
-                    </button>
-
+                    <button className="login-btn">Đăng nhập</button>
                 )}
 
             </div>
