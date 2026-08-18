@@ -2,27 +2,61 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
+const accounts = [
+    {
+        id: 1,
+        firstname: "A",
+        lastname: "Nguyễn Văn",
+        username: "admin1",
+        password: "123456",
+        email: "admin@gmail.com",
+        role: "ADMIN",
+    },
+    {
+        id: 2,
+        firstname: "B",
+        lastname: "Trần Thị",
+        username: "user1",
+        password: "123456",
+        email: "user@gmail.com",
+        role: "USER",
+    },
+];
+
 function Login() {
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
 
     // Validation
-    var isValid = username.length >= 8;
+    const isValidEmail = email.length >= 8;
 
     const handleLogin = (e) => {
         e.preventDefault();
 
-        // Kiểm tra tài khoản
-        if (
-            username === "admin@gmail.com" &&
-            password === "123456"
-        ) {
-            navigate("/admin");
+        // Tìm tài khoản trong accounts
+        const account = accounts.find(
+            (item) =>
+                item.email === email &&
+                item.password === password
+        );
+
+        // Nếu tìm thấy tài khoản
+        if (account) {
+            setError("");
+
+            // Lưu thông tin account đang đăng nhập
+            localStorage.setItem(
+                "currentUser",
+                JSON.stringify(account) // convert object sang string
+            );
+
+            navigate("/dashboard");
         } else {
-            setError("Username hoặc password không đúng.");
+            // Không tìm thấy tài khoản
+            setError("Email hoặc password không đúng.");
         }
     };
 
@@ -30,27 +64,37 @@ function Login() {
         navigate("/register");
     };
 
+    const handleForgotPassword = () => {
+        navigate("/forgot-password");
+    };
+
     return (
         <div className="login-page">
-            <form className="login" onSubmit={handleLogin}>
+            <form
+                className="login"
+                onSubmit={handleLogin}
+            >
                 <h2>Đăng nhập</h2>
 
                 <input
                     type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => {
+                        setEmail(e.target.value);
+                        setError("");
+                    }}
                 />
 
-                {username.length > 0 && !isValid && (
+                {email.length > 0 && !isValidEmail && (
                     <p className="error">
-                        Tên tài khoản phải có ít nhất 8 ký tự.
+                        Email phải có ít nhất 8 ký tự.
                     </p>
                 )}
 
-                {isValid && (
+                {isValidEmail && (
                     <p className="success">
-                        Tên tài khoản hợp lệ.
+                        Email hợp lệ.
                     </p>
                 )}
 
@@ -58,12 +102,26 @@ function Login() {
                     type="password"
                     placeholder="Password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                        setError("");
+                    }}
                 />
 
-                <p className="mt-10"><a href="/forgot-password">Quên mật khẩu</a></p>
+                {error && (
+                    <p className="error">
+                        {error}
+                    </p>
+                )}
 
-                <button disabled={!isValid}>Đăng nhập</button>
+                <p className="mt-10"><a href="/forgot-password">Quên mật khẩu?</a></p>
+
+                <button
+                    type="submit"
+                    disabled={!isValidEmail || password.length === 0}
+                >
+                    Đăng nhập
+                </button>
 
                 <p className="mt-10">Chưa có tài khoản? <a href="/register">Đăng ký</a></p>
             </form>

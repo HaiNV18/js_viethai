@@ -21,25 +21,44 @@ const notifications = [
     },
 ];
 
-const user = {
-    name: "Nguyễn Văn A",
-    avatar: "/asset/img/avatar/avatar-circle.png",
-    role: "admin"
-};
-
 function Header() {
     const [openNotify, setOpenNotify] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
+    const [account, setAccount] = useState(null);
 
     const notifyRef = useRef(null);
     const menuRef = useRef(null);
 
-    const isLogin = true;
-
-
-    // Nếu user click bên ngoài, đóng dropdown menu
+    // Lấy account đã đăng nhập
     useEffect(() => {
+        const storedAccount =
+            localStorage.getItem("currentUser");
+
+        if (storedAccount) {
+            const accountData =
+                JSON.parse(storedAccount);
+
+            setAccount(accountData);
+        }
+    }, []);
+
+    console.log("account:", account);
+    const isLogin = !!account;
+
+    const user = {
+        name: account
+            ? `${account.lastname} ${account.firstname}`
+            : "",
+        avatar:
+            "/asset/img/avatar/avatar-circle.png",
+        role: account?.role,
+    };
+
+    // Click bên ngoài thì đóng dropdown
+    useEffect(() => {
+
         const handleClickOutside = (e) => {
+
             if (
                 notifyRef.current &&
                 !notifyRef.current.contains(e.target) // kiểm tra click bên trong hay ngoài notification
@@ -66,6 +85,7 @@ function Header() {
                 handleClickOutside
             );
         };
+
     }, []);
 
     return (
@@ -85,6 +105,7 @@ function Header() {
                             className="notification-menu"
                             ref={notifyRef}
                         >
+
                             <button
                                 className="icon-btn"
                                 onClick={() => {
@@ -98,7 +119,9 @@ function Header() {
                             {openNotify && (
                                 <div className="notification-dropdown">
 
-                                    <div className="notification-title">Notifications</div>
+                                    <div className="notification-title">
+                                        Notifications
+                                    </div>
 
                                     {notifications.map((item) => (
                                         <div
@@ -109,16 +132,17 @@ function Header() {
                                                 {item.title}
                                             </div>
 
-                                            <small>
-                                                {item.time}
-                                            </small>
+                                            <small>{item.time}</small>
                                         </div>
                                     ))}
 
-                                    <button className="show-more-btn">Show More</button>
+                                    <button className="show-more-btn">
+                                        Show More
+                                    </button>
 
                                 </div>
                             )}
+
                         </div>
 
 
@@ -127,6 +151,7 @@ function Header() {
                             className="user-menu"
                             ref={menuRef}
                         >
+
                             <div
                                 className="user-info"
                                 onClick={() => {
@@ -134,6 +159,7 @@ function Header() {
                                     setOpenNotify(false);
                                 }}
                             >
+
                                 <img
                                     src={user.avatar}
                                     alt={user.name}
@@ -141,11 +167,13 @@ function Header() {
                                 />
 
                                 <span className="username">{user.name}</span>
+
                             </div>
 
 
                             {openMenu && (
                                 <div className="dropdown-menu">
+
                                     <div className="dropdown-item">
                                         <FaUser />
                                         <span>Profile</span>
@@ -155,6 +183,7 @@ function Header() {
                                         <FaSignOutAlt />
                                         <span>Logout</span>
                                     </div>
+
                                 </div>
                             )}
 

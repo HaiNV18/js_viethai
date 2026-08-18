@@ -7,7 +7,6 @@ import "./Admin.css";
 
 function Admin() {
 
-
     return (
         <>
             <Header />
