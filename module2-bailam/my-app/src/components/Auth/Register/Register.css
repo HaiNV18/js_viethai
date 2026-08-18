@@ -1,0 +1,47 @@
+.register {
+    width: 350px;
+    margin: 30px auto;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register h2 {
+    margin-bottom: 20px;
+}
+
+.register input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.error {
+    margin-top: 8px;
+    color: red;
+}
+
+.success {
+    margin-top: 8px;
+    color: green;
+}
+
+.register button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #1976d2;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.register button:disabled {
+    background: #999;
+    cursor: not-allowed;
+}

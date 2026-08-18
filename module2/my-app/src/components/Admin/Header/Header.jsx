@@ -21,6 +21,12 @@ const notifications = [
     },
 ];
 
+const user = {
+    name: "Nguyễn Văn A",
+    avatar: "/asset/img/avatar/avatar-circle.png",
+    role: "admin"
+};
+
 function Header() {
     const [openNotify, setOpenNotify] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
@@ -30,10 +36,6 @@ function Header() {
 
     const isLogin = true;
 
-    const user = {
-        name: "Nguyễn Văn A",
-        avatar: "/asset/img/avatar/avatar-circle.png",
-    };
 
     // Nếu user click bên ngoài, đóng dropdown menu
     useEffect(() => {
