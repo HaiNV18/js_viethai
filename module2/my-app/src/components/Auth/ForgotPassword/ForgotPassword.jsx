@@ -1,47 +1,27 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+
 import "./ForgotPassword.css";
 
 function ForgotPassword() {
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // register: Đăng ký input | handleSubmit: Hàm bọc xử lý submit
+    const { register, handleSubmit } = useForm();
 
-        if (email === "admin@gmail.com") {
-            setMessage("Email hợp lệ. Vui lòng kiểm tra hộp thư để đặt lại mật khẩu.");
-        } else {
-            setMessage("Email không tồn tại trong hệ thống.");
-        }
-        console.log(message)
-    };
+    const onSubmit = (data) => console.log("Data:", data);
 
     return (
-        <div className="forgot-password-page">
-            <div className="forgot-password">
-                <h2>Quên mật khẩu</h2>
-
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="email"
-                        placeholder="Nhập email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-
-                    {message && (
-                        <p className="success">
-                            {message}
-                        </p>
-                    )}
-
-                    <button type="submit">Gửi mật khẩu mới</button>
-
-                    <p className="mt-10">Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
-                </form>
-            </div>
+        <div className="forgot-password">
+            <h2>Quên mật khẩu</h2>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <input {...register("username")} placeholder="Username" />
+                <input {...register("email")} placeholder="Email" />
+                <button type="submit">Submit</button>
+            </form>
         </div>
     );
+
 }
 
 export default ForgotPassword;
