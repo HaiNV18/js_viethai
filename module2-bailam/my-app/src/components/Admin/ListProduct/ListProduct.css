@@ -1,0 +1,72 @@
+.list-product {
+    padding: 20px;
+}
+
+.list-product h2 {
+    margin-bottom: 20px;
+}
+
+.list-product table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.list-product th,
+.list-product td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.list-product th {
+    background-color: #f5f5f5;
+}
+
+.list-product img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.btn-edit {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.pagination button {
+    min-width: 40px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: #eee;
+}
+
+.pagination button.active {
+    background: #333;
+    color: white;
+    border-color: #333;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.selected-info {
+    margin-top: 15px;
+}

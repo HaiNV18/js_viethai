@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
-import Register from '../../../components/Auth/Register/Register.jsx'
-import ForgotPassword from '../../../components/Auth/ForgotPassword/ForgotPassword.jsx'
+import TextInputWithFocusButton from '../../../components/Admin/TextInputWithFocusButton/TextInputWithFocusButton.jsx'
 import LikeButton from '../../../components/Admin/LikeButton/LikeButton.jsx'
-import Login from '../../../components/Auth/Login/Login.jsx'
-import ProductList from '../../../components/Admin/ProductList/ProductList.jsx'
 import Timer from '../../../components/Admin/Timer/Timer.jsx'
 import './Content.css'
 
@@ -89,7 +86,7 @@ function Content() {
 
       <LikeButton />
 
-      <Register />
+      <TextInputWithFocusButton />
 
     </main>
   )

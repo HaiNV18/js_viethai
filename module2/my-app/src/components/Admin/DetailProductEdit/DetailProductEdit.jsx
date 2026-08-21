@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import "./DetailProduct.css";
+import "./DetailProductEdit.css";
 
 const products = [
     {
@@ -46,7 +46,7 @@ const products = [
     }
 ];
 
-const DetailProduct = () => {
+const DetailProductEdit = () => {
 
     const { id } = useParams();
 
@@ -154,4 +154,4 @@ const DetailProduct = () => {
     );
 };
 
-export default DetailProduct;
+export default DetailProductEdit;

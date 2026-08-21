@@ -9,7 +9,7 @@ import ForgotPassword from "./components/Auth/ForgotPassword/ForgotPassword";
 import Admin from "./components/Admin/Admin";
 import Dashboard from "./components/Admin/Dashboard/Dashboard";
 import ListProduct from "./components/Admin/ListProduct/ListProduct";
-import DetailProduct from "./components/Admin/DetailProduct/DetailProduct.jsx";
+import DetailProductEdit from "./components/Admin/DetailProductEdit/DetailProductEdit.jsx";
 
 import "./App.css";
 
@@ -48,7 +48,7 @@ function App() {
                     <Route path="/list-product" element={<ListProduct />} />
 
                     {/* Detail Product */}
-                    <Route path="/detail-product/:id" element={<DetailProduct />} />
+                    <Route path="/detail-product/:id/edit" element={<DetailProductEdit />} />
 
                 </Route>
 

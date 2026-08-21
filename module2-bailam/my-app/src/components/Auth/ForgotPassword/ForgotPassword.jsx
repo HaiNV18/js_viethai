@@ -1,51 +1,36 @@
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useForm } from "react-hook-form";
 
 import "./ForgotPassword.css";
 
 function ForgotPassword() {
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
+    // register: Đăng ký input | handleSubmit: Hàm bọc xử lý submit
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const navigate = useNavigate();
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if (email === "admin@gmail.com") {
-            setMessage("Email hợp lệ. Vui lòng kiểm tra hộp thư để đặt lại mật khẩu.");
-        } else {
-            setMessage("Email không tồn tại trong hệ thống.");
-        }
-    }
+    const onSubmit = (data) => console.log("Data:", data);
 
     return (
         <div className="forgot-password">
             <h2>Quên mật khẩu</h2>
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <input 
+                    {...register("email", {
+                        required: "Email không được để trống",
+                        pattern: {
+                            value: /^\S+@\S+$/i,
+                            message: "Định dạng Email không hợp lệ"
+                        }
+                    })} 
                     placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                 />
 
-                {message && (
-                    <p className="success">
-                        {message}
-                    </p>
-                )}
+                {errors?.email && <p className="success">{errors.email.message}</p>}
 
-                <button onClick={() => navigate(-1)}>
-                    Quay lại trang trước
-                </button>
-
-                <button type="submit">Gửi mật khẩu mới</button>
-
-                <p className="mt-10">Chưa có tài khoản? <a href="/register">Đăng ký</a></p>
-
+                <button type="submit">Submit</button>
             </form>
+            
+            <p className="mt-10">Chưa có tài khoản? <a href="/register">Đăng ký</a></p>
+
         </div>
     );
 }

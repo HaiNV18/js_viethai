@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 
 import Header from "./Header/Header";
 import Sidebar from "./Sidebar/Sidebar";
+import Content from "./Content/Content";
 
 import "./Admin.css";
 
@@ -15,7 +16,7 @@ function Admin() {
                 <Sidebar />
 
                 <main className="content">
-                    <Outlet />
+                    <Content />
                 </main>
             </div>
         </>
