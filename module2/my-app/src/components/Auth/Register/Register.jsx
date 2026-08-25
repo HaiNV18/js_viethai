@@ -1,266 +1,292 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import "./Register.css";
 
 function Register() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [phone, setPhone] = useState("");
-    const [address, setAddress] = useState("");
-    const [day, setDay] = useState("");
-    const [month, setMonth] = useState("");
-    const [year, setYear] = useState("");
+    const currentYear = new Date().getFullYear();
 
-    // Validation
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors, isValid },
+    } = useForm({
+        mode: "onChange",
+        defaultValues: {
+            username: "",
+            password: "",
+            phone: "",
+            address: "",
+            day: "",
+            month: "",
+            year: "",
+        },
+    });
 
-    const isValidUsername = username.length >= 8;
+    const day = watch("day");
+    const month = watch("month");
+    const year = watch("year");
 
-    const isValidPassword = password.length >= 5;
+    // Validation ngày sinh
+    const isValidBirthday = () => {
+        if (!day || !month || !year) {
+            return false;
+        }
 
-    const isValidPhoneOnlyNumber = /^\d+$/.test(phone);
-
-    const isValidPhoneLength =
-        phone.length === 10 || phone.length === 11;
-
-    const isValidAddress = address.length >= 10;
-
-    // Validation Birthday
-    let isValidBirthday = false;
-
-    if (day !== "" && month !== "" && year !== "") {
         const selectedDate = new Date(
             Number(year),
             Number(month) - 1,
             Number(day)
         );
 
-        // Kiểm tra ngày thực sự tồn tại
-        isValidBirthday =
+        return (
             selectedDate.getFullYear() === Number(year) &&
             selectedDate.getMonth() === Number(month) - 1 &&
-            selectedDate.getDate() === Number(day);
-    }
+            selectedDate.getDate() === Number(day)
+        );
+    };
 
-    const isValid =
-        isValidUsername &&
-        isValidPassword &&
-        isValidPhoneOnlyNumber &&
-        isValidPhoneLength &&
-        isValidAddress &&
-        isValidBirthday;
-
-    // Current Year
-    const currentYear = new Date().getFullYear();
+    const onSubmit = (data) => {
+        console.log("Register data:", data);
+        // Call API
+    };
 
     return (
         <div className="register-page">
             <div className="register">
-
                 <h2>Đăng ký</h2>
 
-                {/* Username */}
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    {/* Username */}
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        {...register("username", {
+                            required: "Vui lòng nhập tên tài khoản.",
+                            minLength: {
+                                value: 8,
+                                message: "Tên tài khoản phải có ít nhất 8 ký tự.",
+                            },
+                        })}
+                    />
 
-                {username.length > 0 && !isValidUsername && (
-                    <p className="error">
-                        Tên tài khoản phải có ít nhất 8 ký tự.
-                    </p>
-                )}
-
-                {isValidUsername && (
-                    <p className="success">
-                        Tên tài khoản hợp lệ.
-                    </p>
-                )}
-
-                {/* Password */}
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-
-                {password.length > 0 && !isValidPassword && (
-                    <p className="error">
-                        Password phải có ít nhất 5 ký tự.
-                    </p>
-                )}
-
-                {isValidPassword && (
-                    <p className="success">
-                        Password hợp lệ.
-                    </p>
-                )}
-
-                {/* Phone */}
-                <input
-                    type="text"
-                    placeholder="Phone"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                />
-
-                {phone.length > 0 && !isValidPhoneOnlyNumber && (
-                    <p className="error">
-                        Số điện thoại chỉ được nhập số.
-                    </p>
-                )}
-
-                {phone.length > 0 &&
-                    isValidPhoneOnlyNumber &&
-                    !isValidPhoneLength && (
+                    {errors.username && (
                         <p className="error">
-                            Số điện thoại phải có 10 - 11 ký tự.
+                            {errors.username.message}
                         </p>
                     )}
 
-                {phone.length > 0 &&
-                    isValidPhoneOnlyNumber &&
-                    isValidPhoneLength && (
+                    {!errors.username && watch("username") && (
+                        <p className="success">Tên tài khoản hợp lệ.</p>
+                    )}
+
+                    {/* Password */}
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        {...register("password", {
+                            required: "Vui lòng nhập password.",
+                            minLength: {
+                                value: 5,
+                                message: "Password phải có ít nhất 5 ký tự.",
+                            },
+                        })}
+                    />
+
+                    {errors.password && (
+                        <p className="error">
+                            {errors.password.message}
+                        </p>
+                    )}
+
+                    {!errors.password && watch("password") && (
+                        <p className="success">
+                            Password hợp lệ.
+                        </p>
+                    )}
+
+                    {/* Phone */}
+                    <input
+                        type="text"
+                        placeholder="Phone"
+                        {...register("phone", {
+                            required: "Vui lòng nhập số điện thoại.",
+                            pattern: {
+                                value: /^\d+$/,
+                                message: "Số điện thoại chỉ được nhập số.",
+                            },
+                            minLength: {
+                                value: 10,
+                                message: "Số điện thoại phải có 10 - 11 ký tự.",
+                            },
+                            maxLength: {
+                                value: 11,
+                                message: "Số điện thoại phải có 10 - 11 ký tự.",
+                            },
+                        })}
+                    />
+
+                    {errors.phone && (
+                        <p className="error">
+                            {errors.phone.message}
+                        </p>
+                    )}
+
+                    {!errors.phone && watch("phone") && (
                         <p className="success">
                             Số điện thoại hợp lệ.
                         </p>
                     )}
 
-                {/* Address */}
-                <input
-                    type="text"
-                    placeholder="Address"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                />
+                    {/* Address */}
+                    <input
+                        type="text"
+                        placeholder="Address"
+                        {...register("address", {
+                            required: "Vui lòng nhập địa chỉ.",
+                            minLength: {
+                                value: 10,
+                                message:
+                                    "Địa chỉ phải có ít nhất 10 ký tự.",
+                            },
+                        })}
+                    />
 
-                {address.length > 0 && !isValidAddress && (
-                    <p className="error">
-                        Địa chỉ phải có ít nhất 10 ký tự.
-                    </p>
-                )}
+                    {errors.address && (
+                        <p className="error">
+                            {errors.address.message}
+                        </p>
+                    )}
 
-                {isValidAddress && (
-                    <p className="success">
-                        Địa chỉ hợp lệ.
-                    </p>
-                )}
+                    {!errors.address && watch("address") && (
+                        <p className="success">
+                            Địa chỉ hợp lệ.
+                        </p>
+                    )}
 
-                {/* Ngày sinh */}
-                <div className="birthday">
-                    <label>Ngày tháng năm sinh</label>
+                    {/* Ngày sinh */}
+                    <div className="birthday">
+                        <label>Ngày tháng năm sinh</label>
 
-                    <div className="birthday-select">
+                        <div className="birthday-select">
+                            {/* Ngày */}
+                            <select
+                                {...register("day", {
+                                    required: "Vui lòng chọn ngày sinh.",
+                                    validate: () =>
+                                        isValidBirthday() ||
+                                        "Ngày sinh không hợp lệ.",
+                                })}
+                            >
+                                <option value="">Ngày</option>
 
-                        {/* Ngày */}
-                        <select
-                            value={day}
-                            onChange={(e) => setDay(e.target.value)}
-                        >
-                            <option value="">
-                                Ngày
-                            </option>
-
-                            {Array.from(
-                                { length: 31 },
-                                (_, index) => (
-                                    <option
-                                        key={index + 1}
-                                        value={index + 1}
-                                    >
-                                        {index + 1}
-                                    </option>
-                                )
-                            )}
-                        </select>
-
-                        {/* Tháng */}
-                        <select
-                            value={month}
-                            onChange={(e) => setMonth(e.target.value)}
-                        >
-                            <option value="">
-                                Tháng
-                            </option>
-
-                            {Array.from(
-                                { length: 12 },
-                                (_, index) => (
-                                    <option
-                                        key={index + 1}
-                                        value={index + 1}
-                                    >
-                                        {index + 1}
-                                    </option>
-                                )
-                            )}
-                        </select>
-
-                        {/* Năm */}
-                        <select
-                            value={year}
-                            onChange={(e) => setYear(e.target.value)}
-                        >
-                            <option value="">
-                                Năm
-                            </option>
-
-                            {Array.from(
-                                { length: currentYear - 1900 + 1 },
-                                (_, index) => {
-                                    const value =
-                                        currentYear - index;
-
-                                    return (
+                                {Array.from(
+                                    { length: 31 },
+                                    (_, index) => (
                                         <option
-                                            key={value}
-                                            value={value}
+                                            key={index + 1}
+                                            value={index + 1}
                                         >
-                                            {value}
+                                            {index + 1}
                                         </option>
-                                    );
-                                }
-                            )}
-                        </select>
+                                    )
+                                )}
+                            </select>
 
+                            {/* Tháng */}
+                            <select
+                                {...register("month", {
+                                    required:
+                                        "Vui lòng chọn tháng sinh.",
+                                    validate: () =>
+                                        isValidBirthday() ||
+                                        "Ngày sinh không hợp lệ.",
+                                })}
+                            >
+                                <option value="">Tháng</option>
+
+                                {Array.from(
+                                    { length: 12 },
+                                    (_, index) => (
+                                        <option
+                                            key={index + 1}
+                                            value={index + 1}
+                                        >
+                                            {index + 1}
+                                        </option>
+                                    )
+                                )}
+                            </select>
+
+                            {/* Năm */}
+                            <select
+                                {...register("year", {
+                                    required:
+                                        "Vui lòng chọn năm sinh.",
+                                    validate: () =>
+                                        isValidBirthday() ||
+                                        "Ngày sinh không hợp lệ.",
+                                })}
+                            >
+                                <option value="">Năm</option>
+
+                                {Array.from(
+                                    {
+                                        length: currentYear - 1900 + 1,
+                                    },
+                                    (_, index) => {
+                                        const value = currentYear - index;
+
+                                        return (
+                                            <option
+                                                key={value}
+                                                value={value}
+                                            >
+                                                {value}
+                                            </option>
+                                        );
+                                    }
+                                )}
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                {/* Validation ngày sinh */}
+                    {/* Validation ngày sinh */}
+                    {(day || month || year) &&
+                        (!day || !month || !year) && (
+                            <p className="error">
+                                Vui lòng chọn đầy đủ ngày, tháng và
+                                năm sinh.
+                            </p>
+                        )}
 
-                {(day !== "" ||
-                    month !== "" ||
-                    year !== "") &&
-                    (day === "" ||
-                        month === "" ||
-                        year === "") && (
-                        <p className="error">
-                            Vui lòng chọn đầy đủ ngày, tháng và năm sinh.
-                        </p>
-                    )}
+                    {day &&
+                        month &&
+                        year &&
+                        !isValidBirthday() && (
+                            <p className="error">
+                                Ngày sinh không hợp lệ.
+                            </p>
+                        )}
 
-                {day !== "" &&
-                    month !== "" &&
-                    year !== "" &&
-                    !isValidBirthday && (
-                        <p className="error">
-                            Ngày sinh không hợp lệ.
-                        </p>
-                    )}
+                    {day &&
+                        month &&
+                        year &&
+                        isValidBirthday() && (
+                            <p className="success">
+                                Ngày sinh hợp lệ.
+                            </p>
+                        )}
 
-                {isValidBirthday && (
-                    <p className="success">
-                        Ngày sinh hợp lệ.
-                    </p>
-                )}
+                    {/* Button */}
+                    <button type="submit" disabled={!isValid}>
+                        Register
+                    </button>
+                </form>
 
-                {/* Button */}
-                <button disabled={!isValid}>
-                    Register
-                </button>
-
-                <p className="mt-10">Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
+                <p className="mt-10">
+                    Đã có tài khoản?{" "}
+                    <a href="/login">Đăng nhập</a>
+                </p>
             </div>
         </div>
     );
