@@ -1,3 +1,4 @@
+import { FaBoxOpen, FaUsers, FaShoppingCart, FaBox } from "react-icons/fa";
 import "./Dashboard.css";
 
 const products = [
@@ -91,24 +92,52 @@ function Dashboard() {
             <h1>Dashboard</h1>
 
             <div className="dashboard-cards">
+                {/* Tổng sản phẩm */}
                 <div className="dashboard-card">
-                    <h3>Tổng sản phẩm</h3>
-                    <p>{totalProducts}</p>
+                    <div className="dashboard-icon">
+                        <FaBoxOpen />
+                    </div>
+
+                    <div className="dashboard-content">
+                        <h3>Tổng sản phẩm</h3>
+                        <p>{totalProducts}</p>
+                    </div>
                 </div>
 
+                {/* Tổng người dùng */}
                 <div className="dashboard-card">
-                    <h3>Tổng người dùng</h3>
-                    <p>1000</p>
+                    <div className="dashboard-icon">
+                        <FaUsers />
+                    </div>
+
+                    <div className="dashboard-content">
+                        <h3>Tổng người dùng</h3>
+                        <p>1000</p>
+                    </div>
                 </div>
 
+                {/* Đơn hàng mới trong tháng */}
                 <div className="dashboard-card">
-                    <h3>Đơn hàng mới trong tháng</h3>
-                    <p>200</p>
+                    <div className="dashboard-icon">
+                        <FaShoppingCart />
+                    </div>
+
+                    <div className="dashboard-content">
+                        <h3>Đơn hàng mới trong tháng</h3>
+                        <p>200</p>
+                    </div>
                 </div>
 
+                {/* Sản phẩm mới trong tháng */}
                 <div className="dashboard-card">
-                    <h3>Sản phẩm mới trong tháng</h3>
-                    <p>10</p>
+                    <div className="dashboard-icon">
+                        <FaBox />
+                    </div>
+
+                    <div className="dashboard-content">
+                        <h3>Sản phẩm mới trong tháng</h3>
+                        <p>10</p>
+                    </div>
                 </div>
             </div>
         </div>
