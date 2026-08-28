@@ -1,0 +1,23 @@
+architectui-react-theme-free-master
+Sử dụng Bootstrap 5
+npm install -> npm run dev
+https://dashboardpack.com/theme-details/architectui-react-dashboard-free/
+https://github.com/DashboardPack/architectui-react-theme-free
+
+
+====
+
+SaasAble Free MUI React UI Kit with Dashboard Template
+Sử dụng MUI
+Trong file nén có 2 source: Vite và NextJS
+Copy source Vite ra ngoài, dùng lệnh: npm install -> npm start
+https://codedthemes.com/item/saasable-free-mui-react-ui-kit/?no-caching=1
+
+Khung giao diện AdminLayout
+Trang Dashboard views/admin/dashboard.jsx được inject vào <Outlet/>
+
+Tạo menu dropdown Components
+/utils/color dẫn đến <ColorPage />
+/utils/shadow dẫn đến <ShadowPage />
+/utils/typography dẫn đến <TypographyPage />
+

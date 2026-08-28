@@ -1,13 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductItem from "../Product/ProductItem";
 import LikeButton from "../LikeButton/LikeButton";
 import TableProduct from "../TableProduct/TableProduct";
+import ProductList from "../ProductList/ProductList";
 
 function Content({ name }) {
     const title = "Dashboard";
     const skills = ["HTML", "CSS", "React"];
 
     const [count, setCount] = useState(0);
+
+
+    const [products, setProducts] = useState([]);
+    const fetchData = async () => {
+        try {
+            const res = await fetch("https://dummyjson.com/products");
+
+            // Kiểm tra nếu phản hồi không thành công (Status Code không nằm trong khoảng 200-299)
+            if (!res.ok) {
+                throw new Error("Lỗi hệ thống: " + res.status);
+            }
+
+            const data = await res.json();
+
+            setProducts(data.products);
+        } catch (error) {
+            console.error("Có lỗi xảy ra:", error.message);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+
 
     return (
         <main className="content">
@@ -41,6 +67,20 @@ function Content({ name }) {
             <TableProduct />
 
             <LikeButton />
+
+
+
+            <h1>Danh sách sản phẩm</h1>
+
+            {products.map((product) => (
+                <div key={product.id}>
+                    <h3>{product.title}</h3>
+                    <p>{product.description}</p>
+                    <p>Price: ${product.price}</p>
+                </div>
+            ))}
+
+
         </main>
     );
 }
