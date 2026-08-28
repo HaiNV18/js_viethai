@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { IoIosNotifications } from "react-icons/io";
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import "./Header.css";
@@ -29,6 +30,8 @@ function Header() {
     const notifyRef = useRef(null);
     const menuRef = useRef(null);
 
+    const navigate = useNavigate();
+
     // Lấy account đã đăng nhập
     useEffect(() => {
         const storedAccount =
@@ -42,7 +45,6 @@ function Header() {
         }
     }, []);
 
-    console.log("account:", account);
     const isLogin = !!account;
 
     const user = {
@@ -54,11 +56,27 @@ function Header() {
         role: account?.role,
     };
 
+    // Logout
+    const handleLogout = () => {
+        // Xóa thông tin user
+        localStorage.removeItem("currentUser");
+
+        // Xóa access token
+        localStorage.removeItem("accessToken");
+
+        // Xóa state
+        setAccount(null);
+
+        // Đóng menu
+        setOpenMenu(false);
+
+        // Chuyển về trang login
+        navigate("/login");
+    };
+
     // Click bên ngoài thì đóng dropdown
     useEffect(() => {
-
         const handleClickOutside = (e) => {
-
             if (
                 notifyRef.current &&
                 !notifyRef.current.contains(e.target) // kiểm tra click bên trong hay ngoài notification
@@ -85,7 +103,6 @@ function Header() {
                 handleClickOutside
             );
         };
-
     }, []);
 
     return (
@@ -105,7 +122,6 @@ function Header() {
                             className="notification-menu"
                             ref={notifyRef}
                         >
-
                             <button
                                 className="icon-btn"
                                 onClick={() => {
@@ -142,16 +158,13 @@ function Header() {
 
                                 </div>
                             )}
-
                         </div>
-
 
                         {/* User */}
                         <div
                             className="user-menu"
                             ref={menuRef}
                         >
-
                             <div
                                 className="user-info"
                                 onClick={() => {
@@ -159,7 +172,6 @@ function Header() {
                                     setOpenNotify(false);
                                 }}
                             >
-
                                 <img
                                     src={user.avatar}
                                     alt={user.name}
@@ -179,19 +191,26 @@ function Header() {
                                         <span>Profile</span>
                                     </div>
 
-                                    <div className="dropdown-item logout">
+                                    <div
+                                        className="dropdown-item logout"
+                                        onClick={handleLogout}
+                                    >
                                         <FaSignOutAlt />
                                         <span>Logout</span>
                                     </div>
 
                                 </div>
                             )}
-
                         </div>
 
                     </>
                 ) : (
-                    <button className="login-btn">Đăng nhập</button>
+                    <button
+                        className="login-btn"
+                        onClick={() => navigate("/login")}
+                    >
+                        Đăng nhập
+                    </button>
                 )}
 
             </div>
