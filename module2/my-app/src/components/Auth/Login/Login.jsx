@@ -1,62 +1,59 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import authService from "../../../services/authService";
 import "./Login.css";
 
-const accounts = [
-    {
-        id: 1,
-        firstname: "A",
-        lastname: "Nguyễn Văn",
-        username: "admin1",
-        password: "123456",
-        email: "admin@gmail.com",
-        role: "ADMIN",
-    },
-    {
-        id: 2,
-        firstname: "B",
-        lastname: "Trần Thị",
-        username: "user1",
-        password: "123456",
-        email: "user@gmail.com",
-        role: "USER",
-    },
-];
-
 function Login() {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
-    // Validation
-    const isValidEmail = email.length >= 8;
+    const isValidUsername = username.length >= 3;
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
-        // Tìm tài khoản trong accounts
-        const account = accounts.find(
-            (item) =>
-                item.email === email &&
-                item.password === password
-        );
+        if (!isValidUsername || password.length === 0) {
+            return;
+        }
 
-        // Nếu tìm thấy tài khoản
-        if (account) {
-            setError("");
+        setError("");
+        setLoading(true);
 
-            // Lưu thông tin account đang đăng nhập
+        try {
+            // Gọi API login
+            const data = await authService.login(
+                username,
+                password
+            );
+
+            console.log("Login success:", data);
+
+            // Lưu thông tin user
             localStorage.setItem(
                 "currentUser",
-                JSON.stringify(account) // convert object sang string
+                JSON.stringify(data)
+            );
+
+            // Lưu access token
+            localStorage.setItem(
+                "accessToken",
+                data.accessToken
             );
 
             navigate("/dashboard");
-        } else {
-            // Không tìm thấy tài khoản
-            setError("Email hoặc password không đúng.");
+        } catch (error) {
+            console.error("Login error:", error);
+
+            setError(
+                error.response?.data?.message ||
+                "Username hoặc password không đúng."
+            );
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -78,23 +75,23 @@ function Login() {
 
                 <input
                     type="text"
-                    placeholder="Email"
-                    value={email}
+                    placeholder="Username"
+                    value={username}
                     onChange={(e) => {
-                        setEmail(e.target.value);
+                        setUsername(e.target.value);
                         setError("");
                     }}
                 />
 
-                {email.length > 0 && !isValidEmail && (
+                {username.length > 0 && !isValidUsername && (
                     <p className="error">
-                        Email phải có ít nhất 8 ký tự.
+                        Username phải có ít nhất 3 ký tự.
                     </p>
                 )}
 
-                {isValidEmail && (
+                {isValidUsername && (
                     <p className="success">
-                        Email hợp lệ.
+                        Username hợp lệ.
                     </p>
                 )}
 
@@ -114,16 +111,29 @@ function Login() {
                     </p>
                 )}
 
-                <p className="mt-10"><a href="/forgot-password">Quên mật khẩu?</a></p>
+                <p className="mt-10">
+                    <a href="/forgot-password">
+                        Quên mật khẩu?
+                    </a>
+                </p>
 
                 <button
                     type="submit"
-                    disabled={!isValidEmail || password.length === 0}
+                    disabled={
+                        !isValidUsername ||
+                        password.length === 0 ||
+                        loading
+                    }
                 >
-                    Đăng nhập
+                    {loading ? "Đang đăng nhập..." : "Đăng nhập"}
                 </button>
 
-                <p className="mt-10">Chưa có tài khoản? <a href="/register">Đăng ký</a></p>
+                <p className="mt-10">
+                    Chưa có tài khoản?{" "}
+                    <a href="/register">
+                        Đăng ký
+                    </a>
+                </p>
             </form>
         </div>
     );
