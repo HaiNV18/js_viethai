@@ -1,25 +1,58 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import authService from "../../../services/authService";
 import "./Login.css";
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState("");
 
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
+    const navigate = useNavigate();
 
     // Validation
-    var isValid = username.length >= 8;
+    var isValid = username.length >= 5;
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
-        const formData = {
-            email: emailRef.current.value,
-            password: passwordRef.current.value,
+        console.log(username);
+        console.log(password);
+        if (!isValid || password.length === 0) {
+            return;
         }
-        
-        console.log("Dữ liệu gửi lên Server:", formData)
+
+        const controller = new AbortController();
+        setError("");
+        setLoading(true);
+
+        // call api authService
+        try {
+            const data = await authService.login(username, password);
+
+            console.log("Login success:", data);
+            localStorage.setItem("currentUser",JSON.stringify(data)); // Lưu thông tin data
+            localStorage.setItem("accessToken",data.accessToken); // Lưu access token
+
+            navigate("/dashboard");
+
+        } catch (error) {
+            console.error("Login error:", error);
+
+            setError(
+                error.response?.data?.message ||
+                "Username hoặc password không đúng."
+            );
+        } finally {
+            setLoading(false);
+        }
+
+        // dọn dẹp khi component unmount
+        return () => controller.abort();
     }
 
     return (
@@ -27,9 +60,15 @@ function Login() {
             <h2>Đăng nhập</h2>
 
             <form onSubmit={handleLogin}>
+
                 <input
                     type="text"
-                    ref={emailRef}
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => {
+                        setUsername(e.target.value);
+                        setError("");
+                    }}
                 />
 
                 {username.length > 0 && !isValid && (
@@ -45,13 +84,27 @@ function Login() {
                 )}
 
                 <input
-                    type="text"
-                    ref={passwordRef}
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                        setError("");
+                    }}
                 />
 
                 <p className="mt-10"><a href="/forgot-password">Quên mật khẩu?</a></p>
 
-                <button type="submit">Login</button>
+                <button
+                    type="submit"
+                    disabled={
+                        !isValid ||
+                        password.length === 0 ||
+                        loading
+                    }
+                >
+                    {loading ? "Đang đăng nhập..." : "Đăng nhập"}
+                </button>
             </form>
 
             <p className="mt-10">Chưa có tài khoản? <a href="/register">Đăng ký</a></p>

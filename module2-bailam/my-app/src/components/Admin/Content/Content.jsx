@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react';
 import TextInputWithFocusButton from '../../../components/Admin/TextInputWithFocusButton/TextInputWithFocusButton.jsx'
 import LikeButton from '../../../components/Admin/LikeButton/LikeButton.jsx'
 import Timer from '../../../components/Admin/Timer/Timer.jsx'
-import './Content.css'
 
 function Content() {
 
@@ -37,6 +36,31 @@ function Content() {
   useEffect(() => {
     alert("Chương trình săn deal bắt đầu!")
   },[])
+
+
+  // Tạo 1 danh sách rỗng
+  const [products, setProducts] = useState([]);
+
+  const fetchData = async() => {
+    try {
+      const res = await fetch("https://dummyjson.com/products");
+
+      if (!res.ok) {
+        throw new Error("Lỗi hệ thống: " + res.status);
+      }
+
+      const data = await res.json(); // chuyển sang kiểu JSON
+
+      setProducts(data.products); // re-render
+
+    } catch (error) {
+        console.error("Có lỗi xảy ra:", error.message);
+    }
+  }
+
+  useEffect(() => {
+      fetchData();
+  }, []);
 
   return (
     <main className="content">
@@ -87,6 +111,20 @@ function Content() {
       <LikeButton />
 
       <TextInputWithFocusButton />
+
+
+
+      <h1>Danh sách sản phẩm</h1>
+
+      {products.map(product => (
+          <div key={product.id}>
+              <h3>{product.title}</h3>
+              <p>{product.description}</p>
+              <p>Price: ${product.price}</p>
+          </div>
+      ))}
+
+
 
     </main>
   )

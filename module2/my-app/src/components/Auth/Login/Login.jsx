@@ -130,10 +130,10 @@ function Login() {
 
                 <p className="mt-10">
                     Chưa có tài khoản?{" "}
-                    <a href="/register">
-                        Đăng ký
-                    </a>
+                    <a href="/register">Đăng ký</a>
                 </p>
+
+                <p className="mt-10">emilys / emilyspass</p>
             </form>
         </div>
     );

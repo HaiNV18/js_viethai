@@ -1,7 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoIosNotifications } from "react-icons/io";
-import { FaUser, FaSignOutAlt } from "react-icons/fa";
+import { FaRegMoon, FaRegSun, FaSignOutAlt, FaUser } from "react-icons/fa";
+
+import { useTheme } from "../../../context/ThemeContext";
+
 import "./Header.css";
 
 const notifications = [
@@ -31,6 +34,7 @@ function Header() {
     const menuRef = useRef(null);
 
     const navigate = useNavigate();
+    const { theme, toggleTheme } = useTheme();
 
     // Lấy account đã đăng nhập
     useEffect(() => {
@@ -106,13 +110,21 @@ function Header() {
     }, []);
 
     return (
-        <header className="header">
+        <header className={`header ${theme}`}>
 
             <div className="header-left">
                 <h2>My App</h2>
             </div>
 
             <div className="header-right">
+
+                <button
+                    className="theme-btn"
+                    onClick={toggleTheme}
+                    title={ theme === "light" ? "Chuyển sang Dark Mode" : "Chuyển sang Light Mode" }
+                >
+                    {theme === "light" ? <FaRegMoon /> : <FaRegSun />}
+                </button>
 
                 {isLogin ? (
                     <>

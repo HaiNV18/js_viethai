@@ -21,3 +21,5 @@ Tạo menu dropdown Components
 /utils/shadow dẫn đến <ShadowPage />
 /utils/typography dẫn đến <TypographyPage />
 
+
+Trong folder view, Tên file phải trùng với tên url
