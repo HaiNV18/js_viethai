@@ -8,8 +8,14 @@ function Content({ name }) {
     const title = "Dashboard";
     const skills = ["HTML", "CSS", "React"];
 
-    const [count, setCount] = useState(0);
+    // Làm memo:
+    // Bước 1: tạo console.log check render
+    // Bước 2: tạo memo cho LikeButton
 
+    // Khi click count -> count re-render
+    // Nhưng LikeButton không re-render vì LikeButton có memo
+    const [count, setCount] = useState(0);
+    console.log("Kiểm tra Content render");
 
     const [products, setProducts] = useState([]);
     const fetchData = async () => {

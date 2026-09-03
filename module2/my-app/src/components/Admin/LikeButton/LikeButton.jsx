@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import "./LikeButton.css";
 
-const LikeButton = () => {
+// bọc component bằng memo
+const LikeButton = memo(() => {
+    console.log("Kiểm tra LikeButton render");
+
     // State lưu số lượng lượt thích
     const [likes, setLikes] = useState(0);
 
@@ -21,6 +24,6 @@ const LikeButton = () => {
 
         </div>
     );
-}
+});
 
 export default LikeButton;
