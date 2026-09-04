@@ -1,14 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import TextInputWithFocusButton from '../TextInputWithFocusButton/TextInputWithFocusButton.jsx'
 import LikeButton from '../LikeButton/LikeButton.jsx'
 import Timer from '../Timer/Timer.jsx'
 import Counter from '../Counter/Counter.jsx'
+import Child from '../Child/Child.jsx'
 import ShoppingCartApp from '../ShoppingCart/ShoppingCartApp.jsx'
 
 function Content() {
 
   const [count, setCount] = useState(0)
   const [color, setColor] = useState("red")
+
+
+  const [val, setVal] = useState(0);
+  // Mỗi lần Parent render, hàm handle là một địa chỉ mới
+  // const handle = () => console.log("Action");
+  const handle = useCallback(() => console.log("Action"), []);
+
+
 
   // Hàm chạy lại mỗi khi re-render
   console.log("Kiểm tra Content render");
@@ -83,6 +92,8 @@ function Content() {
       </a>
 
 
+      <button onClick={() => setVal(val + 1)}>Re-render Parent</button>
+      <Child onAction={handle} />
 
 
 

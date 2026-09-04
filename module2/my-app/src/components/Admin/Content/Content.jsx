@@ -3,6 +3,7 @@ import ProductItem from "../Product/ProductItem";
 import LikeButton from "../LikeButton/LikeButton";
 import TableProduct from "../TableProduct/TableProduct";
 import ProductList from "../ProductList/ProductList";
+import ShoppingCartApp from '../ShoppingCart/ShoppingCartApp.jsx'
 
 function Content({ name }) {
     const title = "Dashboard";
@@ -62,6 +63,10 @@ function Content({ name }) {
             <button onClick={() => setCount(count + 1)}>
                 Increase
             </button>
+
+
+            <ShoppingCartApp />
+
 
             <h2>Danh sách sản phẩm</h2>
 
