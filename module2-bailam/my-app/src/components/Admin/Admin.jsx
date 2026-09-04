@@ -16,7 +16,7 @@ function Admin() {
                 <Sidebar />
 
                 <main className="content">
-                    <Outlet />
+                    <Content />
                 </main>
             </div>
         </>

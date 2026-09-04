@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import TextInputWithFocusButton from '../../../components/Admin/TextInputWithFocusButton/TextInputWithFocusButton.jsx'
-import LikeButton from '../../../components/Admin/LikeButton/LikeButton.jsx'
-import Timer from '../../../components/Admin/Timer/Timer.jsx'
+import TextInputWithFocusButton from '../TextInputWithFocusButton/TextInputWithFocusButton.jsx'
+import LikeButton from '../LikeButton/LikeButton.jsx'
+import Timer from '../Timer/Timer.jsx'
+import Counter from '../Counter/Counter.jsx'
+import ShoppingCartApp from '../ShoppingCart/ShoppingCartApp.jsx'
 
 function Content() {
 
@@ -9,7 +11,7 @@ function Content() {
   const [color, setColor] = useState("red")
 
   // Hàm chạy lại mỗi khi re-render
-  console.log("Component re-render");
+  console.log("Kiểm tra Content render");
 
   // Biến thông thường: Sẽ bị reset về 1 mỗi lần re-render
   let normalVar = 1;
@@ -88,9 +90,7 @@ function Content() {
       <h1>{"State " +count}</h1>
       <h1>{"Biến thường " + normalVar}</h1>
 
-      <button onClick={() => setCount(count + 1)}>
-        Increase
-      </button>
+      <ShoppingCartApp />
 
 
 

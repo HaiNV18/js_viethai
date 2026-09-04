@@ -6,6 +6,8 @@ import { FaRegUser } from "react-icons/fa6";
 import { MdDashboard, MdOutlineSettings } from "react-icons/md";
 import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 
+import { useTheme } from "../../../context/ThemeContext";
+
 import "./Sidebar.css";
 
 function Sidebar() {
@@ -13,6 +15,8 @@ function Sidebar() {
 
     const navigate = useNavigate();
     const location = useLocation();
+
+    const { theme, toggleTheme } = useTheme();
 
     const handleDashboard = () => {
         navigate("/dashboard");
@@ -23,7 +27,7 @@ function Sidebar() {
     };
 
     return (
-        <aside className="sidebar">
+        <aside className={`sidebar ${theme}`}>
             <ul className="menu">
 
                 {/* Dashboard */}
