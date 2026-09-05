@@ -90,10 +90,10 @@ const ITEMS_PER_PAGE = 5;
 
 const ListProduct = () => {
     // Filter
-    const [searchName, setSearchName] = useState("");
-    const [searchBrand, setSearchBrand] = useState("");
-    const [priceFrom, setPriceFrom] = useState("");
-    const [priceTo, setPriceTo] = useState("");
+    const [searchName, setSearchName] = useState('');
+    const [searchBrand, setSearchBrand] = useState("all");
+    const [minPrice, setMinPrice] = useState('');
+    const [maxPrice, setMaxPrice] = useState('');
 
     // Trang hiện tại
     const [currentPage, setCurrentPage] = useState(1);
@@ -101,39 +101,23 @@ const ListProduct = () => {
     // Danh sách ID sản phẩm đang được chọn
     const [selectedIds, setSelectedIds] = useState([]);
 
+    // Filtered Products Logic
     const filteredProducts = useMemo(() => {
-
         return products.filter((product) => {
+            // Filter by Name
+            const matchesName = product.name.toLowerCase().includes(searchName.trim().toLowerCase());
 
-            // Filter theo tên
-            const matchName = product.name
-                .toLowerCase()
-                .includes(searchName.toLowerCase());
+            // Filter by Brand
+            const matchesBrand =
+                searchBrand === 'all' || product.brand.toLowerCase() === searchBrand.toLowerCase();
 
-            // Filter theo brand
-            const matchBrand =
-                searchBrand === "" ||
-                product.brand === searchBrand;
+            // Filter by Price Range (Min & Max)
+            const matchesMinPrice = minPrice === '' || product.price >= Number(minPrice);
+            const matchesMaxPrice = maxPrice === '' || product.price <= Number(maxPrice);
 
-            // Filter giá từ
-            const matchPriceFrom =
-                priceFrom === "" ||
-                product.price >= Number(priceFrom);
-
-            // Filter giá đến
-            const matchPriceTo =
-                priceTo === "" ||
-                product.price <= Number(priceTo);
-
-            return (
-                matchName &&
-                matchBrand &&
-                matchPriceFrom &&
-                matchPriceTo
-            );
+            return matchesName && matchesBrand && matchesMinPrice && matchesMaxPrice;
         });
-
-    }, [searchName, searchBrand, priceFrom, priceTo]);
+    }, [searchName, searchBrand, minPrice, maxPrice]);
 
     // Tổng số trang (xét theo filteredProducts)
     const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
@@ -214,34 +198,20 @@ const ListProduct = () => {
                         setCurrentPage(1);
                     }}
                 >
-                    <option value="">
-                        Tất cả thương hiệu
-                    </option>
-
-                    <option value="apple">
-                        Apple
-                    </option>
-
-                    <option value="samsung">
-                        Samsung
-                    </option>
-
-                    <option value="xiaomi">
-                        Xiaomi
-                    </option>
-
-                    <option value="oppo">
-                        Oppo
-                    </option>
+                    <option value="all">Tất cả thương hiệu</option>
+                    <option value="apple">Apple</option>
+                    <option value="samsung">Samsung</option>
+                    <option value="xiaomi">Xiaomi</option>
+                    <option value="oppo">Oppo</option>
                 </select>
 
                 {/* Giá từ */}
                 <input
                     type="number"
                     placeholder="Giá từ"
-                    value={priceFrom}
+                    value={minPrice}
                     onChange={(e) => {
-                        setPriceFrom(e.target.value);
+                        setMinPrice(e.target.value);
                         setCurrentPage(1);
                     }}
                 />
@@ -250,9 +220,9 @@ const ListProduct = () => {
                 <input
                     type="number"
                     placeholder="Giá đến"
-                    value={priceTo}
+                    value={maxPrice}
                     onChange={(e) => {
-                        setPriceTo(e.target.value);
+                        setMaxPrice(e.target.value);
                         setCurrentPage(1);
                     }}
                 />
