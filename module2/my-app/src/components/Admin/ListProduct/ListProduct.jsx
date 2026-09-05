@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import ListProductItem from "../ListProductItem/ListProductItem";
 import "./ListProduct.css";
@@ -89,6 +89,11 @@ const products = [
 const ITEMS_PER_PAGE = 5;
 
 const ListProduct = () => {
+    // Filter
+    const [searchName, setSearchName] = useState("");
+    const [searchBrand, setSearchBrand] = useState("");
+    const [priceFrom, setPriceFrom] = useState("");
+    const [priceTo, setPriceTo] = useState("");
 
     // Trang hiện tại
     const [currentPage, setCurrentPage] = useState(1);
@@ -96,12 +101,46 @@ const ListProduct = () => {
     // Danh sách ID sản phẩm đang được chọn
     const [selectedIds, setSelectedIds] = useState([]);
 
-    // Tổng số trang
-    const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
+    const filteredProducts = useMemo(() => {
 
-    // Lấy sản phẩm của trang hiện tại
+        return products.filter((product) => {
+
+            // Filter theo tên
+            const matchName = product.name
+                .toLowerCase()
+                .includes(searchName.toLowerCase());
+
+            // Filter theo brand
+            const matchBrand =
+                searchBrand === "" ||
+                product.brand === searchBrand;
+
+            // Filter giá từ
+            const matchPriceFrom =
+                priceFrom === "" ||
+                product.price >= Number(priceFrom);
+
+            // Filter giá đến
+            const matchPriceTo =
+                priceTo === "" ||
+                product.price <= Number(priceTo);
+
+            return (
+                matchName &&
+                matchBrand &&
+                matchPriceFrom &&
+                matchPriceTo
+            );
+        });
+
+    }, [searchName, searchBrand, priceFrom, priceTo]);
+
+    // Tổng số trang (xét theo filteredProducts)
+    const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+
+    // Lấy sản phẩm của trang hiện tại (xét theo filteredProducts)
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const currentProducts = products.slice(
+    const currentProducts = filteredProducts.slice(
         startIndex,
         startIndex + ITEMS_PER_PAGE
     );
@@ -153,6 +192,77 @@ const ListProduct = () => {
     return (
         <div className="list-product">
             <h2>Danh sách sản phẩm</h2>
+
+            <div className="filter-product">
+
+                {/* Tìm theo tên */}
+                <input
+                    type="text"
+                    placeholder="Tìm theo tên..."
+                    value={searchName}
+                    onChange={(e) => {
+                        setSearchName(e.target.value);
+                        setCurrentPage(1);
+                    }}
+                />
+
+                {/* Lọc theo brand */}
+                <select
+                    value={searchBrand}
+                    onChange={(e) => {
+                        setSearchBrand(e.target.value);
+                        setCurrentPage(1);
+                    }}
+                >
+                    <option value="">
+                        Tất cả thương hiệu
+                    </option>
+
+                    <option value="apple">
+                        Apple
+                    </option>
+
+                    <option value="samsung">
+                        Samsung
+                    </option>
+
+                    <option value="xiaomi">
+                        Xiaomi
+                    </option>
+
+                    <option value="oppo">
+                        Oppo
+                    </option>
+                </select>
+
+                {/* Giá từ */}
+                <input
+                    type="number"
+                    placeholder="Giá từ"
+                    value={priceFrom}
+                    onChange={(e) => {
+                        setPriceFrom(e.target.value);
+                        setCurrentPage(1);
+                    }}
+                />
+
+                {/* Giá đến */}
+                <input
+                    type="number"
+                    placeholder="Giá đến"
+                    value={priceTo}
+                    onChange={(e) => {
+                        setPriceTo(e.target.value);
+                        setCurrentPage(1);
+                    }}
+                />
+
+            </div>
+
+
+
+
+
 
             <table>
                 <thead>
