@@ -6,6 +6,46 @@
     margin-bottom: 20px;
 }
 
+.filter-product {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.filter-product input,
+.filter-product select {
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.filter-product input {
+    width: 200px;
+}
+
+.filter-product input[type="number"] {
+    width: 130px;
+}
+
+.filter-product select {
+    width: 180px;
+    cursor: pointer;
+}
+
+.filter-product input:focus,
+.filter-product select:focus {
+    border-color: #333;
+}
+
 .list-product table {
     width: 100%;
     border-collapse: collapse;
@@ -35,7 +75,6 @@
     cursor: pointer;
 }
 
-/* Pagination */
 .pagination {
     display: flex;
     justify-content: center;
@@ -69,4 +108,10 @@
 
 .selected-info {
     margin-top: 15px;
+}
+
+.list-product > p {
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
 }

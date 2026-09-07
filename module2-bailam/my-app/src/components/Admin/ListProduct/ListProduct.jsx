@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import ListProductItem from "../ListProductItem/ListProductItem";
 import "./ListProduct.css";
@@ -86,12 +86,149 @@ const products = [
     }
 ];
 
+const brands = ["Apple", "Samsung", "Xiaomi", "Oppo"];
+
 const ITEMS_PER_PAGE = 5;
 
 function ListProduct() {
+    // Filter
+    const [searchName, setSearchName] = useState('');
+    const [searchBrand, setSearchBrand] = useState("all");
+    const [minPrice, setMinPrice] = useState('');
+    const [maxPrice, setMaxPrice] = useState('');
+
+    // Trang hiện tại
+    const [currentPage, setCurrentPage] = useState(1);
+
+    // Danh sách ID sản phẩm đang được chọn
+    const [selectedIds, setSelectedIds] = useState([]);
+
+    // Filtered Products Logic
+    const filteredProducts = useMemo(() => {
+        return products.filter((product) => {
+            // Filter by Name
+            const matchesName = product.name.toLowerCase().includes(searchName.trim().toLowerCase());
+
+            // Filter by Brand
+            const matchesBrand =
+                searchBrand === 'all' || product.brand.toLowerCase() === searchBrand.toLowerCase();
+
+            // Filter by Price Range (Min & Max)
+            const matchesMinPrice = minPrice === '' || product.price >= Number(minPrice);
+            const matchesMaxPrice = maxPrice === '' || product.price <= Number(maxPrice);
+
+            return matchesName && matchesBrand && matchesMinPrice && matchesMaxPrice;
+        });
+    }, [searchName, searchBrand, minPrice, maxPrice]);
+
+    // Tổng số trang (xét theo filteredProducts)
+    const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+
+    // Lấy sản phẩm của trang hiện tại (xét theo filteredProducts)
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const currentProducts = filteredProducts.slice(
+        startIndex,
+        startIndex + ITEMS_PER_PAGE
+    );
+
+    // Kiểm tra tất cả sản phẩm trên trang hiện tại đã được chọn chưa
+    const isAllSelected =
+        currentProducts.length > 0 &&
+        currentProducts.every((product) =>
+            selectedIds.includes(product.id)
+        );
+
+    // Check/uncheck checkbox tổng
+    const handleSelectAll = (e) => {
+        if (e.target.checked) {
+            const currentPageIds = currentProducts.map(
+                (product) => product.id
+            );
+
+            setSelectedIds((prev) => [
+                ...new Set([...prev, ...currentPageIds]),
+            ]);
+        } else {
+            const currentPageIds = currentProducts.map(
+                (product) => product.id
+            );
+
+            setSelectedIds((prev) =>
+                prev.filter((id) => !currentPageIds.includes(id))
+            );
+        }
+    };
+
+    // Check/uncheck từng sản phẩm
+    const handleSelectProduct = (id) => {
+        setSelectedIds((prev) => {
+            if (prev.includes(id)) {
+                return prev.filter((itemId) => itemId !== id);
+            }
+
+            return [...prev, id];
+        });
+    };
+
+    // Chuyển trang
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+
     return (
         <div className="list-product">
             <h2>Danh sách sản phẩm</h2>
+
+            <div className="filter-product">
+
+                {/* Tìm theo tên */}
+                <input
+                    type="text"
+                    placeholder="Tìm theo tên..."
+                    value={searchName}
+                    onChange={(e) => {
+                        setSearchName(e.target.value);
+                        setCurrentPage(1);
+                    }}
+                />
+
+                {/* Lọc theo brand */}
+                <select
+                    value={searchBrand}
+                    onChange={(e) => {
+                        setSearchBrand(e.target.value);
+                        setCurrentPage(1);
+                    }}
+                >
+                    <option value="all">Tất cả thương hiệu</option>
+                    {brands.map((brand) => (
+                        <option value={brand}>{brand}</option>
+                    ))}
+                </select>
+
+                {/* Giá từ */}
+                <input
+                    type="number"
+                    placeholder="Giá từ"
+                    value={minPrice}
+                    onChange={(e) => {
+                        setMinPrice(e.target.value);
+                        setCurrentPage(1);
+                    }}
+                />
+
+                {/* Giá đến */}
+                <input
+                    type="number"
+                    placeholder="Giá đến"
+                    value={maxPrice}
+                    onChange={(e) => {
+                        setMaxPrice(e.target.value);
+                        setCurrentPage(1);
+                    }}
+                />
+
+            </div>
 
             <table>
                 <thead>
@@ -99,6 +236,8 @@ function ListProduct() {
                         <th>
                             <input
                                 type="checkbox"
+                                checked={isAllSelected}
+                                onChange={handleSelectAll}
                             />
                         </th>
 
@@ -111,15 +250,52 @@ function ListProduct() {
                 </thead>
 
                 <tbody>
-                    {products.map((product) => (
+                    {currentProducts.map((product) => (
                         <ListProductItem
                             key={product.id}
                             item={product}
+                            checked={selectedIds.includes(product.id)}
+                            onSelect={handleSelectProduct}
                         />
                     ))}
                 </tbody>
             </table>
 
+            {/* Phân trang */}
+            <div className="pagination">
+                <button
+                    disabled={currentPage === 1}
+                    onClick={() => handlePageChange(currentPage - 1)}
+                >
+                    Previous
+                </button>
+
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index + 1}
+                        className={
+                            currentPage === index + 1
+                                ? "active"
+                                : ""
+                        }
+                        onClick={() => handlePageChange(index + 1)}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+
+                <button
+                    disabled={currentPage === totalPages}
+                    onClick={() => handlePageChange(currentPage + 1)}
+                >
+                    Next
+                </button>
+            </div>
+
+            {/* Hiển thị sản phẩm đang được chọn */}
+            <div className="selected-info">
+                Đã chọn: <strong>{selectedIds.length}</strong> sản phẩm
+            </div>
         </div>
     );
 }

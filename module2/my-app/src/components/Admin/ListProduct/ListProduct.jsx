@@ -86,6 +86,8 @@ const products = [
     }
 ];
 
+const brands = ["Apple", "Samsung", "Xiaomi", "Oppo"];
+
 const ITEMS_PER_PAGE = 5;
 
 const ListProduct = () => {
@@ -199,10 +201,9 @@ const ListProduct = () => {
                     }}
                 >
                     <option value="all">Tất cả thương hiệu</option>
-                    <option value="apple">Apple</option>
-                    <option value="samsung">Samsung</option>
-                    <option value="xiaomi">Xiaomi</option>
-                    <option value="oppo">Oppo</option>
+                    {brands.map((brand) => (
+                        <option value={brand}>{brand}</option>
+                    ))}
                 </select>
 
                 {/* Giá từ */}
@@ -228,11 +229,6 @@ const ListProduct = () => {
                 />
 
             </div>
-
-
-
-
-
 
             <table>
                 <thead>
