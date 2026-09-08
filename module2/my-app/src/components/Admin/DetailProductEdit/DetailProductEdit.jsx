@@ -63,7 +63,9 @@ const DetailProductEdit = () => {
         description: product.description,
         brand: product.brand,
         price: product.price,
-        thumbnail: product.thumbnail
+        thumbnail: product.thumbnail,
+        thumbnailFile: null,
+        thumbnailPreview: `/upload/img/product/${product.thumbnail}`
     });
 
     const handleChange = (e) => {
@@ -136,12 +138,39 @@ const DetailProductEdit = () => {
                 <div className="form-group">
                     <label>Thumbnail</label>
 
-                    <input
-                        type="text"
-                        name="thumbnail"
-                        value={formData.thumbnail}
-                        onChange={handleChange}
-                    />
+                    <div className="form-group">
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => {
+                                const file = e.target.files[0];
+
+                                if (!file) return;
+
+                                setFormData((prev) => ({
+                                    ...prev,
+                                    thumbnailFile: file,
+                                    thumbnailPreview: URL.createObjectURL(file)
+                                }));
+                            }}
+                        />
+
+                        {formData.thumbnailPreview && (
+                            <div style={{ marginTop: "10px" }}>
+                                <img
+                                    src={formData.thumbnailPreview}
+                                    alt="Thumbnail preview"
+                                    style={{
+                                        width: "150px",
+                                        height: "150px",
+                                        objectFit: "cover",
+                                        borderRadius: "8px"
+                                    }}
+                                />
+                            </div>
+                        )}
+                    </div>
+
                 </div>
 
                 <button type="submit">
