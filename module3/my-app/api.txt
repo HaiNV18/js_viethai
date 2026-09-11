@@ -1,0 +1,59 @@
+API lấy data kênh YouTube.
+https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,contentDetails&id=UC-lHJZR3Gqxm24_Vd_AJ5Yw&key=AIzaSyDrfz5txGhBaKJNmKS__5lsIQ-Kj5C3rSo
+
+Response:
+{
+  "kind": "youtube#channelListResponse",
+  "etag": "dt-IY6G6nNNGaSkO_oQ9wPfxVXU",
+  "pageInfo": {
+    "totalResults": 1,
+    "resultsPerPage": 5
+  },
+  "items": [
+    {
+      "kind": "youtube#channel",
+      "etag": "9IfJClfmK2e1iDZHADiCsdxDgo4",
+      "id": "UC-lHJZR3Gqxm24_Vd_AJ5Yw",
+      "snippet": {
+        "title": "PewDiePie",
+        "description": "I make videos.",
+        "customUrl": "@pewdiepie",
+        "publishedAt": "2010-04-29T10:54:00Z",
+        "thumbnails": {
+          "default": {
+            "url": "https://yt3.ggpht.com/vik8mAiwHQbXiFyKfZ3__p55_VBdGvwxPpuPJBBwdbF0PjJxikXhrP-C3nLQAMAxGNd_-xQCIg=s88-c-k-c0x00ffffff-no-rj",
+            "width": 88,
+            "height": 88
+          },
+          "medium": {
+            "url": "https://yt3.ggpht.com/vik8mAiwHQbXiFyKfZ3__p55_VBdGvwxPpuPJBBwdbF0PjJxikXhrP-C3nLQAMAxGNd_-xQCIg=s240-c-k-c0x00ffffff-no-rj",
+            "width": 240,
+            "height": 240
+          },
+          "high": {
+            "url": "https://yt3.ggpht.com/vik8mAiwHQbXiFyKfZ3__p55_VBdGvwxPpuPJBBwdbF0PjJxikXhrP-C3nLQAMAxGNd_-xQCIg=s800-c-k-c0x00ffffff-no-rj",
+            "width": 800,
+            "height": 800
+          }
+        },
+        "localized": {
+          "title": "PewDiePie",
+          "description": "I make videos."
+        },
+        "country": "JP"
+      },
+      "contentDetails": {
+        "relatedPlaylists": {
+          "likes": "",
+          "uploads": "UU-lHJZR3Gqxm24_Vd_AJ5Yw"
+        }
+      },
+      "statistics": {
+        "viewCount": "29518805146",
+        "subscriberCount": "109000000",
+        "hiddenSubscriberCount": false,
+        "videoCount": "4665"
+      }
+    }
+  ]
+}
