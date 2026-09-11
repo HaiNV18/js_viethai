@@ -1,3 +1,8 @@
 Project name: JS_Fullstack
 Password: U8P*C8%/#GaX4s&
 Project URL: https://gcrrisswbfjumxcvzwcn.supabase.co
+
+API Youtube
+https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,contentDetails&id=UC-lHJZR3Gqxm24_Vd_AJ5Yw&key=YOUR_KEY
+
+dienmaynk.vn
