@@ -2,7 +2,7 @@ import express from "express";
 
 const router = express.Router();
 
-const DEFAULT_AVATAR = "/img/channel/500x500/default-channel-thumbnail.jpg";
+const DEFAULT_AVATAR = "default-channel-thumbnail.jpg";
 
 const CHANNELS = [
     {
@@ -38,7 +38,7 @@ const CHANNELS = [
         id: "UC-lHJZR3Gqxm24_Vd_AJ5Yw",
         name: "PewDiePie",
         handle: "@PewDiePie",
-        avatar: "/img/channel/500x500/pewdiepie-channel-thumbnail.jpg",
+        avatar: "pewdiepie-channel-thumbnail.jpg",
         subscribers: 111000000,
         subscribersFormatted: "111M",
         category: "Game",
@@ -52,7 +52,7 @@ const CHANNELS = [
         id: "UCGCZAYq5Xxojl_tSXcVJhiQ",
         name: "ANN News Channel",
         handle: "@ANNnewsCH",
-        avatar: "/img/channel/500x500/ann-news-channel-thumbnail.jpg",
+        avatar: "ann-news-channel-thumbnail.jpg",
         subscribers: 3800000,
         subscribersFormatted: "3.8M",
         category: "News",
@@ -65,7 +65,7 @@ const CHANNELS = [
         id: "UC8butISFwT-Wl7EV0hUK0BQ",
         name: "FreeCodeCamp.org",
         handle: "@freecodecamp",
-        avatar: "/img/channel/500x500/freecodecamp-channel-thumbnail.jpg",
+        avatar: "freecodecamp-channel-thumbnail.jpg",
         subscribers: 10200000,
         subscribersFormatted: "10.2M",
         category: "Development",
@@ -78,7 +78,7 @@ const CHANNELS = [
         id: "UCJFZiqLm7iJ0vEM18y4_bWw",
         name: "Hololive Ch. hololive-VTuber",
         handle: "@hololivetv",
-        avatar: "/img/channel/500x500/hololive-channel-thumbnail.jpg",
+        avatar: "hololive-channel-thumbnail.jpg",
         subscribers: 2500000,
         subscribersFormatted: "2.5M",
         category: "VTuber",
@@ -92,7 +92,7 @@ const CHANNELS = [
         id: "UC4YaOt1yT-ZeyB0OmxHgolA",
         name: "Kizuna AI Channel",
         handle: "@KizunaAI",
-        avatar: "/img/channel/500x500/kizuna-ai-channel-thumbnail.jpg",
+        avatar: "kizuna-ai-channel-thumbnail.jpg",
         subscribers: 3000000,
         subscribersFormatted: "3.0M",
         category: "VTuber",
@@ -106,7 +106,7 @@ const CHANNELS = [
         id: "UC17VwD86qB9hAIdPnm6dYcw",
         name: "Muse Vietnam",
         handle: "@MuseVN",
-        avatar: "/img/channel/500x500/musevn-channel-thumbnail.jpg",
+        avatar: "musevn-channel-thumbnail.jpg",
         subscribers: 1800000,
         subscribersFormatted: "1.8M",
         category: "Entertainment",
@@ -118,7 +118,7 @@ const CHANNELS = [
         id: "UClOf1XXinvZsy4wKPAkro2A",
         name: "PlayOverwatch",
         handle: "@PlayOverwatch",
-        avatar: "/img/channel/500x500/play-overwatch-channel-thumbnail.jpg",
+        avatar: "play-overwatch-channel-thumbnail.jpg",
         subscribers: 3600000,
         subscribersFormatted: "3.6M",
         category: "Game",
@@ -132,7 +132,7 @@ const CHANNELS = [
         id: "UC9nK195uN_z_4L0Qj7x1l0w",
         name: "SBS Drama",
         handle: "@sbsdrama",
-        avatar: "/img/channel/500x500/sbs-channel-thumbnail.jpg",
+        avatar: "sbs-channel-thumbnail.jpg",
         subscribers: 7200000,
         subscribersFormatted: "7.2M",
         category: "Entertainment",
@@ -145,7 +145,7 @@ const CHANNELS = [
         id: "UCuP2vJ6_0nB9H_P1o5_P3wA",
         name: "Vexsper",
         handle: "@vexsper",
-        avatar: "/img/channel/500x500/vexsper-channel-thumbnail.jpg",
+        avatar: "vexsper-channel-thumbnail.jpg",
         subscribers: 500000,
         subscribersFormatted: "500K",
         category: "Development",
