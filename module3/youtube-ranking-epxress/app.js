@@ -8,6 +8,17 @@ const app = express();
 const PORT = process.env.PORT ?? 3000; // lấy PORT=4000, không được thì lấy port 3000
 console.log(process.env.PORT)
 
+// 0. CORS middleware
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(200);
+    }
+    next();
+});
+
 // 1. Built-in middleware — có sẵn trong Express
 app.use(express.json());           // Parse JSON body
 app.use(express.urlencoded({ extended: true })); // Parse form data

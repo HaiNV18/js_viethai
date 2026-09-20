@@ -3,6 +3,7 @@ export interface Channel {
     name: string;
     handle: string;
     avatar: string;
+    banner: string;
     subscribers: number;
     subscribersFormatted: string;
     category: string;
@@ -14,5 +15,5 @@ export interface Channel {
     website?: string;
 }
 
-export type SubscribeSortOption = "" | "highest" | "lowest";
+export type SubscribeSortOption = "" | "highest" | "lowest" | "desc-sub" | "asc-sub";
 export type CategoryFilterOption = "" | "VTuber" | "Game" | "News" | "Development" | "Music" | "Tech" | "Entertainment";

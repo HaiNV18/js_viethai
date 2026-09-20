@@ -1,8 +1,8 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 
 import Ranking from "./components/Ranking/Ranking";
-
 import TableRanking from "./components/Ranking/TableRanking/TableRanking";
+import DetailChannel from "./components/Ranking/DetailChannel/DetailChannel";
 
 import "./App.css";
 
@@ -17,10 +17,16 @@ function App() {
 
                 <Route element={<Ranking />}>
 
-                    {/* Main */}
+                    {/* Main List */}
                     <Route
                         path="/"
                         element={<TableRanking />}
+                    />
+
+                    {/* Channel Detail */}
+                    <Route
+                        path="/channel/:idChannel"
+                        element={<DetailChannel />}
                     />
 
                 </Route>

@@ -3,6 +3,7 @@ import express from "express";
 const router = express.Router();
 
 const DEFAULT_AVATAR = "default-channel-thumbnail.jpg";
+const DEFAULT_BANNER = "default-channel-banner.jpg";
 
 const CHANNELS = [
     {
@@ -10,6 +11,7 @@ const CHANNELS = [
         name: "MrBeast",
         handle: "@MrBeast",
         avatar: DEFAULT_AVATAR,
+        banner: DEFAULT_BANNER,
         subscribers: 375000000,
         subscribersFormatted: "375M",
         category: "Entertainment",
@@ -24,7 +26,8 @@ const CHANNELS = [
         id: "UCq-Fj5jknLsUf-MWSy4_brA",
         name: "T-Series",
         handle: "@tseries",
-        avatar: DEFAULT_AVATAR,
+        avatar: "tseries-channel-thumbnail.jpg",
+        banner: DEFAULT_BANNER,
         subscribers: 285000000,
         subscribersFormatted: "285M",
         category: "Music",
@@ -39,6 +42,7 @@ const CHANNELS = [
         name: "PewDiePie",
         handle: "@PewDiePie",
         avatar: "pewdiepie-channel-thumbnail.jpg",
+        banner: DEFAULT_BANNER,
         subscribers: 111000000,
         subscribersFormatted: "111M",
         category: "Game",
@@ -53,6 +57,7 @@ const CHANNELS = [
         name: "ANN News Channel",
         handle: "@ANNnewsCH",
         avatar: "ann-news-channel-thumbnail.jpg",
+        banner: DEFAULT_BANNER,
         subscribers: 3800000,
         subscribersFormatted: "3.8M",
         category: "News",
@@ -66,6 +71,7 @@ const CHANNELS = [
         name: "FreeCodeCamp.org",
         handle: "@freecodecamp",
         avatar: "freecodecamp-channel-thumbnail.jpg",
+        banner: DEFAULT_BANNER,
         subscribers: 10200000,
         subscribersFormatted: "10.2M",
         category: "Development",
@@ -77,13 +83,14 @@ const CHANNELS = [
     {
         id: "UCJFZiqLm7iJ0vEM18y4_bWw",
         name: "Hololive Ch. hololive-VTuber",
-        handle: "@hololivetv",
+        handle: "@hololive",
         avatar: "hololive-channel-thumbnail.jpg",
+        banner: "hololive-channel-banner.jpg",
         subscribers: 2500000,
         subscribersFormatted: "2.5M",
         category: "VTuber",
         videosCount: 2100,
-        url: "https://youtube.com/@hololivetv",
+        url: "https://youtube.com/@hololive",
         twitter: "https://twitter.com/hololivetv",
         website: "https://hololive.hololivepro.com",
         tiktok: "https://tiktok.com/@hololive_eng"
@@ -93,6 +100,7 @@ const CHANNELS = [
         name: "Kizuna AI Channel",
         handle: "@KizunaAI",
         avatar: "kizuna-ai-channel-thumbnail.jpg",
+        banner: DEFAULT_BANNER,
         subscribers: 3000000,
         subscribersFormatted: "3.0M",
         category: "VTuber",
@@ -107,6 +115,7 @@ const CHANNELS = [
         name: "Muse Vietnam",
         handle: "@MuseVN",
         avatar: "musevn-channel-thumbnail.jpg",
+        banner: DEFAULT_BANNER,
         subscribers: 1800000,
         subscribersFormatted: "1.8M",
         category: "Entertainment",
@@ -119,6 +128,7 @@ const CHANNELS = [
         name: "PlayOverwatch",
         handle: "@PlayOverwatch",
         avatar: "play-overwatch-channel-thumbnail.jpg",
+        banner: DEFAULT_BANNER,
         subscribers: 3600000,
         subscribersFormatted: "3.6M",
         category: "Game",
@@ -133,6 +143,7 @@ const CHANNELS = [
         name: "SBS Drama",
         handle: "@sbsdrama",
         avatar: "sbs-channel-thumbnail.jpg",
+        banner: DEFAULT_BANNER,
         subscribers: 7200000,
         subscribersFormatted: "7.2M",
         category: "Entertainment",
@@ -146,6 +157,7 @@ const CHANNELS = [
         name: "Vexsper",
         handle: "@vexsper",
         avatar: "vexsper-channel-thumbnail.jpg",
+        banner: DEFAULT_BANNER,
         subscribers: 500000,
         subscribersFormatted: "500K",
         category: "Development",
@@ -154,18 +166,30 @@ const CHANNELS = [
         twitter: "https://twitter.com/vexsper"
     },
     {
-        id: "UCBJycsmduvYEL83R_U4JriQ",
-        name: "MKBHD (Marques Brownlee)",
-        handle: "@mkbhd",
-        avatar: DEFAULT_AVATAR,
-        subscribers: 19200000,
-        subscribersFormatted: "19.2M",
+        id: "UCVia_crjzJylRmGq7SHTiaw",
+        name: "Hearthstone",
+        handle: "@Hearthstone",
+        avatar: "hearthstone-channel-thumbnail.jpg",
+        banner: "hearthstone-channel-banner.jpg",
+        subscribers: 496000,
+        subscribersFormatted: "496K",
+        category: "Game",
+        videosCount: 1680,
+        url: "https://youtube.com/@Hearthstone",
+        website: "https://us.shop.battle.net/en-us/family/hearthstone",
+    },
+    {
+        id: "2",
+        name: "VTC NEWS",
+        handle: "@VTCNewstintuc",
+        avatar: "vtc-news-channel-thumbnail.jpg",
+        banner: "vtc-news-channel-banner.jpg",
+        subscribers: 449000,
+        subscribersFormatted: "449K",
         category: "Tech",
         videosCount: 1680,
-        url: "https://youtube.com/@mkbhd",
-        twitter: "https://twitter.com/MKBHD",
-        website: "https://mkbhd.com",
-        tiktok: "https://tiktok.com/@mkbhd"
+        url: "https://youtube.com/@VTCNewstintuc",
+        website: "https://vtcnews.vn/",
     }
 ];
 
