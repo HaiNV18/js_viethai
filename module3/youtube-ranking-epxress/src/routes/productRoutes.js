@@ -21,6 +21,7 @@ let products = [
     { id: 9, name: "iPhone", category: "phone", price: 2000000 },
     { id: 10, name: "iPhone", category: "phone", price: 2000000 },
     { id: 11, name: "iPhone", category: "phone", price: 2000000 },
+    { id: 12, name: "Acer", category: "laptop", price: 14000000 },
 ];
 
 let categories = [
