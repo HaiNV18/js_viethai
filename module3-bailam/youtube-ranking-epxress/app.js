@@ -13,6 +13,7 @@ app.use(express.json());           // Parse JSON body
 app.use(express.urlencoded({ extended: true })); // Parse form data
 
 function auth(req, res, next) {
+    // Validate dành cho login, register, v.v...
     console.log("Middleware auth đang chạy...");
     next();
 }
@@ -38,9 +39,6 @@ app.use("/api/v1", productRoutes);
 // API YOUTUBE
 app.use("/api/v1", listChannelRoutes);
 app.use("/api/v1", detailChannelRoutes);
-
-
-
 
 
 

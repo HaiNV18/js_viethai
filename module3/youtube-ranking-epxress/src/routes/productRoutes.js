@@ -68,11 +68,20 @@ router.get("/products", (req, res) => {
     const limit = Number(req.query.limit) || 10;
     const sort  = req.query.sort;
     const order = req.query.order;
+    const category  = req.query.category;
+    const minPrice = req.query.minPrice;
+    const maxPrice = req.query.maxPrice;
     let result = [...products];
 
     // Lấy dữ liệu theo category
-    if (req.query.category)
-        result = result.filter((p) => p.category === req.query.category);
+    if (category)
+        result = result.filter((p) => p.category === category);
+
+    // Lọc theo giá
+    if (minPrice)
+        result = result.filter((p) => p.price >= Number(minPrice));
+    if (maxPrice)
+        result = result.filter((p) => p.price <= Number(maxPrice));
 
     // Sắp xếp: nếu là number thì sort theo number, nếu là string thì compare string
     if (sort) {
