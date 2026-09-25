@@ -7,6 +7,8 @@ import ProductMessages from "../error/message.js";
 import createProductSchema from "../schemas/productSchema.js";
 import { validate } from "../middleware/validate.js";
 
+import { getAllProducts, getProduct } from "../models/productModel.js";
+
 const router = Router();
 
 let products = [
@@ -35,18 +37,39 @@ router.get("/", (req, res) => {
     res.json({ message: "Server đang chạy!" });
 });
 
-router.get("/products/all", (req, res) => {
-    res.json(products);
+router.get("/products/all", async (req, res) => {
+    try {
+        const listProducts = await getAllProducts();
+
+        res.status(200).json({
+            success: true,
+            data: listProducts
+        });
+    } catch (error) {
+        console.error("Lỗi lấy products:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Không thể lấy danh sách sản phẩm"
+        });
+    }
 });
 
-router.get("/product/:id", (req, res, next) => {
+router.get("/product/:id", async (req, res, next) => {
     try {
         const id = parseInt(req.params.id); // "42" → 42
-        const product = products.find((p) => p.id === id);
+        const product = await getProduct(id);
 
         if (!product) throw new AppError(404, ProductMessages.NOT_FOUND);
         ok(res, product);
-    } catch (err) { next(err); }
+    } catch (error) {
+        console.error("Lỗi lấy products:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Không thể lấy danh sách sản phẩm"
+        });
+    }
 });
 
 // URL: GET /products?category=phone&minPrice=5000000

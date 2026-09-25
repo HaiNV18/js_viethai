@@ -1,5 +1,30 @@
 import pool from "../config/database.js";
 
+export const getAllProducts = async () => {
+    const query = `
+        SELECT *
+        FROM public.products
+        ORDER BY id;
+    `;
+
+    const { rows } = await pool.query(query); // Run query
+
+    return rows;
+};
+
+
+export const getProduct = async (id) => {
+    const query = `
+        SELECT *
+        FROM public.products
+        WHERE id = $1;
+    `;
+
+    const { rows } = await pool.query(query, [id]);
+
+    return rows;
+};
+
 export const createProduct = async (product) => {
     const {
         title_prod,
@@ -17,7 +42,7 @@ export const createProduct = async (product) => {
         img_3,
     } = product;
 
-    const query = `
+    const queryInsertProduct = `
         INSERT INTO public.products (
             title_prod,
             code,
@@ -56,7 +81,7 @@ export const createProduct = async (product) => {
         img_3 ?? null,
     ];
 
-    const { rows } = await pool.query(query, values);
+    const { rows } = await pool.query(queryInsertProduct, values);
 
     return rows[0];
 };
