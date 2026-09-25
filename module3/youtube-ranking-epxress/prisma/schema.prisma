@@ -1,0 +1,17 @@
+// 1. Generator — Prisma sẽ sinh ra gì
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 2. Datasource — kết nối database nào
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 3. Enum — giống CREATE TYPE trong PostgreSQL
+enum StudentStatus {
+  active
+  inactive
+  graduated
+}

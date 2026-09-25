@@ -8,6 +8,7 @@ import createProductSchema from "../schemas/productSchema.js";
 import { validate } from "../middleware/validate.js";
 
 import { getAllProducts, getProduct } from "../models/productModel.js";
+// import { getProductByCategory } from "../models/categoryModel.js";
 
 const router = Router();
 
@@ -135,7 +136,28 @@ router.get("/products", (req, res) => {
 
 
 
+// router.get("/categories/:category/products/:id", async (req, res, next) => {
+//     try {
+//         const { category, id } = req.params;
 
+//         const product = await getProductByCategory(category, id);
+
+//         if (!product) {
+//             return res.status(404).json({
+//                 success: false,
+//                 message: "Không tìm thấy sản phẩm"
+//             });
+//         }
+
+//         res.status(200).json({
+//             success: true,
+//             data: product
+//         });
+
+//     } catch (error) {
+//         next(error);
+//     }
+// });
 
 router.get("/categories/:category/products/:id", (req, res) => {
     const { category, id } = req.params;
