@@ -1,0 +1,11 @@
+Prisma 7 có thay đổi lớn: bỏ thuộc tính url
+Hãy cài đặt Prisma 6
+npm install @prisma/client@6.4.0
+npm install -D prisma@6.4.0
+
+Prisma Client
+npm install @prisma/client
+
+Tạo ra Prisma Client (Generate)
+Lệnh này được dùng mỗi khi chỉnh sửa schema.prisma
+npx prisma generate

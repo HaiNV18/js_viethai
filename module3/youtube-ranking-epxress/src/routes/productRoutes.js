@@ -56,7 +56,7 @@ router.get("/products/all", async (req, res) => {
     }
 });
 
-router.get("/product/:id", async (req, res, next) => {
+router.get("/product/:id", async (req, res) => {
     try {
         const id = parseInt(req.params.id); // "42" → 42
         const product = await getProduct(id);

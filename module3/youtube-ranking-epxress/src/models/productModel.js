@@ -12,7 +12,6 @@ export const getAllProducts = async () => {
     return rows;
 };
 
-
 export const getProduct = async (id) => {
     const query = `
         SELECT *

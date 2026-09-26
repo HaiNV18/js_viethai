@@ -1,6 +1,8 @@
 import express from "express";
 
+import categoryProductRoutes from "./src/routes/categoryProductRoutes.js";
 import productRoutes from "./src/routes/productRoutes.js";
+import loginRoutes from "./src/routes/loginRoutes.js";
 import listChannelRoutes from "./src/routes/api-youtube/listChannelRoutes.js";
 import detailChannelRoutes from "./src/routes/api-youtube/detailChannelRoutes.js";
 
@@ -44,7 +46,9 @@ app.use((err, req, res, next) => {
 });
 
 // http://localhost:4000/api/v1/products
+app.use("/api/v1", categoryProductRoutes);
 app.use("/api/v1", productRoutes);
+app.use("/api/v1", loginRoutes);
 
 // API YOUTUBE
 app.use("/api/v1", listChannelRoutes);
