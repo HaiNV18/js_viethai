@@ -8,7 +8,6 @@ import createProductSchema from "../schemas/productSchema.js";
 import { validate } from "../middleware/validate.js";
 
 import { getAllProducts, getProduct } from "../models/productModel.js";
-// import { getProductByCategory } from "../models/categoryModel.js";
 
 const router = Router();
 

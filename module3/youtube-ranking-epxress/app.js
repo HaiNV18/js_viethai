@@ -3,8 +3,10 @@ import express from "express";
 import categoryProductRoutes from "./src/routes/categoryProductRoutes.js";
 import productRoutes from "./src/routes/productRoutes.js";
 import loginRoutes from "./src/routes/loginRoutes.js";
-import listChannelRoutes from "./src/routes/api-youtube/listChannelRoutes.js";
+
 import detailChannelRoutes from "./src/routes/api-youtube/detailChannelRoutes.js";
+import listChannelRoutes from "./src/routes/api-youtube/listChannelRoutes.js";
+import updateChannelRoutes from "./src/routes/api-youtube/updateChannelRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT ?? 3000; // lấy PORT=4000, không được thì lấy port 3000
@@ -51,8 +53,9 @@ app.use("/api/v1", productRoutes);
 app.use("/api/v1", loginRoutes);
 
 // API YOUTUBE
-app.use("/api/v1", listChannelRoutes);
 app.use("/api/v1", detailChannelRoutes);
+app.use("/api/v1", listChannelRoutes);
+app.use("/api/v1", updateChannelRoutes);
 
 
 
