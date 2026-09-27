@@ -7,4 +7,5 @@ const createProductSchema = yup.object({
     stock: yup.number().integer().min(0).required(),
 });
 
+
 export default createProductSchema;

@@ -4,7 +4,6 @@ import {ok} from "../error/ApiResponse.js";
 import AppError from "../error/AppError.js";
 import ProductMessages from "../error/message.js";
 
-import createProductSchema from "../schemas/productSchema.js";
 import { validate } from "../middleware/validate.js";
 
 import { getLogin } from "../models/accountModel.js";
