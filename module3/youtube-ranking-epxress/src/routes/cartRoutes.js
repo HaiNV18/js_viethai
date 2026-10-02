@@ -1,4 +1,3 @@
-// src/routes/productRoutes.ts
 import { Router } from "express";
 import {ok} from "../error/ApiResponse.js";
 import AppError from "../error/AppError.js";
@@ -8,7 +7,6 @@ import { validate } from "../middleware/validate.js";
 import { addToCartWithTransaction } from "../models/cartModel.js";
 
 const router = Router();
-
 
 router.post("/cart/add", async (req, res) => {
     try {

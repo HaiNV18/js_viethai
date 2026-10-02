@@ -50,13 +50,13 @@ app.use((err, req, res, next) => {
 });
 
 // http://localhost:4000/api/v1
+app.use("/api/v1", cartRoutes);
 app.use("/api/v1", categoryProductRoutes);
 app.use("/api/v1", dashboardRoutes);
 app.use("/api/v1", productRoutes);
 app.use("/api/v1", loginRoutes);
 
 // API YOUTUBE
-app.use("/api/v1", cartRoutes);
 app.use("/api/v1", detailChannelRoutes);
 app.use("/api/v1", listChannelRoutes);
 app.use("/api/v1", updateChannelRoutes);

@@ -9,6 +9,7 @@ import createProductSchema from "../schemas/productSchema.js";
 import searchProductSchema from "../schemas/searchProductSchema.js";
 import { validate } from "../middleware/validate.js";
 
+import { productCtrlGetAllProducts } from "../controller/productController.js";
 import { getAllProducts, getProduct } from "../models/productModel.js";
 
 const router = Router();
@@ -39,23 +40,7 @@ router.get("/", (req, res) => {
     res.json({ message: "Server đang chạy!" });
 });
 
-router.get("/products/all", async (req, res) => {
-    try {
-        const listProducts = await getAllProducts();
-
-        res.status(200).json({
-            success: true,
-            data: listProducts
-        });
-    } catch (error) {
-        console.error("Lỗi lấy products:", error);
-
-        res.status(500).json({
-            success: false,
-            message: "Không thể lấy danh sách sản phẩm"
-        });
-    }
-});
+router.get("/products/all", productCtrlGetAllProducts);
 
 router.get("/product/:id", async (req, res) => {
     try {

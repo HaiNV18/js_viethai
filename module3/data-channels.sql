@@ -53,5 +53,20 @@ INSERT INTO channels (
 
 ('UCVia_crjzJylRmGq7SHTiaw', 'Hearthstone', '@Hearthstone', 'hearthstone-channel-thumbnail.jpg', 'hearthstone-channel-banner.jpg', 496000, '496K', 'Game', 1680, 'https://youtube.com/@Hearthstone', 'https://us.shop.battle.net/en-us/family/hearthstone', NULL, NULL, NULL),
 
-('UC68VHcQS5x-WNFmf5cAFtgg', 'VTC NEWS', '@VTCNewstintuc', 'vtc-news-channel-thumbnail.jpg', 'vtc-news-channel-banner.jpg', 449000, '449K', 'Tech', 1680, 'https://youtube.com/@VTCNewstintuc', 'https://vtcnews.vn/', NULL, NULL, NULL)
+('UCJFZiqLm7iJ0vEM18y4_bWw', 'Hololive Ch. hololive-VTuber', '@hololive', 'hololive-channel-thumbnail.jpg', 'hololive-channel-banner.jpg', 2500000, '2.5M', 'VTuber', 2100, 'https://youtube.com/@hololive', 'https://hololive.hololivepro.com', NULL, 'https://twitter.com/hololivetv', 'https://tiktok.com/@hololive_eng'),
+
+('UCkWnwVAYGshTEVDPZ451kBQ', 'essie ch.', '@essiech', 'essie-channel-thumbnail.jpg', 'essie-channel-banner.jpg', 75400, '75.4K', 'VTuber', 497, 'https://www.youtube.com/@essiech', NULL, NULL, 'https://x.com/essie_ch', NULL)
 ON CONFLICT (id) DO NOTHING;
+
+
+
+-- UCp-9F3MEliOQ2sbAnG0OqLQ Gawr Gura Ch. hololive-EN
+-- UCCzUftO8KOVkV4wQG1vkU1g Marine Ch. 宝鐘マリン
+-- UC5CwaMl1eIgY8h02uZw7M2g Suisei Channel
+-- UC1DCedRgGHBdm81E1llLhOQ Pekora Ch. 兎田ぺこら
+-- UC-hM6YJuNYVAmUWxeIr9FeA Kuzuha Channel
+-- UCspv01oxUFf_MTSipURRhkA Kanae Channel
+-- UC0ZTVxCHkZanT5dnP2FZD4Q Mori Calliope Ch. hololive-EN
+-- UCMwGHR0BTZuLsmjY_NT5Pwg Takanashi Kiara Ch. hololive-EN
+-- UCr1yE6Q0n8QzG6v0fY3j6aQ ironmouse
+-- UCX7YkU9nEeaoZbkVLVajcMg にじさんじ

@@ -1,59 +1,32 @@
 // src/routes/productRoutes.ts
 import { Router } from "express";
-import bcrypt from "bcrypt";
-import {ok} from "../error/ApiResponse.js";
 import AppError from "../error/AppError.js";
 import ProductMessages from "../error/message.js";
 
 import { validate } from "../middleware/validate.js";
 
-import { getLogin } from "../models/accountModel.js";
+import { forgotPasswordController } from "../controller/forgotPasswordController.js";
+import { loginController } from "../controller/loginController.js";
+// import { registerController } from "../controller/registerController.js";
 
 const router = Router();
 
-router.post("/login", async (req, res) => {
-    try {
-        const username  = req.body.username;
-        const password = req.body.password;
+router.post("/login", loginController);
 
-        if (!username || !password) {
-            return res.status(400).json({
-                success: false,
-                message: "Vui lòng nhập tên đăng nhập và mật khẩu"
-            });
-        }
+// router.post("/register", registerController);
 
-        const user = await getLogin(username);
-        if (!user) {
-            return res.status(401).json({
-                success: false,
-                message: "Tên đăng nhập hoặc mật khẩu không chính xác"
-            });
-        }
+router.post("/forgot-password", forgotPasswordController);
 
-        // Compare password
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(401).json({
-                success: false,
-                message: "Tên đăng nhập hoặc mật khẩu không chính xác"
-            });
-        }
+// router.post("/logout", logoutController);
 
-        // login successful
-        const { password: _, ...userWithoutPassword } = user;
 
-        // if (!login) throw new AppError(404, "Tên đăng nhập hoặc mật khẩu sai");
-        ok(res, userWithoutPassword);
-    } catch (error) {
-        console.error("Lỗi lấy products:", error);
 
-        res.status(500).json({
-            success: false,
-            message: "Không thể đăng nhập"
-        });
-    }
-});
+
+
+
+
+
+
 
 
 // 4 APIs

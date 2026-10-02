@@ -44,25 +44,25 @@ export const getCategoryStats = async () => {
     return rows;
 };
 
-export const getCategoryStatsPrisma = async () => {
-    const stats = await prisma.product.groupBy({
-        by: ['categoryId'],
-        _count: {
-            id: true,
-        },
-        _sum: {
-            qty: true,
-        },
-        _avg: {
-            price: true,
-        },
-        _min: {
-            price: true,
-        },
-        _max: {
-            price: true,
-        },
-    });
+// export const getCategoryStatsPrisma = async () => {
+//     const stats = await prisma.product.groupBy({
+//         by: ['categoryId'],
+//         _count: {
+//             id: true,
+//         },
+//         _sum: {
+//             qty: true,
+//         },
+//         _avg: {
+//             price: true,
+//         },
+//         _min: {
+//             price: true,
+//         },
+//         _max: {
+//             price: true,
+//         },
+//     });
 
-    return stats;
-};
+//     return stats;
+// };
