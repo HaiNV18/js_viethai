@@ -5,6 +5,7 @@ import AppError from "../error/AppError.js";
 import ProductMessages from "../error/message.js";
 
 import { validate } from "../middleware/validate.js";
+import { addToCartWithTransaction } from "../models/cartModel.js";
 
 const router = Router();
 
@@ -20,7 +21,13 @@ router.post("/cart/add", async (req, res) => {
             });
         }
 
+        const result = await addToCartWithTransaction(account_id, product_id, quantity);
 
+        return res.status(200).json({
+            success: true,
+            message: "Đã thêm sản phẩm vào giỏ hàng thành công",
+            data: result
+        });
 
     } catch (error) {
         console.error("Lỗi lấy products:", error);

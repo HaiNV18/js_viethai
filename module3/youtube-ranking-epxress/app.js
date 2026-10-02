@@ -2,8 +2,9 @@ import express from "express";
 
 import cartRoutes from "./src/routes/cartRoutes.js";
 import categoryProductRoutes from "./src/routes/categoryProductRoutes.js";
-import loginRoutes from "./src/routes/loginRoutes.js";
+import dashboardRoutes from "./src/routes/dashboardRoutes.js";
 import productRoutes from "./src/routes/productRoutes.js";
+import loginRoutes from "./src/routes/loginRoutes.js";
 
 import detailChannelRoutes from "./src/routes/api-youtube/detailChannelRoutes.js";
 import listChannelRoutes from "./src/routes/api-youtube/listChannelRoutes.js";
@@ -48,8 +49,9 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: "Lỗi server" });
 });
 
-// http://localhost:4000/api/v1/products
+// http://localhost:4000/api/v1
 app.use("/api/v1", categoryProductRoutes);
+app.use("/api/v1", dashboardRoutes);
 app.use("/api/v1", productRoutes);
 app.use("/api/v1", loginRoutes);
 

@@ -5,30 +5,28 @@ import AppError from "../error/AppError.js";
 import ProductMessages from "../error/message.js";
 
 import { validate } from "../middleware/validate.js";
+import { getCategoryStats } from "../models/categoryModel.js";
 
 const router = Router();
 
-// Code này do Copilot đề xuất
 router.get("/dashboard", async (req, res) => {
     try {
         // Thống kê số lượng sản phẩm theo danh mục
-        const categoryStats = await Product.aggregate([
-            {
-                $group: {
-                    _id: "$category",
-                    count: { $sum: 1 }
-                }
-            }
-        ]);
+        const categoryStats = await getCategoryStats();
+        const grandTotalProducts = categoryStats.reduce((sum, item) => sum + item.total_products, 0);
+        const grandTotalStock = categoryStats.reduce((sum, item) => sum + item.total_stock, 0);
 
-        // Trả về kết quả thống kê
         res.status(200).json({
             success: true,
-            data: categoryStats
+            data: {
+                categoryStats,
+                grandTotalProducts,
+                grandTotalStock
+            }
         });
 
     } catch (error) {
-        console.error("Lỗi lấy products:", error);
+        console.error("Lỗi thống kê:", error);
 
         res.status(500).json({
             success: false,
