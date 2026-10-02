@@ -3,7 +3,6 @@ import pool from "../../config/database.js"
 export const getListIdChannel = async () => {
     const query = `
         SELECT id
-            , name
         FROM channels
         ;
     `;

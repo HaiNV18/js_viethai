@@ -6,14 +6,14 @@ export const getLogin = async (username) => {
             , firstname
             , lastname
             , username
+            , password
             , email
             , phone
         FROM accounts
-        WHERE username = $1
-        ;
+        WHERE username = $1;
     `;
 
     const { rows } = await pool.query(query, [username]);
 
-    return rows;
+    return rows[0];
 };

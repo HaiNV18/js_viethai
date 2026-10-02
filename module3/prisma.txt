@@ -3,9 +3,24 @@ Hãy cài đặt Prisma 6
 npm install @prisma/client@6.4.0
 npm install -D prisma@6.4.0
 
-Prisma Client
-npm install @prisma/client
-
 Tạo ra Prisma Client (Generate)
 Lệnh này được dùng mỗi khi chỉnh sửa schema.prisma
 npx prisma generate
+
+
+Bước 1: tạo file Schema.prisma
+Nhập lệnh 
+npm install @prisma/client@6.4.0
+npm install -D prisma@6.4.0
+
+
+Bước 2: npx prisma generate
+Cập nhật các thay đổi trong Schema.prisma
+
+Bước 3: tạo src/config/prisma.js
+Sau khi generate ra Prisma Client
+prisma.js sử dụng Prisma Client
+
+Bước 4: tạo API
+
+

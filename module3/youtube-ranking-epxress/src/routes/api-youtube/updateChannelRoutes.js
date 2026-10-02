@@ -39,11 +39,11 @@ router.get("/update-subcribe-channel", async (req, res) => {
         for (const item of items) {
             const channelId = item.id;
             const channelTitle = item.snippet?.title;
-            const subCount = Number(item.statistics?.subscriberCount || 0);
+            const subCount = Number(item.statistics?.subscriberCount || 0); // Số sub
             const subFormatted = formatSubscribers(subCount);
+
             // Cập nhật vào PostgreSQL
             await updateChannelSubscribers(channelId, subCount, subFormatted);
-            console.log(subCount)
             updatedList.push({
                 id: channelId,
                 title: channelTitle,
