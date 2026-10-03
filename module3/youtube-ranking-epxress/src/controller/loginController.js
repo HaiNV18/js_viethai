@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import {ok} from "../error/ApiResponse.js";
 import { getAccountByUsername } from "../models/accountModel.js";
 
@@ -31,11 +32,25 @@ export const loginController = async (req, res) => {
             });
         }
 
-        // login successful
+        // Tạo JWT
+        const token = jwt.sign(
+            {
+                id: user.id,
+                username: user.username
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: process.env.JWT_EXPIRES_IN || "1d"
+            }
+        );
+
+        // Không trả password về client
         const { password: _, ...userWithoutPassword } = user;
 
-        // if (!login) throw new AppError(404, "Tên đăng nhập hoặc mật khẩu sai");
-        ok(res, userWithoutPassword);
+        return ok(res, {
+            user: userWithoutPassword,
+            token
+        });
     } catch (error) {
         console.error("Lỗi lấy products:", error);
 

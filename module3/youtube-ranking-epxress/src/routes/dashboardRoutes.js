@@ -1,4 +1,3 @@
-// src/routes/productRoutes.ts
 import { Router } from "express";
 import {ok} from "../error/ApiResponse.js";
 import AppError from "../error/AppError.js";
@@ -7,10 +6,15 @@ import ProductMessages from "../error/message.js";
 import { validate } from "../middleware/validate.js";
 import { getCategoryStats } from "../models/categoryModel.js";
 
+import { authMiddleware } from "../middleware/authMiddleware.js";
+
 const router = Router();
 
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", authMiddleware, async (req, res) => {
     try {
+        // req.user chứa thông tin lấy từ JWT
+        console.log("User:", req.user);
+
         // Thống kê số lượng sản phẩm theo danh mục
         const categoryStats = await getCategoryStats();
         const grandTotalProducts = categoryStats.reduce((sum, item) => sum + item.total_products, 0);
