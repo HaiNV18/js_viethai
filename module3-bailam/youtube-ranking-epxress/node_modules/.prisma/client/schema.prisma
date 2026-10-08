@@ -1,0 +1,22 @@
+// Connect DB
+// Prisma 7 bỏ thuộc tính URL
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_LOCAL")
+}
+
+// Có nhiều loại provider khác nhau
+// prisma-client-js để sử dụng cho ExpressJS + JavaScript/Node.js + Prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Định nghĩa model tương ứng với bảng category_product
+model CategoryProduct {
+  id           Int      @id @default(autoincrement())
+  titleCatProd String   @map("title_cat_prod")
+  slugCatProd  String   @unique @map("slug_cat_prod")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("category_product") // Ánh xạ tới tên bảng "category_product" trong PostgreSQL
+}
