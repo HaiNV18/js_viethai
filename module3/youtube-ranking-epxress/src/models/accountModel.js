@@ -1,5 +1,16 @@
 import pool from "../config/database.js";
 
+export const getAllAccounts = async () => {
+    const query = `
+        SELECT id, firstname, lastname, username, email, phone, role
+        FROM accounts
+        ORDER BY id ASC;
+    `;
+
+    const { rows } = await pool.query(query);
+    return rows;
+};
+
 export const getAccountByUsername = async (username) => {
     const query = `
         SELECT id

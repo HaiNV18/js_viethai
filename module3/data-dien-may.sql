@@ -59,6 +59,8 @@ CREATE INDEX IF NOT EXISTS idx_products_code ON public.products(code);
 INSERT INTO public.brand (name_brand, slug_brand, enable_brand) VALUES
   ('E-Pro',   'e-pro',   true),
   ('Toshiba', 'toshiba', true),
+  ('Arirang', 'arirang', true),
+  ('LG', 'lg', true),
   ('Samsung', 'samsung', true)
 ON CONFLICT (slug_brand) DO NOTHING;
 
@@ -114,18 +116,53 @@ VALUES
 -- 3. Máy giặt Toshiba inverter 10.5kg TW-BL115A2V(SS)
 INSERT INTO public.products
   (title_prod, code, category_id, brand_id, price, discount, discount_unit, qty,
-   specifications, description, img_1, img_2)
+   specifications, description, img_1, img_2, img_3)
 VALUES
   (
-    'Máy giặt Toshiba inverter 10.5kg TW-BL115A2V(SS)',
+    'Máy giặt Toshiba Inverter 10.5kg TW-BL115A2V(SS)',
     'MGI020043',
     (SELECT id FROM public.category_product WHERE slug_cat_prod = 'dien-lanh'),
     (SELECT id FROM public.brand WHERE slug_brand = 'toshiba'),
-    11990000, 1000000, 'PRICE', 99,
-    '<table><tr><td>Bảo hành</td><td>24 tháng</td></tr><tr><td>Lồng giặt</td><td>Lồng ngang</td></tr></table>',
-    '<p>Máy giặt Toshiba inverter 10.5kg TW-BL115A2V(SS) là máy giặt cửa trước khối lượng 10.5 kg. Động cơ Inverter vận hành êm, bền và tiết kiệm điện. Phù hợp nhu cầu giặt giũ hằng ngày của gia đình.</p><h3>Đặc điểm nổi bật</h3>',
-    'may-giat-toshiba-inverter-10-5-kg-tw-bl115a2v-1.webp',
-    'may-giat-toshiba-inverter-10-5-kg-tw-bl115a2v-2.webp'
+    7194000, 40, 'PERCENT', 0,
+
+    -- Thông số kỹ thuật
+    '<table>
+      <tr><td>Thương hiệu</td><td>Toshiba</td></tr>
+      <tr><td>Mã sản phẩm</td><td>MGI020043</td></tr>
+      <tr><td>Model</td><td>TW-BL115A2V(SS)</td></tr>
+      <tr><td>Khối lượng giặt</td><td>10.5 kg</td></tr>
+      <tr><td>Loại máy giặt</td><td>Cửa trước, lồng ngang</td></tr>
+      <tr><td>Công nghệ Inverter</td><td>Origin Inverter</td></tr>
+      <tr><td>Kiểu động cơ</td><td>Nam châm vĩnh cửu, truyền động dây Curoa</td></tr>
+      <tr><td>Tốc độ quay vắt tối đa</td><td>1200 vòng/phút</td></tr>
+      <tr><td>Hiệu suất sử dụng điện</td><td>7.98 Wh/kg</td></tr>
+      <tr><td>Bảng điều khiển</td><td>Song ngữ Anh - Việt, nút xoay, cảm ứng và màn hình hiển thị</td></tr>
+      <tr><td>Chất liệu vỏ máy</td><td>Kim loại sơn tĩnh điện</td></tr>
+      <tr><td>Chất liệu nắp máy</td><td>Kính chịu lực</td></tr>
+      <tr><td>Chất liệu lồng giặt</td><td>Thép không gỉ</td></tr>
+      <tr><td>Nơi sản xuất</td><td>Trung Quốc</td></tr>
+      <tr><td>Xuất xứ thương hiệu</td><td>Nhật Bản</td></tr>
+      <tr><td>Bảo hành</td><td>24 tháng</td></tr>
+      <tr><td>Dòng sản phẩm</td><td>2021</td></tr>
+    </table>',
+
+    -- Mô tả sản phẩm
+    '<p>Máy giặt Toshiba Inverter 10.5kg TW-BL115A2V(SS) có thiết kế cửa trước, lồng ngang với màu xám bạc hiện đại, phù hợp với gia đình đông thành viên.</p>
+    <p><strong>Đặc điểm nổi bật:</strong></p>
+    <ul>
+      <li>Khối lượng giặt 10.5 kg, phù hợp gia đình trên 7 người.</li>
+      <li>Công nghệ Origin Inverter hỗ trợ tiết kiệm điện năng.</li>
+      <li>Công nghệ giặt Greatwaves giúp làm sạch quần áo và hạn chế phai màu.</li>
+      <li>Công nghệ siêu bọt khí Nano UFB hỗ trợ làm sạch vết bẩn.</li>
+      <li>Công nghệ giặt hơi nước Steam Care hỗ trợ vệ sinh quần áo.</li>
+      <li>Tốc độ quay vắt tối đa 1200 vòng/phút.</li>
+      <li>Bảng điều khiển song ngữ Anh - Việt, kết hợp nút xoay, cảm ứng và màn hình hiển thị.</li>
+    </ul>
+    <p>Sản phẩm có thời gian bảo hành 24 tháng theo thông tin trên website Điện Máy NK.</p>',
+
+    'may-giat-toshiba-inverter-10-5kg-tw-bl115a2v-ss-2630-1.jpg',
+    'may-giat-toshiba-inverter-10-5kg-tw-bl115a2v-ss-2630-2.jpg',
+    'may-giat-toshiba-inverter-10-5kg-tw-bl115a2v-ss-2630-3.jpg'
   );
 
 -- 4. Loa thanh Samsung HW-T420
@@ -160,6 +197,28 @@ VALUES
     'am-sieu-toc-chong-tran-toshiba-kt-15drtvn-1.webp',
     'am-sieu-toc-chong-tran-toshiba-kt-15drtvn-2.webp'
   );
+  
+-- 6. Cây nước nóng lạnh Toshiba RWF-W1669BV(W1)
+INSERT INTO public.products
+  (title_prod, code, category_id, brand_id, price, discount, discount_unit, qty,
+   specifications, description, img_1, img_2)
+VALUES
+  (
+    'Cây nước nóng lạnh Toshiba RWF-W1669BV(W1)',
+    'LNU010152',
+    (SELECT id FROM public.category_product WHERE slug_cat_prod = 'dien-gia-dung'),
+    (SELECT id FROM public.brand WHERE slug_brand = 'toshiba'),
+    5290000, 0, 'PERCENT', 0,
+
+    -- Thông số kỹ thuật
+    '<table><tr><td></td><td></td></tr></table>',
+    '<p></p>',
+
+    'cay-nuoc-nong-lanh-toshiba-rwf-w1669bv-w1-1.jpg',
+    'cay-nuoc-nong-lanh-toshiba-rwf-w1669bv-w1-2.jpg'
+);
+
+
 
 -- =========================================================
 -- (Tuỳ chọn) BẬT ROW LEVEL SECURITY + POLICY ĐỌC CÔNG KHAI

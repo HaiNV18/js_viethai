@@ -19,21 +19,41 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 -- Tạo ADMIN
 INSERT INTO accounts (firstname, lastname, username, password, email, role)
 VALUES (
-    'Admin',
+    'Admin 1',
     'Account',
     'admin1',
     crypt('123456', gen_salt('bf')),
-    'admin1@gmail.com',
+    'nvhai2306@gmail.com',
+    'ADMIN'
+);
+
+INSERT INTO accounts (firstname, lastname, username, password, email, role)
+VALUES (
+    'Admin 2',
+    'Account',
+    'admin2',
+    crypt('123456', gen_salt('bf')),
+    'admin2@gmail.com',
     'ADMIN'
 );
 
 -- Tạo USER
 INSERT INTO accounts (firstname, lastname, username, password, email, role)
 VALUES (
-    'User',
+    'User 1',
     'Account',
     'user1',
     crypt('123456', gen_salt('bf')),
     'user1@gmail.com',
+    'USER'
+);
+
+INSERT INTO accounts (firstname, lastname, username, password, email, role)
+VALUES (
+    'User 2',
+    'Account',
+    'user2',
+    crypt('123456', gen_salt('bf')),
+    'user2@gmail.com',
     'USER'
 );
