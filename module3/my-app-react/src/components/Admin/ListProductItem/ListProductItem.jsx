@@ -3,8 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "./ListProductItem.css";
 
 const ListProductItem = (props) => {
-    const { id, name, price, thumbnail } = props.item;
+    const { id, name, title_prod, price, thumbnail, img_1 } = props.item;
     const { checked, onSelect } = props;
+
+    // File name
+    const displayName = title_prod || name;
+    const displayThumbnail = img_1 || thumbnail || "default.jpg";
 
     const navigate = useNavigate();
 
@@ -24,14 +28,14 @@ const ListProductItem = (props) => {
 
             <td>{id}</td>
 
-            <td>{name}</td>
+            <td>{displayName}</td>
 
             <td>{price} VNĐ</td>
 
             <td>
                 <img
-                    src={"asset/img/products/" + thumbnail}
-                    alt={name}
+                    src={displayThumbnail.startsWith('http') ? displayThumbnail : `/asset/img/products/${displayThumbnail}`}
+                    alt={displayName}
                     width={100}
                 />
             </td>

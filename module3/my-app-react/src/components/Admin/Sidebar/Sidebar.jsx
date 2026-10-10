@@ -15,8 +15,12 @@ function Sidebar() {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const { theme } = useTheme();
 
-    const { theme, toggleTheme } = useTheme();
+    // Get data trong localStorage
+    const storedUser = localStorage.getItem("currentUser");
+    const currentUser = storedUser ? JSON.parse(storedUser) : null;
+    const isAdmin = currentUser?.role?.toUpperCase() === "ADMIN";
 
     const handleDashboard = () => {
         navigate("/dashboard");
@@ -26,6 +30,11 @@ function Sidebar() {
         navigate("/list-product");
     };
 
+    // Redirect đến trang quản lý User
+    const handleUsers = () => {
+        navigate("/users");
+    };
+
     return (
         <aside className={`sidebar ${theme}`}>
             <ul className="menu">
@@ -33,16 +42,13 @@ function Sidebar() {
                 {/* Dashboard */}
                 <li
                     className={`menu-item ${
-                        location.pathname === "/dashboard"
-                            ? "active"
-                            : ""
+                        location.pathname === "/dashboard" ? "active" : ""
                     }`}
                     onClick={handleDashboard}
                 >
                     <MdDashboard />
                     <span>Dashboard</span>
                 </li>
-
 
                 {/* Product */}
                 <li>
@@ -51,52 +57,39 @@ function Sidebar() {
                         onClick={() => setOpenProduct(!openProduct)}
                     >
                         <AiOutlineProduct />
-
-                        <span className="menu-title">
-                            Product
-                        </span>
-
+                        <span className="menu-title">Product</span>
                         <span className="menu-arrow">
-                            {openProduct
-                                ? <FaChevronDown size={12} />
-                                : <FaChevronRight size={12} />
-                            }
+                            {openProduct ? <FaChevronDown size={12} /> : <FaChevronRight size={12} />}
                         </span>
                     </div>
 
-
                     {openProduct && (
                         <ul className="submenu">
-
-                            {/* List Product */}
                             <li
                                 className={`submenu-item ${
-                                    location.pathname === "/list-product"
-                                        ? "active"
-                                        : ""
+                                    location.pathname === "/list-product" ? "active" : ""
                                 }`}
                                 onClick={handleListProduct}
                             >
                                 List Product
                             </li>
-
-
-                            {/* Insert Product */}
-                            <li className="submenu-item">
-                                Insert Product
-                            </li>
-
+                            <li className="submenu-item">Insert Product</li>
                         </ul>
                     )}
                 </li>
 
-
                 {/* Users */}
-                <li className="menu-item">
-                    <FaRegUser />
-                    <span>Users</span>
-                </li>
-
+                {isAdmin && (
+                    <li
+                        className={`menu-item ${
+                            location.pathname === "/users" ? "active" : ""
+                        }`}
+                        onClick={handleUsers}
+                    >
+                        <FaRegUser />
+                        <span>Users</span>
+                    </li>
+                )}
 
                 {/* Settings */}
                 <li className="menu-item">

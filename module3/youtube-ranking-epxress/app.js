@@ -12,6 +12,8 @@ import detailChannelRoutes from "./src/routes/api-youtube/detailChannelRoutes.js
 import listChannelRoutes from "./src/routes/api-youtube/listChannelRoutes.js";
 import updateChannelRoutes from "./src/routes/api-youtube/updateChannelRoutes.js";
 
+import { authMiddleware } from "./src/middleware/authMiddleware.js";
+
 const app = express();
 const PORT = process.env.PORT ?? 3000; // lấy PORT=4000, không được thì lấy port 3000
 console.log(process.env.PORT)
@@ -19,7 +21,7 @@ console.log(process.env.PORT)
 // 0. CORS middleware
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     if (req.method === "OPTIONS") {
         return res.sendStatus(200);
@@ -52,13 +54,17 @@ app.use((err, req, res, next) => {
 });
 
 // http://localhost:4000/api/v1
+
+// ========== Các route không cần đăng nhập ==========
+app.use("/api/v1", loginRoutes);
 app.use("/api/v1", cartRoutes);
 app.use("/api/v1", categoryProductRoutes);
 app.use("/api/v1", commentRoutes);
-app.use("/api/v1", dashboardRoutes);
 app.use("/api/v1", productRoutes);
-app.use("/api/v1", loginRoutes);
-app.use("/api/v1", userRoutes);
+
+// ========== Các route cần đăng nhập mới được truy cập ==========
+app.use("/api/v1", authMiddleware, dashboardRoutes);
+app.use("/api/v1", authMiddleware, userRoutes);
 
 // API YOUTUBE
 app.use("/api/v1", detailChannelRoutes);

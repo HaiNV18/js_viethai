@@ -11,7 +11,7 @@ import { authorizeMiddleware } from "../middleware/authorizeMiddleware.js";
 
 const router = Router();
 
-router.get("/dashboard", authMiddleware, authorizeMiddleware(["ADMIN", "USER"]), async (req, res) => {
+router.get("/dashboard", authorizeMiddleware(["ADMIN", "USER"]), async (req, res) => {
     try {
         // req.user chứa thông tin lấy từ JWT
         console.log("User:", req.user);

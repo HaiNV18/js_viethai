@@ -2,13 +2,17 @@ import express from "express";
 
 import cartRoutes from "./src/routes/cartRoutes.js";
 import categoryProductRoutes from "./src/routes/categoryProductRoutes.js";
+import commentRoutes from "./src/routes/commentRoutes.js";
 import dashboardRoutes from "./src/routes/dashboardRoutes.js";
 import productRoutes from "./src/routes/productRoutes.js";
 import loginRoutes from "./src/routes/loginRoutes.js";
+import userRoutes from "./src/routes/userRoutes.js";
 
 import detailChannelRoutes from "./src/routes/api-youtube/detailChannelRoutes.js";
 import listChannelRoutes from "./src/routes/api-youtube/listChannelRoutes.js";
 import updateChannelRoutes from "./src/routes/api-youtube/updateChannelRoutes.js";
+
+import { authMiddleware } from "./src/middleware/authMiddleware.js";
 
 const app = express();
 const PORT = process.env.PORT ?? 3000; // lấy PORT=4000, không được thì lấy port 3000
@@ -50,17 +54,22 @@ app.use((err, req, res, next) => {
 });
 
 // http://localhost:4000/api/v1
+
+// ========== Các route không cần đăng nhập ==========
+app.use("/api/v1", loginRoutes);
 app.use("/api/v1", cartRoutes);
 app.use("/api/v1", categoryProductRoutes);
-app.use("/api/v1", dashboardRoutes);
+app.use("/api/v1", commentRoutes);
 app.use("/api/v1", productRoutes);
-app.use("/api/v1", loginRoutes);
+
+// ========== Các route cần đăng nhập mới được truy cập ==========
+app.use("/api/v1", authMiddleware, dashboardRoutes);
+app.use("/api/v1", authMiddleware, userRoutes);
 
 // API YOUTUBE
 app.use("/api/v1", detailChannelRoutes);
 app.use("/api/v1", listChannelRoutes);
 app.use("/api/v1", updateChannelRoutes);
-
 
 
 

@@ -1,0 +1,117 @@
+.list-product {
+    padding: 20px;
+}
+
+.list-product h2 {
+    margin-bottom: 20px;
+}
+
+.filter-product {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.filter-product input,
+.filter-product select {
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.filter-product input {
+    width: 200px;
+}
+
+.filter-product input[type="number"] {
+    width: 130px;
+}
+
+.filter-product select {
+    width: 180px;
+    cursor: pointer;
+}
+
+.filter-product input:focus,
+.filter-product select:focus {
+    border-color: #333;
+}
+
+.list-product table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.list-product th,
+.list-product td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.list-product th {
+    background-color: #f5f5f5;
+}
+
+.list-product img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.btn-edit {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.pagination button {
+    min-width: 40px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: #eee;
+}
+
+.pagination button.active {
+    background: #333;
+    color: white;
+    border-color: #333;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.selected-info {
+    margin-top: 15px;
+}
+
+.list-product > p {
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
+}

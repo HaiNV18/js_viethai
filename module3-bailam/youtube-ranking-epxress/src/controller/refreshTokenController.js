@@ -2,7 +2,8 @@ import jwt from "jsonwebtoken";
 
 export const refreshTokenController = async (req, res) => {
     try {
-        const refreshToken = req.cookies.refreshToken;
+        // Lấy refresh token từ body hoặc cookie
+        const refreshToken = req.body.refreshToken || req.cookies.refreshToken;
 
         if (!refreshToken) {
             return res.status(401).json({
@@ -23,7 +24,7 @@ export const refreshTokenController = async (req, res) => {
             },
             process.env.JWT_SECRET,
             {
-                expiresIn: process.env.JWT_EXPIRES_IN || "15m"
+                expiresIn: process.env.JWT_EXPIRES_IN || "10s"
             }
         );
 
