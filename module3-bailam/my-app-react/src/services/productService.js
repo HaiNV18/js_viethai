@@ -20,13 +20,9 @@ import api from "./api";
 
 export const productService = {
     async getProducts() {
-        const response = await api.get("/products"); // Dùng api.js để gọi API
-
-        if (!response.data.success) {
-            throw new Error(
-                `Failed to fetch products: ${response.data.message}`
-            );
-        }
+        const response = await api.get("/products/all");
         return response.data;
     },
 };
+
+export default productService;

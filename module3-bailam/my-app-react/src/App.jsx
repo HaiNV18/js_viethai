@@ -10,6 +10,7 @@ import Admin from "./components/Admin/Admin";
 import Dashboard from "./components/Admin/Dashboard/Dashboard";
 import ListProduct from "./components/Admin/ListProduct/ListProduct";
 import DetailProductEdit from "./components/Admin/DetailProductEdit/DetailProductEdit.jsx";
+import ListUsers from "./components/Admin/ListUsers/ListUsers.jsx";
 
 import { ThemeProvider } from "./context/ThemeContext";
 
@@ -52,6 +53,9 @@ function App() {
 
                         {/* Detail Product */}
                         <Route path="/detail-product/:id/edit" element={<DetailProductEdit />} />
+
+                        {/* List Users */}
+                        <Route path="/users" element={<ListUsers />} />
 
                     </Route>
 

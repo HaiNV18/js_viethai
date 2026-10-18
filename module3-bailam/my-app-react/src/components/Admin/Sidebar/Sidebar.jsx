@@ -15,8 +15,12 @@ function Sidebar() {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const { theme } = useTheme();
 
-    const { theme, toggleTheme } = useTheme();
+    // Get data trong localStorage
+    const storedUser = localStorage.getItem("currentUser");
+    const currentUser = storedUser ? JSON.parse(storedUser) : null;
+    const isAdmin = currentUser?.role?.toUpperCase() === "ADMIN";
 
     const handleDashboard = () => {
         navigate("/dashboard");
@@ -24,6 +28,11 @@ function Sidebar() {
 
     const handleListProduct = () => {
         navigate("/list-product");
+    };
+
+    // Redirect đến trang quản lý User
+    const handleUsers = () => {
+        navigate("/users");
     };
 
     return (
@@ -90,13 +99,18 @@ function Sidebar() {
                     )}
                 </li>
 
-
                 {/* Users */}
-                <li className="menu-item">
-                    <FaRegUser />
-                    <span>Users</span>
-                </li>
-
+                {isAdmin && (
+                    <li
+                        className={`menu-item ${
+                            location.pathname === "/users" ? "active" : ""
+                        }`}
+                        onClick={handleUsers}
+                    >
+                        <FaRegUser />
+                        <span>Users</span>
+                    </li>
+                )}
 
                 {/* Settings */}
                 <li className="menu-item">

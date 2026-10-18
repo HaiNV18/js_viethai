@@ -29,6 +29,8 @@ function Login() {
             if (res.success && res.data) {
                 const { user, access_token, refresh_token } = res.data;
 
+                console.log("res.data:", res.data);
+
                 // Lưu thông tin user vào localStorage
                 localStorage.setItem("currentUser", JSON.stringify(user));
 
@@ -36,6 +38,7 @@ function Login() {
                 // Phương án 1: Lưu accessToken và refreshToken vào localStorage
                 localStorage.setItem("accessToken", access_token);
                 localStorage.setItem("refreshToken", refresh_token);
+                console.log("localStorage", localStorage);
 
                 // Phương án 2: Refresh Token đã được Backend tự động lưu vào HttpOnly Cookie của Trình duyệt
 

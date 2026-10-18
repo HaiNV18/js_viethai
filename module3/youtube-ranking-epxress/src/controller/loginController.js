@@ -71,8 +71,8 @@ export const loginController = async (req, res) => {
 
         return ok(res, {
             user: userWithoutPassword,
-            access_token: accessToken
-            // refresh_token: refreshToken // có thể bỏ refresh token trong response
+            access_token: accessToken,
+            refresh_token: refreshToken // có thể bỏ refresh token trong response
         });
     } catch (error) {
         console.error("Lỗi lấy products:", error);
