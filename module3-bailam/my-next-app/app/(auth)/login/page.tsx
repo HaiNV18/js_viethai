@@ -1,60 +1,23 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useActionState } from "react";
 import Link from "next/link";
+import { loginAction } from "../action"; // Import Server Action
 
 export default function LoginPage() {
-    const router = useRouter();
-
-    const [username, setUsername] = useState("emilys");
-    const [password, setPassword] = useState("emilyspass");
-    const [loading, setLoading] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
-
-    const handleLogin = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setLoading(true);
-        setErrorMessage("");
-
-        try {
-            const res = await fetch("https://dummyjson.com/auth/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    username,
-                    password,
-                    expiresInMins: 30,
-                }),
-            });
-
-            const data = await res.json();
-
-            if (!res.ok) {
-                throw new Error(data.message || "Đăng nhập thất bại");
-            }
-
-            console.log("Dữ liệu trả về:", data);
-            localStorage.setItem("token", data.accessToken);
-            localStorage.setItem("user", JSON.stringify(data));
-
-            router.push("/admin/dashboard");
-        } catch (err: any) {
-            setErrorMessage(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
+    // useActionState nhận vào: (action, initialState)
+    // Return: [stateHiệnTại, hàmGửiAction, trạngTháiĐangXửLý]
+    const [state, formAction, isPending] = useActionState(loginAction, null);
 
     return (
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form action={formAction} className="space-y-4">
             <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 text-center">
                 Đăng nhập
             </h2>
 
-            {errorMessage && (
+            {state?.error && (
                 <div className="p-3 text-sm text-red-600 bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900 rounded-lg">
-                    {errorMessage}
+                    {state.error}
                 </div>
             )}
 
@@ -65,8 +28,8 @@ export default function LoginPage() {
                 </label>
                 <input
                     type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    name="username"
+                    defaultValue="emilys"
                     required
                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white dark:bg-zinc-800 dark:border-zinc-700"
                     placeholder="Nhập username (vd: emilys)"
@@ -80,20 +43,21 @@ export default function LoginPage() {
                 </label>
                 <input
                     type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    name="password"
+                    defaultValue="emilyspass"
                     required
                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white dark:bg-zinc-800 dark:border-zinc-700"
                     placeholder="Nhập password (vd: emilyspass)"
                 />
             </div>
 
+            {/* Submit button tự động disable khi isPending = true */}
             <button
                 type="submit"
-                disabled={loading}
+                disabled={isPending}
                 className="w-full py-2.5 px-4 bg-black text-white dark:bg-white dark:text-black font-semibold rounded-lg hover:opacity-90 transition disabled:opacity-50 cursor-pointer"
             >
-                {loading ? "Đang xử lý..." : "Đăng nhập"}
+                {isPending ? "Đang xử lý..." : "Đăng nhập"}
             </button>
 
             <div className="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-4">

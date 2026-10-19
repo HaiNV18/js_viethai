@@ -1,4 +1,3 @@
-// app/admin/dashboard/page.tsx
 export default function DashboardPage() {
     const stats = [
         { title: "Tổng doanh thu", value: "$45,231.89", change: "+20.1%", isPositive: true },

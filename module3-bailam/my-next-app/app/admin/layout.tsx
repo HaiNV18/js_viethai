@@ -2,7 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+
+import { AiFillProduct } from "react-icons/ai";
+import { FaUser } from "react-icons/fa";
+import { MdOutlineSettings, MdSpaceDashboard } from "react-icons/md";
 
 export default function AdminLayout({
     children,
@@ -10,7 +14,6 @@ export default function AdminLayout({
     children: React.ReactNode;
 }) {
     const router = useRouter();
-    const pathname = usePathname();
 
     // Hàm xử lý đăng xuất
     const handleLogout = () => {
@@ -18,13 +21,6 @@ export default function AdminLayout({
         localStorage.removeItem("user");
         router.push("/login");
     };
-
-    const navItems = [
-        { name: "Tổng quan (Dashboard)", href: "/admin/dashboard", icon: "📊" },
-        { name: "Sản phẩm (Products)", href: "/admin/products", icon: "📦" },
-        { name: "Người dùng (Users)", href: "/admin/users", icon: "👥" },
-        { name: "Cài đặt (Settings)", href: "/admin/settings", icon: "⚙️" },
-    ];
 
     return (
         <div className="min-h-screen flex bg-zinc-100 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
@@ -44,22 +40,38 @@ export default function AdminLayout({
 
                     {/* Menu Điều Hướng */}
                     <nav className="space-y-1">
-                        {navItems.map((item) => {
-                            const isActive = pathname === item.href;
-                            return (
-                                <Link
-                                    key={item.href}
-                                    href={item.href}
-                                    className={`flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive
-                                            ? "bg-black text-white dark:bg-white dark:text-black"
-                                            : "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"
-                                        }`}
-                                >
-                                    <span className="text-lg">{item.icon}</span>
-                                    <span>{item.name}</span>
-                                </Link>
-                            );
-                        })}
+                        <Link
+                            key="/admin/dashboard"
+                            href="/admin/dashboard"
+                            className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors bg-black text-white dark:bg-white dark:text-black"
+                        >
+                            <span className="text-lg"><MdSpaceDashboard size={20} /></span>
+                            <span>Dashboard</span>
+                        </Link>
+                        <Link
+                            key="/admin/list-product"
+                            href="/admin/list-product"
+                            className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                        >
+                            <span className="text-lg"><AiFillProduct size={20} /></span>
+                            <span>Products</span>
+                        </Link>
+                        <Link
+                            key="/admin/users"
+                            href="/admin/users"
+                            className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                        >
+                            <span className="text-lg"><FaUser size={20} /></span>
+                            <span>Users</span>
+                        </Link>
+                        <Link
+                            key="/admin/settings"
+                            href="/admin/settings"
+                            className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                        >
+                            <span className="text-lg"><MdOutlineSettings size={20} /></span>
+                            <span>Settings</span>
+                        </Link>
                     </nav>
                 </div>
 
