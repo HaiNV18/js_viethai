@@ -1,0 +1,739 @@
+/* ==========================================================================
+   VINHOMES GRAND PARK - LANDING PAGE STYLESHEET
+   Tuân thủ quy cách thiết kế:
+   - Nền trang: #f2f2f2
+   - Chữ chính / Chủ đạo: #2d2d86
+   - Nền thẻ (card), form: #ffffff
+   ========================================================================== */
+
+:root {
+  /* Bảng màu chuẩn quy định trong DESIGN.md */
+  --bg: #f2f2f2;
+  --primary: #2d2d86;
+  --card: #ffffff;
+
+  /* Các biến màu mở rộng bổ trợ cho phong cách sang trọng */
+  --primary-hover: #1f1f63;
+  --primary-dark: #17174d;
+  --primary-light: #ececf7;
+  --primary-subtle: rgba(45, 45, 134, 0.08);
+  --accent-gold: #c69234;
+  --text-dark: #1c1c38;
+  --text-muted: #5c5c77;
+  --border-subtle: #e5e7eb;
+
+  /* Bóng đổ tinh tế (Subtle Shadows) */
+  --shadow-sm: 0 4px 12px rgba(45, 45, 134, 0.05);
+  --shadow-md: 0 10px 28px rgba(45, 45, 134, 0.08);
+  --shadow-lg: 0 18px 40px rgba(45, 45, 134, 0.12);
+  --shadow-hover: 0 20px 45px rgba(45, 45, 134, 0.16);
+
+  /* Bo góc nhẹ nhàng */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 50px;
+
+  /* Hiệu ứng chuyển động */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Thiết lập cơ bản (Reset & Global)
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px; /* Tránh bị che bởi Navbar cố định */
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg);
+  color: var(--primary);
+  line-height: 1.65;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+a {
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+/* --------------------------------------------------------------------------
+   1. NAVBAR (Thanh điều hướng cố định)
+   -------------------------------------------------------------------------- */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.75rem 0;
+  transition: all var(--transition-smooth);
+  border-bottom: 1px solid rgba(45, 45, 134, 0.06);
+}
+
+.navbar.scrolled {
+  background-color: #ffffff;
+  box-shadow: var(--shadow-md) !important;
+  padding: 0.5rem 0;
+}
+
+.brand-logo {
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.navbar-brand:hover .brand-logo {
+  transform: scale(1.05);
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--primary);
+}
+
+.nav-link {
+  color: var(--primary) !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.1rem !important;
+  border-radius: var(--radius-sm);
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary) !important;
+  background-color: var(--primary-light);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: all var(--transition-fast);
+  transform: translateX(-50%);
+}
+
+.nav-link.active::after {
+  width: 60%;
+}
+
+.btn-nav-cta {
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 1.25rem;
+  transition: all var(--transition-fast);
+}
+
+.btn-nav-cta:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   2. HERO SECTION
+   -------------------------------------------------------------------------- */
+.hero-section {
+  padding-top: 130px;
+  padding-bottom: 80px;
+  background: linear-gradient(180deg, rgba(236, 236, 247, 0.4) 0%, var(--bg) 100%);
+  position: relative;
+}
+
+.badge-tag {
+  background-color: #ffffff;
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(45, 45, 134, 0.1);
+}
+
+.badge-tag i {
+  color: #e63946;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 4vw + 1rem, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.25rem;
+  color: var(--primary);
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* Thống kê nổi bật trong Hero */
+.hero-stats {
+  margin: 1.5rem 0;
+}
+
+.stat-card {
+  background-color: var(--card);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(45, 45, 134, 0.08);
+  text-align: center;
+  transition: transform var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+/* Các nút bấm (Buttons) */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  padding: 0.75rem 1.85rem;
+  transition: all var(--transition-smooth);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-cta {
+  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-cta-secondary {
+  border-radius: var(--radius-pill);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  border-color: rgba(45, 45, 134, 0.25);
+  background-color: #ffffff;
+  transition: all var(--transition-smooth);
+}
+
+.btn-cta-secondary:hover {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Hình ảnh Hero */
+.hero-image-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 4px solid #ffffff;
+  background-color: #ffffff;
+}
+
+.hero-main-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.hero-image-card:hover .hero-main-img {
+  transform: scale(1.03);
+}
+
+/* Huy hiệu lơ lửng góc ảnh Hero */
+.floating-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  border: 1px solid rgba(45, 45, 134, 0.1);
+  z-index: 2;
+}
+
+.floating-badge-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary);
+  color: #ffd700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. FEATURES SECTION (Đặc quyền & Tiện ích)
+   -------------------------------------------------------------------------- */
+.features-section {
+  padding: 90px 0;
+  background-color: var(--bg);
+}
+
+.section-header {
+  max-width: 680px;
+}
+
+.section-subtitle {
+  color: var(--accent-gold);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary);
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* Feature Cards */
+.feature-card {
+  background-color: var(--card);
+  border: 1px solid rgba(45, 45, 134, 0.08);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-smooth);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(45, 45, 134, 0.2);
+}
+
+.feature-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 230px;
+}
+
+.feature-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.feature-card:hover .feature-img {
+  transform: scale(1.08);
+}
+
+.feature-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(45, 45, 134, 0.9);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(4px);
+}
+
+.feature-card .card-body {
+  padding: 1.75rem;
+}
+
+.feature-heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.feature-text {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.feature-highlight .badge {
+  font-size: 0.78rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   4. FORM SECTION (Đăng ký nhận tư vấn)
+   -------------------------------------------------------------------------- */
+.contact-section {
+  padding: 90px 0;
+  background: linear-gradient(180deg, var(--bg) 0%, rgba(236, 236, 247, 0.6) 100%);
+}
+
+.form-card {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(45, 45, 134, 0.08);
+  box-shadow: var(--shadow-lg);
+}
+
+.form-icon-circle {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+}
+
+.form-card-title {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-card-subtitle {
+  font-size: 0.95rem;
+}
+
+.form-label {
+  color: var(--primary);
+  font-size: 0.92rem;
+  margin-bottom: 0.4rem;
+}
+
+.form-control,
+.form-select {
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background-color: #fafafc;
+  color: var(--text-dark);
+  transition: all var(--transition-fast);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.25rem rgba(45, 45, 134, 0.15);
+  outline: none;
+}
+
+.input-group-text {
+  background-color: #f1f2f8;
+  border-color: var(--border-subtle);
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+/* 
+   Hiện thực hóa hướng dẫn Modern Web Guidance:
+   Chỉ hiển thị trạng thái lỗi sau khi người dùng đã tương tác (:user-invalid)
+   Tránh báo lỗi sớm khi mới tải trang hoặc khi đang bắt đầu gõ
+*/
+input:user-invalid,
+input.user-invalid-fallback {
+  border-color: #dc3545 !important;
+  background-color: #fff8f8;
+}
+
+input:user-valid {
+  border-color: #198754;
+}
+
+/* Hiển thị phản hồi lỗi dựa trên trạng thái :user-invalid hoặc class fallback */
+.field-group:has(input:user-invalid) .invalid-feedback,
+.field-group:has(input.user-invalid-fallback) .invalid-feedback {
+  display: block;
+}
+
+.invalid-feedback {
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  color: #dc3545;
+}
+
+.btn-submit {
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+  box-shadow: var(--shadow-md);
+}
+
+/* --------------------------------------------------------------------------
+   5. FOOTER (Chân trang)
+   -------------------------------------------------------------------------- */
+.footer-section {
+  background-color: var(--primary-dark);
+  color: #ffffff;
+  padding: 70px 0 30px;
+}
+
+.footer-title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.footer-heading {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 35px;
+  height: 2px;
+  background-color: var(--accent-gold);
+}
+
+.footer-nav li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-nav a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+  display: inline-block;
+}
+
+.footer-nav a:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.footer-contact-list {
+  font-size: 0.9rem;
+}
+
+.demo-disclaimer {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--accent-gold);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.social-btn:hover {
+  background-color: var(--accent-gold);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+/* --------------------------------------------------------------------------
+   6. NÚT BACK TO TOP & HIỆU ỨNG CHUYỂN ĐỘNG
+   -------------------------------------------------------------------------- */
+.btn-back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  z-index: 999;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.btn-back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Hiệu ứng mờ dần khi cuộn tới (Scroll Reveal) */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s ease-out, transform 0.75s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE DESIGN (Media Queries cho Mobile & Tablet)
+   -------------------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: #ffffff;
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    margin-top: 0.75rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .hero-section {
+    padding-top: 110px;
+    padding-bottom: 60px;
+  }
+
+  .hero-main-img {
+    height: 340px;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .features-section,
+  .contact-section {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .brand-title {
+    font-size: 0.95rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .stat-number {
+    font-size: 1.15rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .floating-badge {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: 10px;
+  }
+
+  .hero-main-img {
+    height: 260px;
+  }
+
+  .feature-img-wrapper {
+    height: 200px;
+  }
+
+  .form-card .card-body {
+    padding: 1.5rem 1.2rem !important;
+  }
+}
