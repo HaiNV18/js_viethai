@@ -55,7 +55,7 @@ INSERT INTO channels (
 
 ('UCJFZiqLm7iJ0vEM18y4_bWw', 'Hololive Ch. hololive-VTuber', '@hololive', 'hololive-channel-thumbnail.jpg', 'hololive-channel-banner.jpg', 2500000, '2.5M', 'VTuber', 2100, 'https://youtube.com/@hololive', 'https://hololive.hololivepro.com', NULL, 'https://twitter.com/hololivetv', 'https://tiktok.com/@hololive_eng'),
 
-('UCkWnwVAYGshTEVDPZ451kBQ', 'essie ch.', '@essiech', 'essie-channel-thumbnail.jpg', 'essie-channel-banner.jpg', 75400, '75.4K', 'VTuber', 497, 'https://www.youtube.com/@essiech', NULL, NULL, 'https://x.com/essie_ch', NULL)
+('UCkWnwVAYGshTEVDPZ451kBQ', 'essie ch.', '@essiech', 'essie-channel-thumbnail.jpg', 'essie-channel-banner.jpg', 75400, '75.4K', 'VTuber', 497, 'https://www.youtube.com/@essiech', NULL, NULL, 'https://x.com/essie_ch', NULL),
 
 ('UCp-9F3MEliOQ2sbAnG0OqLQ', 'Gawr Gura Ch. hololive-EN', '@GawrGura', 'gawr-gura-channel-thumbnail.jpg', 'gawr-gura-channel-banner.jpg', 4590000, '4.59M', 'VTuber', 565, 'https://www.youtube.com/@GawrGura', NULL, NULL, 'https://x.com/gawrgura', NULL)
 ON CONFLICT (id) DO NOTHING;

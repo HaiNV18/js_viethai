@@ -1,0 +1,5 @@
+Note: Đây là source mẫu đã deploy lên Cloudflare thành công
+https://github.com/HaiNV18/youtube-ranking-express-cloudflare
+
+Hãy tạo repository mới tên là express-cloudflare
+Copy youtube-ranking-epxress và làm theo hướng dẫn
