@@ -6,7 +6,7 @@ dotenv.config(); // cài npm install dotenv
 const { Pool } = pg;
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL_LOCAL,
+    connectionString: process.env.DATABASE_URL_SUPABASE,
 });
 
 // const pool = new Pool({

@@ -2,7 +2,7 @@
 // Prisma 7 bỏ thuộc tính URL
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL_LOCAL")
+  url      = env("DATABASE_URL_SUPABASE")
 }
 
 // Có nhiều loại provider khác nhau

@@ -1,0 +1,26 @@
+Bước 1: copy prompt này vào Antigravity
+Hãy tạo cho tôi một trang Landing Page đơn giản bằng HTML, CSS (dùng Bootstrap qua CDN) và JavaScript. Trang web bao gồm các phần:
+
+Chủ đề: bất động sản, quảng cáo Vinhomes Grand Park tại thành phố Thủ Đức
+
+Header/Navbar: Logo tên thương hiệu Vinhomes và menu chuyển hướng đơn giản.
+
+Hero Section: Tiêu đề giật gân, đoạn mô tả ngắn và 1 nút kêu gọi hành động (Call to Action - CTA). Có hình ảnh bất động sản, biệt thự nghỉ dưỡng, Vinschool. 
+Hình ảnh nên nằm bên phải.
+
+Features Section: trình bày 3 tính năng nổi bật: lối sống thượng lưu, tiện ích tối ưu, pháp lý nhanh gọn. 3 tính năng có 3 hình ảnh khác nhau để minh họa.
+
+Footer: Thông tin bản quyền và liên hệ.
+Hãy lưu mã nguồn chính vào tệp index.html.
+
+Giao diện: màu chủ đạo là nền trắng (#f2f2f2) chữ màu tối (#2d2d86). Chỉ render ra file HTML CSS JavaScript, không dùng bất kỳ ngôn ngữ backend nào.
+
+=======
+Bước 2: copy prompt trên vào ChatGPT và ClaudeAI
+Hãy góp ý cho tôi đoạn prompt này:
+(copy đoạn prompt trên)
+
+=======
+Bước 3: tiếp tục với bước 2:
+Hãy tạo cho tôi file .md rồi nén lại để tôi download
+

@@ -2,13 +2,20 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import {ok} from "../error/ApiResponse.js";
 import { getAccountByUsername } from "../models/accountModel.js";
+import Logger from "../utils/logger.js";
 
 export const loginController = async (req, res) => {
     try {
         const username  = req.body.username;
         const password = req.body.password;
 
+        Logger.debug("Debug ứng dụng");
+        Logger.info("Ứng dụng đã khởi tạo");
+        Logger.warn("Đây là cảnh báo");
+        Logger.error("Đã xảy ra lỗi");
+
         if (!username || !password) {
+            Logger.error("Vui lòng nhập tên đăng nhập và mật khẩu");
             return res.status(400).json({
                 success: false,
                 message: "Vui lòng nhập tên đăng nhập và mật khẩu"
@@ -17,6 +24,7 @@ export const loginController = async (req, res) => {
 
         const user = await getAccountByUsername(username);
         if (!user) {
+            Logger.error("Tên đăng nhập hoặc mật khẩu không chính xác");
             return res.status(401).json({
                 success: false,
                 message: "Tên đăng nhập hoặc mật khẩu không chính xác"
