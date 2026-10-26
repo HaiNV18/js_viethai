@@ -1,4 +1,4 @@
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import nodemailer from "nodemailer";
 import {ok} from "../error/ApiResponse.js";
 import { getAccountByEmail, updateAccountPassword } from "../models/accountModel.js";

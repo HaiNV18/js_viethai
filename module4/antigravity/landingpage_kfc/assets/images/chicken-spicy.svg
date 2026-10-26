@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <radialGradient id="spicyGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fdebd0"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="spicyChickenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e74c3c"/>
+      <stop offset="35%" stop-color="#c0392b"/>
+      <stop offset="70%" stop-color="#d35400"/>
+      <stop offset="100%" stop-color="#962d00"/>
+    </linearGradient>
+    <filter id="spicyShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#c0392b" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="400" height="300" fill="#fafafa"/>
+  <circle cx="200" cy="150" r="130" fill="url(#spicyGlow)"/>
+  <ellipse cx="200" cy="245" rx="120" ry="16" fill="#eaecee"/>
+
+  <!-- Spicy Chicken Thigh / Piece -->
+  <g transform="translate(20, 10)">
+    <!-- Crispy Piece -->
+    <path d="M100 190 C60 140 80 80 140 70 C200 60 250 90 260 150 C270 200 220 230 160 225 C120 220 110 200 100 190 Z" fill="url(#spicyChickenGrad)" filter="url(#spicyShadow)"/>
+    
+    <!-- Red Chilli Flakes / Glaze -->
+    <circle cx="130" cy="100" r="9" fill="#f1948a" opacity="0.6"/>
+    <circle cx="180" cy="110" r="14" fill="#e74c3c" opacity="0.5"/>
+    <circle cx="150" cy="150" r="12" fill="#78281f" opacity="0.4"/>
+    <circle cx="210" cy="160" r="10" fill="#922b21" opacity="0.4"/>
+    <circle cx="120" cy="170" r="8" fill="#e67e22" opacity="0.5"/>
+    
+    <!-- Chilli flakes -->
+    <polygon points="140,85 145,80 147,88" fill="#e74c3c"/>
+    <polygon points="170,130 178,128 175,136" fill="#e74c3c"/>
+    <polygon points="195,100 202,105 197,112" fill="#e74c3c"/>
+    <polygon points="220,140 226,145 218,150" fill="#e74c3c"/>
+    <polygon points="130,140 137,138 132,146" fill="#e74c3c"/>
+
+    <!-- Herb garnish -->
+    <circle cx="160" cy="105" r="3" fill="#27ae60"/>
+    <circle cx="185" cy="140" r="3" fill="#27ae60"/>
+    <circle cx="135" cy="160" r="2.5" fill="#27ae60"/>
+  </g>
+
+  <!-- Small flame icon badge in corner -->
+  <g transform="translate(320, 30)">
+    <circle cx="15" cy="15" r="18" fill="#d71920"/>
+    <path d="M15 5 C17 12 21 14 21 19 C21 23 18 26 15 26 C12 26 9 23 9 19 C9 15 12 11 15 5 Z" fill="#f1c40f"/>
+    <path d="M15 14 C16 17 18 18 18 20 C18 22 17 23 15 23 C13 23 12 22 12 20 C12 18 14 16 15 14 Z" fill="#e74c3c"/>
+  </g>
+</svg>

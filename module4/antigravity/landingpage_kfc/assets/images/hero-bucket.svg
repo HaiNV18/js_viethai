@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="heroGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffecb3" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bucketGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d71920"/>
+      <stop offset="25%" stop-color="#e62e36"/>
+      <stop offset="50%" stop-color="#d71920"/>
+      <stop offset="75%" stop-color="#b8141a"/>
+      <stop offset="100%" stop-color="#930c12"/>
+    </linearGradient>
+    <linearGradient id="crispChicken1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5b041"/>
+      <stop offset="50%" stop-color="#d68910"/>
+      <stop offset="100%" stop-color="#b9770e"/>
+    </linearGradient>
+    <linearGradient id="crispChicken2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8c471"/>
+      <stop offset="50%" stop-color="#e59866"/>
+      <stop offset="100%" stop-color="#ba4a00"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#b8141a" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background Aura -->
+  <circle cx="300" cy="270" r="210" fill="url(#heroGlow)"/>
+
+  <!-- Floor Shadow -->
+  <ellipse cx="300" cy="450" rx="200" ry="25" fill="#e0e0e0" opacity="0.6"/>
+
+  <!-- Chicken Pieces Behind Bucket Rim -->
+  <!-- Drumstick Left -->
+  <g transform="rotate(-25 220 180)">
+    <path d="M190 220 C160 200 150 150 180 120 C210 90 250 110 260 150 C270 190 230 220 200 225 Z" fill="url(#crispChicken1)" filter="url(#shadow)"/>
+    <ellipse cx="215" cy="140" rx="15" ry="10" fill="#f9e79f" opacity="0.6"/>
+    <!-- Bone -->
+    <rect x="230" y="70" width="16" height="45" rx="8" fill="#fdfefe"/>
+    <circle cx="230" cy="70" r="9" fill="#fdfefe"/>
+    <circle cx="246" cy="70" r="9" fill="#fdfefe"/>
+  </g>
+
+  <!-- Large Thigh Center -->
+  <g transform="translate(200, 100)">
+    <path d="M40 120 C10 80 30 20 90 20 C150 20 190 60 180 110 C170 150 130 160 80 150 Z" fill="url(#crispChicken2)" filter="url(#shadow)"/>
+    <circle cx="100" cy="65" r="30" fill="#f5b041" opacity="0.5"/>
+    <circle cx="70" cy="90" r="8" fill="#ba4a00" opacity="0.3"/>
+    <circle cx="120" cy="80" r="10" fill="#ba4a00" opacity="0.3"/>
+    <circle cx="140" cy="110" r="6" fill="#ba4a00" opacity="0.3"/>
+  </g>
+
+  <!-- Drumstick Right -->
+  <g transform="rotate(30 380 180)">
+    <path d="M370 210 C340 190 330 140 360 110 C390 80 430 100 440 140 C450 180 410 210 380 215 Z" fill="url(#crispChicken1)" filter="url(#shadow)"/>
+    <ellipse cx="390" cy="130" rx="14" ry="9" fill="#f9e79f" opacity="0.6"/>
+    <!-- Bone -->
+    <rect x="410" y="60" width="16" height="45" rx="8" fill="#fdfefe"/>
+    <circle cx="410" cy="60" r="9" fill="#fdfefe"/>
+    <circle cx="426" cy="60" r="9" fill="#fdfefe"/>
+  </g>
+
+  <!-- Golden Crispy Bits / Herb garnish -->
+  <circle cx="260" cy="180" r="4" fill="#27ae60"/>
+  <circle cx="340" cy="170" r="3" fill="#27ae60"/>
+  <circle cx="300" cy="160" r="3" fill="#27ae60"/>
+
+  <!-- The Iconic KFC Bucket -->
+  <g filter="url(#shadow)">
+    <!-- Bucket Body -->
+    <path d="M170 230 L200 440 C200 445 220 455 300 455 C380 455 400 445 400 440 L430 230 Z" fill="url(#bucketGrad)"/>
+    
+    <!-- White Stripes -->
+    <!-- Center white stripe -->
+    <path d="M280 230 L285 454 C290 455 295 455 300 455 C305 455 310 455 315 454 L320 230 Z" fill="#ffffff"/>
+    <!-- Left white stripe -->
+    <path d="M210 230 L230 447 C235 449 240 450 248 451 L238 230 Z" fill="#ffffff"/>
+    <!-- Right white stripe -->
+    <path d="M390 230 L370 447 C365 449 360 450 352 451 L362 230 Z" fill="#ffffff"/>
+
+    <!-- Bucket Rim Lip -->
+    <ellipse cx="300" cy="230" rx="130" ry="24" fill="#b8141a"/>
+    <ellipse cx="300" cy="227" rx="128" ry="22" fill="#d71920"/>
+    <ellipse cx="300" cy="225" rx="124" ry="18" fill="#870a0f"/>
+
+    <!-- Star Emblem / KFC Badge on Bucket -->
+    <rect x="250" y="310" width="100" height="40" rx="6" fill="#ffffff" filter="url(#shadow)"/>
+    <text x="300" y="338" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="28" fill="#d71920" text-anchor="middle" letter-spacing="2">KFC</text>
+  </g>
+
+  <!-- Steam effects -->
+  <path d="M260 100 Q250 70 270 50 T260 20" stroke="#f39c12" stroke-width="3" fill="none" opacity="0.5" stroke-linecap="round"/>
+  <path d="M310 90 Q300 60 320 40 T310 15" stroke="#f39c12" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round"/>
+  <path d="M360 105 Q350 75 370 55 T360 25" stroke="#f39c12" stroke-width="3" fill="none" opacity="0.4" stroke-linecap="round"/>
+</svg>

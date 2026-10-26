@@ -1,0 +1,42 @@
+Hãy tạo cho tôi một trang Landing Page đơn giản bằng HTML, CSS (dùng Bootstrap qua CDN) và JavaScript. Trang web bao gồm các phần:
+
+Chủ đề: trang KFC bán thức ăn nhanh (gà rán, khoai tây chiên, nước ngọt...)
+
+Header/Navbar: Logo tên thương hiệu KFC và menu chuyển hướng đơn giản. Logo nằm trong folder images
+
+Hero Section: Tiêu đề, đoạn mô tả ngắn và 1 nút kêu gọi hành động (Call to Action - CTA). Có hình ảnh ông già KFC. Hình ảnh nên nằm bên phải.
+
+Features Section: Hiển thị menu sản phẩm
+Gà rán: 40.000 VND
+Khoai tây chiên: 20.000 VND
+Pepsi: 10.000 VND/ly
+
+Footer: Thông tin bản quyền và liên hệ.
+Hãy lưu mã nguồn chính vào tệp index.html.
+
+Giao diện: màu chủ đạo là trắng (#f2f2f2) và đỏ (#f40022). Chỉ render ra file HTML CSS JavaScript, không dùng bất kỳ ngôn ngữ backend nào.
+
+==============
+Tôi muốn bổ sung menu:
+Gà rán: 40.000 VND
+Gà rán cay (best seller): 45.000 VND
+Khoai tây chiên: 20.000 VND
+Hambuger gà: 50.000 VND
+Hambuger bò: 50.000 VND
+Hambuger tôm: 50.000 VND
+Pepsi: 10.000 VND/ly
+Coca cola: 10.000 VND/ly
+7up: 10.000 VND/ly
+
+Tôi muốn tạo trang chi tiết sản phẩm cho từng sản phẩm.
+
+==============
+Tôi muốn thêm slider "Đánh giá của khách hàng"
+1 hình avatar hình tròn 80x80
+Bên dưới là câu đánh giá khen món ăn ngon, bàn ghế sạch sẽ...
+
+Địa chỉ liên hệ
+Bên trái là địa chỉ: 213A Nguyễn Văn Cừ, Chợ Quán, TP Hồ Chí Minh
+Bên phải là iframe Google Map: 
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.661615575531!2d106.6833369!3d10.760541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fb9cb39fbe5%3A0x792afd5dac004956!2zS0ZDIE5ndXnhu4VuIFbEg24gQ-G7qyBUUCBI4buTIENow60gTWluaA!5e0!3m2!1sen!2s!4v1789893249525!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+

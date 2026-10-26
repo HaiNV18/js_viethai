@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8e7"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bunGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8c471"/>
+      <stop offset="100%" stop-color="#d68910"/>
+    </linearGradient>
+    <filter id="bgShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#888" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="400" height="300" fill="#fafafa"/>
+  <circle cx="200" cy="150" r="130" fill="url(#bgGlow)"/>
+  <ellipse cx="200" cy="255" rx="130" ry="16" fill="#eaecee"/>
+
+  <!-- Chicken Burger -->
+  <g transform="translate(75, 45)" filter="url(#bgShadow)">
+    <!-- Bottom Bun -->
+    <path d="M40 185 C40 175 210 175 210 185 C210 205 40 205 40 185 Z" fill="#e59866"/>
+
+    <!-- Mayonnaise Sauce -->
+    <path d="M48 178 Q125 188 202 178 Q125 174 48 178 Z" fill="#fdfefe"/>
+
+    <!-- Fried Chicken Patty (Crispy Golden) -->
+    <path d="M30 155 C35 145 70 148 100 142 C130 138 180 145 220 150 C230 165 215 180 180 180 C140 182 80 180 35 175 C25 168 25 160 30 155 Z" fill="#e67e22"/>
+    <circle cx="65" cy="160" r="6" fill="#f39c12"/>
+    <circle cx="110" cy="158" r="8" fill="#d35400"/>
+    <circle cx="160" cy="162" r="7" fill="#f39c12"/>
+    <circle cx="190" cy="160" r="6" fill="#d35400"/>
+
+    <!-- Fresh Crunchy Lettuce Layer -->
+    <path d="M25 142 Q45 152 70 140 Q95 150 125 138 Q155 152 185 140 Q205 150 225 140 L220 132 Q150 128 30 132 Z" fill="#2ecc71"/>
+    <path d="M35 140 Q55 148 80 138 Q110 146 140 136 Q170 148 200 138 Q215 146 220 138" stroke="#27ae60" stroke-width="3" fill="none"/>
+
+    <!-- Sliced Tomato -->
+    <rect x="45" y="128" width="70" height="10" rx="4" fill="#e74c3c"/>
+    <rect x="135" y="128" width="70" height="10" rx="4" fill="#e74c3c"/>
+
+    <!-- Top Sesame Bun -->
+    <path d="M35 125 C35 60 215 60 215 125 Z" fill="url(#bunGrad)"/>
+
+    <!-- White Sesame Seeds -->
+    <ellipse cx="80" cy="85" rx="3" ry="5" fill="#ffffff" transform="rotate(-20 80 85)"/>
+    <ellipse cx="115" cy="75" rx="3" ry="5" fill="#ffffff" transform="rotate(10 115 75)"/>
+    <ellipse cx="145" cy="80" rx="3" ry="5" fill="#ffffff" transform="rotate(-15 145 80)"/>
+    <ellipse cx="170" cy="90" rx="3" ry="5" fill="#ffffff" transform="rotate(25 170 90)"/>
+    <ellipse cx="95" cy="100" rx="3" ry="5" fill="#ffffff" transform="rotate(15 95 100)"/>
+    <ellipse cx="130" cy="98" rx="3" ry="5" fill="#ffffff" transform="rotate(-10 130 98)"/>
+    <ellipse cx="160" cy="105" rx="3" ry="5" fill="#ffffff" transform="rotate(20 160 105)"/>
+  </g>
+</svg>

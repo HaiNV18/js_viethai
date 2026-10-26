@@ -1,4 +1,3 @@
-import { httpServerHandler } from "cloudflare:node";
 import express from "express";
 
 import cartRoutes from "./src/routes/cartRoutes.js";
@@ -78,9 +77,6 @@ app.use("/api/v1", updateChannelRoutes);
 
 
 
-const LISTENING_PORT = 4000;
-app.listen(LISTENING_PORT, () => {
-    console.log(`Server is running on port ${LISTENING_PORT}`);
+app.listen(PORT, () => {
+    console.log(`Server: http://localhost:${PORT}`);
 });
-
-export default httpServerHandler({ port: LISTENING_PORT });

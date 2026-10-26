@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <radialGradient id="beefGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8e7"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bunGradB" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8c471"/>
+      <stop offset="100%" stop-color="#d68910"/>
+    </linearGradient>
+    <filter id="bfShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#888" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="400" height="300" fill="#fafafa"/>
+  <circle cx="200" cy="150" r="130" fill="url(#beefGlow)"/>
+  <ellipse cx="200" cy="255" rx="130" ry="16" fill="#eaecee"/>
+
+  <!-- Beef Burger with Melted Cheddar -->
+  <g transform="translate(75, 45)" filter="url(#bfShadow)">
+    <!-- Bottom Bun -->
+    <path d="M40 185 C40 175 210 175 210 185 C210 205 40 205 40 185 Z" fill="#e59866"/>
+
+    <!-- Grilled Beef Patty -->
+    <rect x="35" y="160" width="180" height="22" rx="8" fill="#5b2c15"/>
+    <!-- Grill marks -->
+    <line x1="60" y1="162" x2="75" y2="180" stroke="#3d1c0c" stroke-width="3"/>
+    <line x1="90" y1="162" x2="105" y2="180" stroke="#3d1c0c" stroke-width="3"/>
+    <line x1="120" y1="162" x2="135" y2="180" stroke="#3d1c0c" stroke-width="3"/>
+    <line x1="150" y1="162" x2="165" y2="180" stroke="#3d1c0c" stroke-width="3"/>
+    <line x1="180" y1="162" x2="195" y2="180" stroke="#3d1c0c" stroke-width="3"/>
+
+    <!-- Melted Cheese Layer (Corners Dropping) -->
+    <polygon points="35,160 215,160 210,165 170,178 140,165 90,175 40,165" fill="#f39c12"/>
+    <path d="M165 160 Q170 176 175 160" fill="#f39c12"/>
+
+    <!-- Pickle & Onion Slices -->
+    <ellipse cx="70" cy="152" rx="15" ry="5" fill="#27ae60"/>
+    <ellipse cx="120" cy="150" rx="18" ry="6" fill="#ecf0f1" stroke="#d5d8dc" stroke-width="2"/>
+    <ellipse cx="170" cy="153" rx="15" ry="5" fill="#27ae60"/>
+
+    <!-- Lettuce -->
+    <path d="M30 145 Q50 152 75 142 Q100 150 130 140 Q160 152 190 142 Q210 150 220 143 L215 136 Q150 132 35 136 Z" fill="#2ecc71"/>
+
+    <!-- Top Bun -->
+    <path d="M35 132 C35 65 215 65 215 132 Z" fill="url(#bunGradB)"/>
+
+    <!-- Sesame seeds -->
+    <ellipse cx="80" cy="90" rx="3" ry="5" fill="#ffffff" transform="rotate(-20 80 90)"/>
+    <ellipse cx="120" cy="80" rx="3" ry="5" fill="#ffffff" transform="rotate(10 120 80)"/>
+    <ellipse cx="155" cy="85" rx="3" ry="5" fill="#ffffff" transform="rotate(-15 155 85)"/>
+    <ellipse cx="175" cy="98" rx="3" ry="5" fill="#ffffff" transform="rotate(25 175 98)"/>
+    <ellipse cx="100" cy="105" rx="3" ry="5" fill="#ffffff" transform="rotate(15 100 105)"/>
+  </g>
+</svg>

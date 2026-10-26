@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <radialGradient id="shrimpGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8e7"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#888" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="400" height="300" fill="#fafafa"/>
+  <circle cx="200" cy="150" r="130" fill="url(#shrimpGlow)"/>
+  <ellipse cx="200" cy="255" rx="130" ry="16" fill="#eaecee"/>
+
+  <!-- Shrimp Burger -->
+  <g transform="translate(75, 45)" filter="url(#shShadow)">
+    <!-- Bottom Bun -->
+    <path d="M40 185 C40 175 210 175 210 185 C210 205 40 205 40 185 Z" fill="#e59866"/>
+
+    <!-- Thousand Island Sauce -->
+    <path d="M48 178 Q125 186 202 178 Q125 174 48 178 Z" fill="#f8a586"/>
+
+    <!-- Crispy Golden Prawn Patty -->
+    <path d="M35 155 C35 145 70 148 100 142 C130 138 180 145 215 150 C225 165 215 180 180 180 C140 182 80 180 38 175 C30 168 30 160 35 155 Z" fill="#f39c12"/>
+    <!-- Pink prawn bits visible -->
+    <circle cx="65" cy="162" r="5" fill="#f1948a"/>
+    <circle cx="110" cy="160" r="6" fill="#f1948a"/>
+    <circle cx="155" cy="163" r="5" fill="#f1948a"/>
+    <circle cx="190" cy="161" r="5" fill="#f1948a"/>
+
+    <!-- Fresh Crunchy Lettuce & Tartar -->
+    <path d="M28 142 Q48 152 75 140 Q100 150 130 138 Q160 152 190 140 Q210 150 222 140 L218 132 Q150 128 32 132 Z" fill="#2ecc71"/>
+
+    <!-- Top Bun -->
+    <path d="M35 125 C35 60 215 60 215 125 Z" fill="#f8c471"/>
+
+    <!-- Sesame seeds -->
+    <ellipse cx="80" cy="85" rx="3" ry="5" fill="#ffffff" transform="rotate(-20 80 85)"/>
+    <ellipse cx="125" cy="75" rx="3" ry="5" fill="#ffffff" transform="rotate(10 125 75)"/>
+    <ellipse cx="165" cy="85" rx="3" ry="5" fill="#ffffff" transform="rotate(-15 165 85)"/>
+    <ellipse cx="100" cy="100" rx="3" ry="5" fill="#ffffff" transform="rotate(15 100 100)"/>
+    <ellipse cx="145" cy="98" rx="3" ry="5" fill="#ffffff" transform="rotate(-10 145 98)"/>
+  </g>
+</svg>

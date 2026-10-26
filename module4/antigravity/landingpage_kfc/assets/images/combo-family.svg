@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <radialGradient id="cbfGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8e7"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cbfShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#555" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <rect width="400" height="300" fill="#fafafa"/>
+  <circle cx="200" cy="150" r="130" fill="url(#cbfGlow)"/>
+  <ellipse cx="200" cy="255" rx="150" ry="16" fill="#eaecee"/>
+
+  <!-- Family Feast: Chicken Bucket Center, 2 Drinks, Fries, Burger -->
+  <!-- Drink Left -->
+  <g transform="translate(30, 95)" filter="url(#cbfShadow)">
+    <path d="M10 50 L18 140 C18 143 32 147 50 147 C68 147 82 143 82 140 L90 50 Z" fill="#d71920"/>
+    <ellipse cx="50" cy="50" rx="40" ry="10" fill="#ffffff"/>
+    <rect x="47" y="10" width="6" height="45" rx="3" fill="#e74c3c" transform="rotate(-10 50 30)"/>
+  </g>
+
+  <!-- Drink Right -->
+  <g transform="translate(290, 95)" filter="url(#cbfShadow)">
+    <path d="M10 50 L18 140 C18 143 32 147 50 147 C68 147 82 143 82 140 L90 50 Z" fill="#2980b9"/>
+    <ellipse cx="50" cy="50" rx="40" ry="10" fill="#ffffff"/>
+    <rect x="47" y="10" width="6" height="45" rx="3" fill="#3498db" transform="rotate(10 50 30)"/>
+  </g>
+
+  <!-- Bucket in Center -->
+  <g transform="translate(130, 75)" filter="url(#cbfShadow)">
+    <!-- Chicken overflowing top -->
+    <circle cx="50" cy="40" r="28" fill="#e67e22"/>
+    <circle cx="90" cy="35" r="25" fill="#f39c12"/>
+    <rect x="75" y="10" width="12" height="35" rx="6" fill="#fdfefe" transform="rotate(-20 80 20)"/>
+    <circle cx="75" cy="15" r="7" fill="#fdfefe"/>
+    
+    <!-- Bucket base -->
+    <path d="M10 50 L25 170 C25 175 45 180 70 180 C95 180 115 175 115 170 L130 50 Z" fill="#d71920"/>
+    <path d="M55 50 L58 179 C62 180 66 180 70 180 C74 180 78 180 82 179 L85 50 Z" fill="#ffffff"/>
+    <ellipse cx="70" cy="50" rx="60" ry="14" fill="#b8141a"/>
+    <ellipse cx="70" cy="48" rx="58" ry="12" fill="#d71920"/>
+    <!-- Label -->
+    <rect x="45" y="100" width="50" height="25" rx="3" fill="#ffffff"/>
+    <text x="70" y="118" font-family="'Arial Black', sans-serif" font-weight="900" font-size="14" fill="#d71920" text-anchor="middle">KFC</text>
+  </g>
+
+  <!-- Burger in Foreground Left -->
+  <g transform="translate(65, 180)" filter="url(#cbfShadow)">
+    <!-- Bottom bun -->
+    <ellipse cx="55" cy="50" rx="40" ry="12" fill="#e59866"/>
+    <!-- Patty -->
+    <rect x="18" y="38" width="74" height="12" rx="5" fill="#6e2c00"/>
+    <!-- Lettuce -->
+    <path d="M15 38 Q35 44 55 36 Q75 44 95 38 L95 33 Q75 36 55 31 Q35 36 15 33 Z" fill="#2ecc71"/>
+    <!-- Top bun -->
+    <path d="M20 33 C20 10 90 10 90 33 Z" fill="#f5b041"/>
+    <!-- Sesame -->
+    <circle cx="45" cy="20" r="1.5" fill="#ffffff"/>
+    <circle cx="60" cy="17" r="1.5" fill="#ffffff"/>
+    <circle cx="70" cy="22" r="1.5" fill="#ffffff"/>
+  </g>
+</svg>
