@@ -1,0 +1,100 @@
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom'
+
+import Ecommerce from "./components/Ecommerce/Ecommerce";
+import About from "./components/Ecommerce/About/About";
+import CategoryProduct from "./components/Ecommerce/CategoryProduct/CategoryProduct";
+import Home from "./components/Ecommerce/Home/Home";
+
+import Auth from "./components/Auth/Auth";
+import Login from "./components/Auth/Login/Login";
+import Register from "./components/Auth/Register/Register";
+import ForgotPassword from "./components/Auth/ForgotPassword/ForgotPassword";
+
+import Admin from "./components/Admin/Admin";
+import Dashboard from "./components/Admin/Dashboard/Dashboard";
+import ListProduct from "./components/Admin/ListProduct/ListProduct";
+import DetailProductEdit from "./components/Admin/DetailProductEdit/DetailProductEdit.jsx";
+import ListUsers from "./components/Admin/ListUsers/ListUsers.jsx";
+
+import { ThemeProvider } from "./context/ThemeContext";
+
+import "./App.css";
+
+function App() {
+    return (
+        <BrowserRouter>
+            <ThemeProvider>
+                <Routes>
+
+                    {/* =====================
+                        AUTH LAYOUT
+                    ====================== */}
+
+                    <Route element={<Ecommerce />}>
+
+                        {/* Homepage */}
+                        <Route path="/" element={<Home/>} />
+
+                        {/* About */}
+                        <Route path="/about" element={<About/>} />
+
+                        {/* CategoryProduct */}
+                        <Route path="/category/:slug" element={<CategoryProduct/>} />
+
+                    </Route>
+
+                    {/* =====================
+                        AUTH LAYOUT
+                    ====================== */}
+
+                    <Route element={<Auth />}>
+
+                        {/* Login */}
+                        <Route path="/login" element={<Login/>} />
+
+                        {/* Register */}
+                        <Route path="/register" element={<Register/>} />
+
+                        {/* Forgot Password */}
+                        <Route path="/forgot-password" element={<ForgotPassword/>} />
+
+                    </Route>
+
+                    {/* =====================
+                        ADMIN LAYOUT
+                    ====================== */}
+
+                    <Route element={<Admin />}>
+
+                        {/* Dashboard */}
+                        <Route path="/dashboard" element={<Dashboard />} />
+
+                        {/* List Product */}
+                        <Route path="/list-product" element={<ListProduct />} />
+
+                        {/* Detail Product */}
+                        <Route path="/detail-product/:id/edit" element={<DetailProductEdit />} />
+
+                        {/* List Users */}
+                        <Route path="/users" element={<ListUsers />} />
+
+                    </Route>
+
+                    {/* =====================
+                        DEFAULT
+                    ====================== */}
+
+                    <Route path="/" element={<Navigate to="/login" replace />} />
+
+                    {/* URL không tồn tại */}
+                    <Route path="*" element={<Navigate to="/login" replace/>} />
+
+                    {/* <Route path="/error" errorElement={<ErrorPage/>} /> */} // Phù hợp với User Mode, không phù hợp với Dev Mode
+
+                </Routes>
+            </ThemeProvider>
+        </BrowserRouter>
+    );
+}
+
+export default App;

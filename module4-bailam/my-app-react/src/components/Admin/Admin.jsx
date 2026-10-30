@@ -1,0 +1,32 @@
+import { Navigate, Outlet } from "react-router-dom";
+
+import Header from "./Header/Header";
+import Sidebar from "./Sidebar/Sidebar";
+import Content from "./Content/Content";
+
+import "./Admin.css";
+
+function Admin() {
+
+    // const accessToken = localStorage.getItem("accessToken");
+
+    // if (!accessToken) {
+    //     return <Navigate to="/login" replace />;
+    // }
+
+    return (
+        <>
+            <Header />
+
+            <div className="layout">
+                <Sidebar />
+
+                <main className="content">
+                    <Outlet />
+                </main>
+            </div>
+        </>
+    );
+}
+
+export default Admin;
