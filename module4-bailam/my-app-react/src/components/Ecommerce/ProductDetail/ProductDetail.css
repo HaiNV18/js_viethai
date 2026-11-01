@@ -1,0 +1,691 @@
+/* Layout chung */
+.product-detail-page {
+    background-color: #f8fafc;
+    min-height: 100vh;
+    padding: 24px 0 60px;
+    color: #1e293b;
+    line-height: 1.5;
+}
+
+.detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: #64748b;
+    margin-bottom: 24px;
+}
+
+.breadcrumb a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb .current {
+    color: #0f172a;
+    font-weight: 600;
+}
+
+/* Cấu trúc 2 cột chính (Grid 7 : 5) */
+.product-main-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 36px;
+    align-items: start;
+}
+
+/* ========================================================
+   CỘT TRÁI
+======================================================== */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Header sản phẩm */
+.product-header {
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 16px;
+}
+
+.brand-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #e0e7ff;
+    color: #3730a3;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.product-title {
+    font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.rating-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.88rem;
+    color: #64748b;
+}
+
+.stars {
+    display: flex;
+    color: #f59e0b;
+    gap: 2px;
+}
+
+/* Gallery hình ảnh */
+.gallery-section {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 24px;
+}
+
+.main-image-container {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.main-preview-image {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.main-preview-image:hover {
+    transform: scale(1.05);
+}
+
+/* Hàng 4 thumbnails (1 chính + 3 phụ) */
+.thumbnails-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.thumb-btn {
+    aspect-ratio: 1 / 1;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.thumb-btn:hover {
+    border-color: #93c5fd;
+}
+
+.thumb-btn.active {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.thumb-btn img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Thông số kỹ thuật (Semantic Table 2 cột) */
+.section-heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 16px;
+}
+
+.table-wrapper {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+}
+
+.specs-table tr {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.specs-table tr:last-child {
+    border-bottom: none;
+}
+
+.specs-table tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.specs-table th {
+    width: 32%;
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 600;
+    color: #475569;
+    border-right: 1px solid #f1f5f9;
+}
+
+.specs-table td {
+    padding: 14px 18px;
+    color: #0f172a;
+}
+
+/* Phần Đánh giá */
+.reviews-section {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 24px;
+}
+
+.review-form {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 24px;
+}
+
+.review-form h4 {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #0f172a;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea {
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    outline: none;
+    font-family: inherit;
+}
+
+.review-form textarea {
+    width: 100%;
+    margin-bottom: 12px;
+    resize: vertical;
+}
+
+.btn-submit-review {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-submit-review:hover {
+    background: #1d4ed8;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.review-item {
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 16px;
+}
+
+.review-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.review-item-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.reviewer-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #dbeafe;
+    color: #1e40af;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.review-stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #f59e0b;
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+.review-date {
+    color: #94a3b8;
+    margin-left: 8px;
+    font-size: 0.78rem;
+}
+
+.review-body {
+    font-size: 0.92rem;
+    color: #475569;
+    line-height: 1.5;
+}
+
+/* ========================================================
+   CỘT PHẢI (STICKY SIDEBAR)
+======================================================== */
+.sidebar-sticky-box {
+    position: sticky;
+    top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Giá bán */
+.price-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.current-price {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #dc2626;
+    margin-bottom: 6px;
+}
+
+.original-price-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.original-price {
+    font-size: 1rem;
+    color: #94a3b8;
+    text-decoration: line-through;
+}
+
+.discount-tag {
+    background: #fef2f2;
+    color: #dc2626;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Hộp khuyến mãi */
+.promo-box {
+    background: #ffffff;
+    border: 1px solid #fed7aa;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.promo-title {
+    background: #fff7ed;
+    color: #c2410c;
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #ffedd5;
+}
+
+.promo-icon {
+    font-size: 1.1rem;
+}
+
+.promo-list {
+    list-style: none;
+    padding: 16px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.promo-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: #334155;
+    line-height: 1.45;
+}
+
+.check-icon {
+    color: #16a34a;
+    font-size: 1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+/* Số lượng & Nút hành động */
+.quantity-row {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quantity-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.quantity-controls button {
+    width: 32px;
+    height: 32px;
+    background: #f1f5f9;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.quantity-controls button:hover {
+    background: #e2e8f0;
+}
+
+.quantity-controls span {
+    width: 40px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-buy-now {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-buy-now:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(220, 38, 38, 0.4);
+}
+
+.btn-add-cart-detail {
+    width: 100%;
+    padding: 12px;
+    background: #ffffff;
+    color: #2563eb;
+    border: 2px solid #2563eb;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-add-cart-detail:hover {
+    background: #eff6ff;
+}
+
+/* Cam kết dịch vụ */
+.commitments-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.commitment-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: #475569;
+}
+
+.commit-icon {
+    color: #2563eb;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+/* ========================================================
+   CUỐI TRANG: RELATED PRODUCTS
+======================================================== */
+.related-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 2px dashed #cbd5e1;
+}
+
+.related-header {
+    margin-bottom: 24px;
+}
+
+.related-header h2 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.related-header p {
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.related-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.related-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    border-color: #93c5fd;
+}
+
+.related-image-box {
+    aspect-ratio: 4 / 3;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+}
+
+.related-image-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.related-card:hover .related-image-box img {
+    transform: scale(1.06);
+}
+
+.related-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.related-brand {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 4px;
+}
+
+.related-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.related-price {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #dc2626;
+    margin-top: auto;
+    margin-bottom: 12px;
+}
+
+.btn-view-detail {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .product-main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar-sticky-box {
+        position: static;
+    }
+
+    .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .related-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.product-title-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+.product-title-link:hover {
+    color: #2563eb;
+}
+
+a.card-image-box {
+    display: flex;
+    text-decoration: none;
+}

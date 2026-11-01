@@ -4,6 +4,7 @@ import Ecommerce from "./components/Ecommerce/Ecommerce";
 import About from "./components/Ecommerce/About/About";
 import CategoryProduct from "./components/Ecommerce/CategoryProduct/CategoryProduct";
 import Home from "./components/Ecommerce/Home/Home";
+import ProductDetail from "./components/Ecommerce/ProductDetail/ProductDetail";
 
 import Auth from "./components/Auth/Auth";
 import Login from "./components/Auth/Login/Login";
@@ -40,6 +41,9 @@ function App() {
 
                         {/* CategoryProduct */}
                         <Route path="/category/:slug" element={<CategoryProduct/>} />
+
+                        {/* Product Detail */}
+                        <Route path="/product/:id" element={<ProductDetail />} />
 
                     </Route>
 

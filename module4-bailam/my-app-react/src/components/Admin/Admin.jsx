@@ -8,12 +8,6 @@ import "./Admin.css";
 
 function Admin() {
 
-    // const accessToken = localStorage.getItem("accessToken");
-
-    // if (!accessToken) {
-    //     return <Navigate to="/login" replace />;
-    // }
-
     return (
         <>
             <Header />
@@ -22,7 +16,7 @@ function Admin() {
                 <Sidebar />
 
                 <main className="content">
-                    <Outlet />
+                    <Content />
                 </main>
             </div>
         </>
