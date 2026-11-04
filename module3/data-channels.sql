@@ -57,7 +57,9 @@ INSERT INTO channels (
 
 ('UCkWnwVAYGshTEVDPZ451kBQ', 'essie ch.', '@essiech', 'essie-channel-thumbnail.jpg', 'essie-channel-banner.jpg', 75400, '75.4K', 'VTuber', 497, 'https://www.youtube.com/@essiech', NULL, NULL, 'https://x.com/essie_ch', NULL),
 
-('UCp-9F3MEliOQ2sbAnG0OqLQ', 'Gawr Gura Ch. hololive-EN', '@GawrGura', 'gawr-gura-channel-thumbnail.jpg', 'gawr-gura-channel-banner.jpg', 4590000, '4.59M', 'VTuber', 565, 'https://www.youtube.com/@GawrGura', NULL, NULL, 'https://x.com/gawrgura', NULL)
+('UCp-9F3MEliOQ2sbAnG0OqLQ', 'Gawr Gura Ch. hololive-EN', '@GawrGura', 'gawr-gura-channel-thumbnail.jpg', 'gawr-gura-channel-banner.jpg', 4590000, '4.59M', 'VTuber', 565, 'https://www.youtube.com/@GawrGura', NULL, NULL, 'https://x.com/gawrgura', NULL),
+
+('UCCzUftO8KOVkV4wQG1vkU1g', 'Marine Ch. 宝鐘マリン', '@HoushouMarine', 'houshou-marine-channel-thumbnail.jpg', 'houshou-marine-channel-banner.jpg', 4440000, '4.44M', 'VTuber', 565, 'https://www.youtube.com/@HoushouMarine', NULL, NULL, NULL, NULL)
 ON CONFLICT (id) DO NOTHING;
 
 -- UCCzUftO8KOVkV4wQG1vkU1g Marine Ch. 宝鐘マリン
