@@ -1,0 +1,59 @@
+MongoDB Atlas
+Tạo Project
+Trong mỗi Project có Cluster
+MongoDB chỉ cho 1 Cluster free
+
+SQL: tạo table
+NoSQL: tạo collection
+
+
+
+Clusters -> chọn cluster -> Connect
+
+Chọn Connect with MongoDB Compass
+
+I have MongoDB Compass installed
+Chọn đúng version
+
+mongodb+srv://nvhai061993_db_user:HKScdXL738q0Htg2@dhkhtn.r9n3ran.mongodb.net/
+
+
+=======================
+Quên mật khẩu
+
+MongoDB Atlas thì không thể xem/lấy lại password cũ.
+Cách đúng là reset password.
+
+Vào Project, Security -> Database & Network Access
+
+Generate ra Password mới
+
+
+
+
+
+
+MongoDB Atlas: cloud của mongodb, giống supabase
+MongoDB Server: server localhost
+MongoDB Compass: giao diện
+
+
+MongoDB xài khi
+Di động (Firebase của Google)
+Notification (thông báo)
+Chat
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
