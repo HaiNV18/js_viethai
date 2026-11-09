@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bg7" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg7)"/>
+  <circle cx="480" cy="100" r="40" fill="#fef08a"/>
+  <path d="M0 300 Q240 260 600 300 L600 400 L0 400 Z" fill="#0c4a6e" opacity="0.75"/>
+  <rect x="24" y="24" width="175" height="34" rx="17" fill="#ed1d23"/>
+  <text x="111" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="#ffffff">NHA TRANG • 4N3Đ</text>
+  <text x="36" y="180" font-family="Arial, sans-serif" font-weight="800" font-size="34" fill="#ffffff">Vịnh Biển Xanh Nha Trang</text>
+  <text x="36" y="220" font-family="Arial, sans-serif" font-weight="600" font-size="18" fill="#cffafe">VinWonders • Đảo Hòn Mun • Tắm bùn I-Resort</text>
+</svg>

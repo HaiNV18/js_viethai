@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng & Đăng ký Dịch vụ – Vietjet (Demo)</title>
+  <meta name="description" content="Xem lại các chuyến bay và tour đã chọn, nhập thông tin liên hệ và gửi yêu cầu đặt dịch vụ.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="py-4">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
+        <div>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb small mb-1">
+              <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Giỏ hàng & Đăng ký</li>
+            </ol>
+          </nav>
+          <h1 class="h3 fw-bold mb-0">Giỏ Hàng & Thông Tin Khách Hàng</h1>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <span id="emailjs-config-status" class="badge bg-warning-subtle text-dark border"></span>
+          <button
+            type="button"
+            class="btn btn-sm btn-vj-outline"
+            data-bs-toggle="modal"
+            data-bs-target="#emailConfigModal"
+          >
+            <i class="bi bi-gear me-1"></i>Cấu hình EmailJS
+          </button>
+        </div>
+      </div>
+
+      <!-- Màn hình Hoàn thành sau khi gửi yêu cầu thành công -->
+      <section id="booking-success-section" class="mb-5 d-none" aria-live="polite"></section>
+
+      <!-- Trạng thái Giỏ hàng trống (Empty State) -->
+      <section id="cart-empty-state" class="card border-0 shadow-sm p-5 text-center mb-5 d-none">
+        <div class="mb-3 text-danger" style="font-size: 3.25rem;">
+          <i class="bi bi-bag-x"></i>
+        </div>
+        <h2 class="h4 fw-bold">Giỏ hàng của bạn đang trống</h2>
+        <p class="text-secondary mb-4 mx-auto" style="max-width: 520px;">
+          Bạn chưa chọn chuyến bay hoặc tour du lịch nào. Hãy tìm kiếm chuyến bay hoặc khám phá các tour nổi bật để thêm vào giỏ hàng nhé!
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <a href="flights.html" class="btn btn-vj-primary">
+            <i class="bi bi-airplane me-1"></i>Tìm chuyến bay
+          </a>
+          <a href="tours.html" class="btn btn-vj-outline">
+            <i class="bi bi-compass me-1"></i>Khám phá tour du lịch
+          </a>
+        </div>
+      </section>
+
+      <!-- Nội dung Giỏ hàng & Form khách hàng khi có sản phẩm -->
+      <div id="cart-active-content" class="row g-4 mb-5">
+        <!-- Cột trái: Danh sách dịch vụ đã chọn -->
+        <div class="col-12 col-lg-7">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="h5 fw-bold mb-0">Dịch vụ đã chọn</h2>
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#clearCartConfirmModal"
+            >
+              <i class="bi bi-trash3 me-1"></i>Xóa toàn bộ giỏ hàng
+            </button>
+          </div>
+
+          <div id="cart-items-container"></div>
+        </div>
+
+        <!-- Cột phải: Tổng tiền & Form thông tin khách hàng -->
+        <div class="col-12 col-lg-5">
+          <div class="card border shadow-sm filter-sidebar-sticky" style="border-radius: 16px;">
+            <div class="card-body p-4">
+              <h2 class="h5 fw-bold mb-3">Tóm tắt & Đăng ký dịch vụ</h2>
+
+              <div class="p-3 rounded-3 bg-light border mb-4">
+                <div class="d-flex justify-content-between small mb-2">
+                  <span class="text-secondary">Số lượng dịch vụ:</span>
+                  <strong id="cart-summary-count" class="text-dark">0 dịch vụ</strong>
+                </div>
+                <div class="d-flex justify-content-between align-items-baseline border-top pt-2">
+                  <span class="fw-semibold">Tổng tiền tham khảo:</span>
+                  <span id="cart-summary-total" class="price-highlight fs-4">0 ₫</span>
+                </div>
+              </div>
+
+              <form id="customer-booking-form" novalidate>
+                <div id="booking-form-error" class="alert alert-danger small py-2 d-none" role="alert"></div>
+
+                <div class="mb-3">
+                  <label for="cust-name" class="form-label small fw-semibold">
+                    Họ và tên khách hàng <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="cust-name"
+                    class="form-control"
+                    placeholder="Ví dụ: Nguyễn Văn Hải"
+                    required
+                    minlength="2"
+                    aria-errormessage="err-cust-name"
+                  >
+                  <div id="err-cust-name" class="field-error-msg">Vui lòng nhập họ và tên (tối thiểu 2 ký tự).</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="cust-email" class="form-label small fw-semibold">
+                    Email nhận xác nhận <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="cust-email"
+                    class="form-control"
+                    placeholder="Ví dụ: khachhang@gmail.com"
+                    required
+                    aria-errormessage="err-cust-email"
+                  >
+                  <div id="err-cust-email" class="field-error-msg">Vui lòng nhập địa chỉ email hợp lệ.</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="cust-phone" class="form-label small fw-semibold">
+                    Số điện thoại liên hệ <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="cust-phone"
+                    class="form-control"
+                    placeholder="Ví dụ: 0901234567"
+                    required
+                    pattern="^(0|\+84)[0-9\s.\-]{8,12}$"
+                    aria-errormessage="err-cust-phone"
+                  >
+                  <div id="err-cust-phone" class="field-error-msg">Số điện thoại gồm 9–11 chữ số (bắt đầu bằng 0 hoặc +84).</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="cust-note" class="form-label small fw-semibold">Ghi chú thêm (Không bắt buộc)</label>
+                  <textarea
+                    id="cust-note"
+                    class="form-control"
+                    rows="2"
+                    placeholder="Yêu cầu hỗ trợ hành lý, suất ăn chay, xuất hóa đơn..."
+                  ></textarea>
+                </div>
+
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="cust-terms"
+                    required
+                    aria-errormessage="err-cust-terms"
+                  >
+                  <label class="form-check-label small" for="cust-terms">
+                    Tôi hiểu đây là <strong>yêu cầu đăng ký dịch vụ minh họa (Demo)</strong> và đồng ý với các điều khoản tham khảo của chương trình. <span class="text-danger">*</span>
+                  </label>
+                  <div id="err-cust-terms" class="field-error-msg">Vui lòng đồng ý điều khoản trước khi đăng ký.</div>
+                </div>
+
+                <button type="submit" id="btn-submit-booking" class="btn btn-vj-primary w-100 py-2">
+                  <i class="bi bi-send-check-fill me-1"></i>Đăng ký đặt dịch vụ
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lịch sử Yêu cầu đã lưu trong SQLite -->
+      <section class="card border shadow-sm" style="border-radius: 16px;" aria-labelledby="sqlite-history-heading">
+        <div class="card-body p-4">
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+            <div>
+              <h2 id="sqlite-history-heading" class="h6 fw-bold mb-0">
+                <i class="bi bi-database-fill-check text-danger me-1"></i>Lịch sử yêu cầu đã lưu trong SQLite (Bảng <code>bookings</code>)
+              </h2>
+              <p class="small text-secondary mb-0">
+                Dữ liệu dưới đây được truy vấn trực tiếp từ SQLite trong IndexedDB và vẫn được giữ nguyên sau khi tải lại trang.
+              </p>
+            </div>
+          </div>
+          <div id="saved-bookings-history"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modal Xác nhận xóa toàn bộ giỏ hàng -->
+  <div class="modal fade" id="clearCartConfirmModal" tabindex="-1" aria-labelledby="clearCartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 14px;">
+        <div class="modal-header">
+          <h3 class="modal-title h6 fw-bold" id="clearCartModalLabel">Xác nhận xóa toàn bộ giỏ hàng</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+        </div>
+        <div class="modal-body small">
+          Bạn có chắc chắn muốn xóa tất cả chuyến bay và tour du lịch đã chọn trong giỏ hàng không?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-vj-outline" data-bs-dismiss="modal">Hủy bỏ</button>
+          <button type="button" id="btn-confirm-clear-cart" class="btn btn-sm btn-danger">
+            <i class="bi bi-trash3 me-1"></i>Đồng ý xóa tất cả
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Cấu hình EmailJS nhanh trên trình duyệt -->
+  <div class="modal fade" id="emailConfigModal" tabindex="-1" aria-labelledby="emailConfigModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 14px;">
+        <form id="form-emailjs-config">
+          <div class="modal-header">
+            <h3 class="modal-title h6 fw-bold" id="emailConfigModalLabel">
+              <i class="bi bi-envelope-at text-danger me-1"></i>Cấu hình EmailJS (Client-side)
+            </h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+          </div>
+          <div class="modal-body small">
+            <p class="text-secondary mb-3">
+              Để gửi email tự động từ tài khoản đã xác minh (ví dụ <code>nvhai061993@gmail.com</code>), bạn có thể điền thông tin vào file <code>assets/js/config.example.js</code> hoặc nhập trực tiếp tại đây (lưu trong <code>localStorage</code> của trình duyệt):
+            </p>
+            <div class="mb-2">
+              <label for="cfg-emailjs-public-key" class="form-label fw-semibold mb-1">Public Key</label>
+              <input type="text" id="cfg-emailjs-public-key" class="form-control form-control-sm" placeholder="Ví dụ: user_xxxxx / public_key">
+            </div>
+            <div class="mb-2">
+              <label for="cfg-emailjs-service-id" class="form-label fw-semibold mb-1">Service ID</label>
+              <input type="text" id="cfg-emailjs-service-id" class="form-control form-control-sm" placeholder="Ví dụ: service_xxxxx">
+            </div>
+            <div class="mb-2">
+              <label for="cfg-emailjs-template-id" class="form-label fw-semibold mb-1">Template ID</label>
+              <input type="text" id="cfg-emailjs-template-id" class="form-control form-control-sm" placeholder="Ví dụ: template_xxxxx">
+            </div>
+            <div class="alert alert-light border small mb-0 mt-3">
+              <strong>Bảo mật:</strong> Tuyệt đối không nhập mật khẩu Gmail hoặc Private Key vào đây. Nếu để trống, hệ thống sẽ tự động báo <em>“Chưa cấu hình gửi email tự động”</em> và cung cấp nút mở ứng dụng email bằng <code>mailto:</code>.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-vj-outline" data-bs-dismiss="modal">Đóng</button>
+            <button type="submit" class="btn btn-sm btn-vj-primary">Lưu cấu hình</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/booking.js"></script>
+</body>
+</html>

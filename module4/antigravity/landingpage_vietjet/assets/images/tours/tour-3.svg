@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#2dd4bf"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg3)"/>
+  <path d="M120 300 L180 190 L240 300 Z" fill="#115e59"/>
+  <path d="M320 300 L390 160 L460 300 Z" fill="#134e4a"/>
+  <rect x="0" y="300" width="600" height="100" fill="#042f2e" opacity="0.7"/>
+  <rect x="24" y="24" width="195" height="34" rx="17" fill="#ed1d23"/>
+  <text x="121" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="#ffffff">HÀ NỘI - HẠ LONG • 3N2Đ</text>
+  <text x="36" y="150" font-family="Arial, sans-serif" font-weight="800" font-size="34" fill="#ffffff">Kỳ Quan Vịnh Hạ Long</text>
+  <text x="36" y="190" font-family="Arial, sans-serif" font-weight="600" font-size="18" fill="#ccfbf1">Du thuyền 5 sao • Hang Sửng Sốt • Phố Cổ Hà Nội</text>
+</svg>

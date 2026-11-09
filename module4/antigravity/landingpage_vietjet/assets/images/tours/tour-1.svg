@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg1)"/>
+  <circle cx="480" cy="90" r="45" fill="#fde047" opacity="0.9"/>
+  <path d="M0 280 Q150 240 300 280 T600 270 L600 400 L0 400 Z" fill="#0369a1" opacity="0.7"/>
+  <path d="M0 320 Q200 290 400 320 T600 310 L600 400 L0 400 Z" fill="#fef08a"/>
+  <rect x="24" y="24" width="160" height="34" rx="17" fill="#ed1d23"/>
+  <text x="104" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="#ffffff">PHÚ QUỐC • 4N3Đ</text>
+  <text x="36" y="200" font-family="Arial, sans-serif" font-weight="800" font-size="34" fill="#ffffff">Thiên Đường Đảo Ngọc</text>
+  <text x="36" y="240" font-family="Arial, sans-serif" font-weight="600" font-size="18" fill="#e0f2fe">Grand World • Cáp treo Hòn Thơm • Sunset Sanato</text>
+</svg>

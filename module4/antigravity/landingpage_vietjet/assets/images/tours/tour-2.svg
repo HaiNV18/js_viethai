@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg2)"/>
+  <path d="M80 310 Q300 180 520 310" fill="none" stroke="#fef3c7" stroke-width="10"/>
+  <path d="M0 310 L600 310 L600 400 L0 400 Z" fill="#7c2d12" opacity="0.65"/>
+  <rect x="24" y="24" width="190" height="34" rx="17" fill="#ed1d23"/>
+  <text x="119" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="#ffffff">ĐÀ NẴNG - HỘI AN • 4N3Đ</text>
+  <text x="36" y="185" font-family="Arial, sans-serif" font-weight="800" font-size="34" fill="#ffffff">Con Đường Di Sản Miền Trung</text>
+  <text x="36" y="225" font-family="Arial, sans-serif" font-weight="600" font-size="18" fill="#ffedd5">Bà Nà Hills • Cầu Vàng • Phố Cổ Hội An</text>
+</svg>

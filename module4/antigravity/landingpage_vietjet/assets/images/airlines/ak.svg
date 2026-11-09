@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <rect width="240" height="80" rx="12" fill="#fef2f2" stroke="#fecdd3" stroke-width="1.5"/>
+  <circle cx="44" cy="40" r="22" fill="#dc2626"/>
+  <text x="44" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="14" fill="#ffffff">AK</text>
+  <text x="78" y="38" font-family="Arial, sans-serif" font-weight="800" font-size="20" fill="#dc2626">AirAsia</text>
+  <text x="78" y="55" font-family="Arial, sans-serif" font-weight="600" font-size="11" fill="#6b7280">NOW EVERYONE CAN FLY (DEMO)</text>
+</svg>

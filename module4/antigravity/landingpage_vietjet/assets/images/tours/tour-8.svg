@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bg8" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg8)"/>
+  <rect x="420" y="110" width="22" height="190" fill="#f8fafc" opacity="0.85"/>
+  <rect x="465" y="110" width="22" height="190" fill="#f8fafc" opacity="0.85"/>
+  <rect x="442" y="190" width="23" height="8" fill="#f8fafc"/>
+  <rect x="0" y="300" width="600" height="100" fill="#0f172a" opacity="0.8"/>
+  <rect x="24" y="24" width="205" height="34" rx="17" fill="#ed1d23"/>
+  <text x="126" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="#ffffff">KUALA LUMPUR • 4N3Đ</text>
+  <text x="36" y="180" font-family="Arial, sans-serif" font-weight="800" font-size="32" fill="#ffffff">Nhịp Sống Malaysia Hiện Đại</text>
+  <text x="36" y="220" font-family="Arial, sans-serif" font-weight="600" font-size="17" fill="#fee2e2">Tháp đôi Petronas • Cao nguyên Genting • Động Batu</text>
+</svg>

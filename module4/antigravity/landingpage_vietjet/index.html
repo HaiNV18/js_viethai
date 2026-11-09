@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vietjet – Tìm kiếm Chuyến bay & Tour Du lịch (Demo)</title>
+  <meta name="description" content="Website demo tìm kiếm chuyến bay và đặt tour du lịch Vietjet sử dụng HTML5, CSS3, Vanilla JS và SQLite WebAssembly.">
+  <!-- Google Fonts: Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5.3 CSS & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <!-- Header dùng chung -->
+  <div id="site-header"></div>
+
+  <main>
+    <!-- Hero Banner -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <span class="badge bg-warning text-dark fw-bold mb-2 px-3 py-2 rounded-pill">
+              <i class="bi bi-stars me-1"></i>Khám phá Việt Nam & Châu Á
+            </span>
+            <h1 class="display-6 fw-bold mb-2">Đặt Chuyến Bay & Tour Du Lịch Trọn Gói Dễ Dàng</h1>
+            <p class="mb-0 opacity-90">
+              Tra cứu lịch bay linh hoạt, so sánh quyền lợi hạng vé Phổ Thông & Thương Gia và khám phá 8 hành trình tour đặc sắc.
+            </p>
+          </div>
+          <div class="col-lg-4 text-lg-end d-none d-lg-block">
+            <div class="p-3 rounded-4 bg-white bg-opacity-10 border border-white border-opacity-25 d-inline-block text-start">
+              <div class="small fw-semibold text-warning"><i class="bi bi-database-check me-1"></i>Trạng thái hệ thống Demo</div>
+              <div class="small text-white">Dữ liệu vận hành bằng SQLite (WebAssembly) lưu trữ trực tiếp trên trình duyệt của bạn.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Khối Tìm Chuyến Bay (Search Panel) -->
+    <section class="container mb-5" aria-label="Tìm kiếm chuyến bay">
+      <div class="search-panel-card">
+        <form id="home-search-form" novalidate>
+          <!-- Loại hành trình -->
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3 pb-2 border-bottom">
+            <div class="d-flex align-items-center gap-3" role="radiogroup" aria-label="Loại hành trình">
+              <div class="form-check mb-0">
+                <input class="form-check-input" type="radio" name="tripType" id="trip-roundtrip" value="roundtrip" checked>
+                <label class="form-check-label fw-semibold" for="trip-roundtrip">Khứ hồi</label>
+              </div>
+              <div class="form-check mb-0">
+                <input class="form-check-input" type="radio" name="tripType" id="trip-oneway" value="oneway">
+                <label class="form-check-label fw-semibold" for="trip-oneway">Một chiều</label>
+              </div>
+            </div>
+            <span class="small text-secondary">
+              <i class="bi bi-shield-check text-danger me-1"></i>Giá tham khảo minh họa theo VND
+            </span>
+          </div>
+
+          <div id="home-search-error" class="alert alert-danger small py-2 d-none" role="alert"></div>
+
+          <div class="row g-3 align-items-start">
+            <!-- Điểm đi -->
+            <div class="col-12 col-md-6 col-lg-3">
+              <label for="search-origin" class="form-label small fw-semibold mb-1">
+                <i class="bi bi-geo-alt-fill text-danger me-1"></i>Điểm đi <span class="text-danger">*</span>
+              </label>
+              <select id="search-origin" class="form-select" required aria-errormessage="err-origin">
+                <option value="SGN" selected>TP. Hồ Chí Minh (SGN)</option>
+              </select>
+              <div id="err-origin" class="field-error-msg">Vui lòng chọn điểm đi.</div>
+            </div>
+
+            <!-- Điểm đến -->
+            <div class="col-12 col-md-6 col-lg-3">
+              <label for="search-destination" class="form-label small fw-semibold mb-1">
+                <i class="bi bi-pin-map-fill text-danger me-1"></i>Điểm đến <span class="text-danger">*</span>
+              </label>
+              <select id="search-destination" class="form-select" required aria-errormessage="err-destination">
+                <option value="HAN" selected>Hà Nội (HAN)</option>
+              </select>
+              <div id="err-destination" class="field-error-msg">Điểm đến bắt buộc và không trùng điểm đi.</div>
+            </div>
+
+            <!-- Ngày khởi hành -->
+            <div class="col-6 col-md-4 col-lg-2">
+              <label for="search-departure-date" class="form-label small fw-semibold mb-1">
+                <i class="bi bi-calendar-event text-danger me-1"></i>Ngày đi <span class="text-danger">*</span>
+              </label>
+              <input type="date" id="search-departure-date" class="form-control" required aria-errormessage="err-dep-date">
+              <div id="err-dep-date" class="field-error-msg">Chọn ngày khởi hành hợp lệ.</div>
+            </div>
+
+            <!-- Ngày về -->
+            <div class="col-6 col-md-4 col-lg-2">
+              <label for="search-return-date" class="form-label small fw-semibold mb-1">
+                <i class="bi bi-calendar-check text-danger me-1"></i>Ngày về
+              </label>
+              <input type="date" id="search-return-date" class="form-control" required aria-errormessage="err-ret-date">
+              <div id="err-ret-date" class="field-error-msg">Ngày về không được trước ngày đi.</div>
+            </div>
+
+            <!-- Hành khách & Nút tìm kiếm -->
+            <div class="col-12 col-md-4 col-lg-2">
+              <label for="search-passengers" class="form-label small fw-semibold mb-1">
+                <i class="bi bi-people-fill text-danger me-1"></i>Hành khách
+              </label>
+              <div class="d-flex gap-2">
+                <input
+                  type="number"
+                  id="search-passengers"
+                  class="form-control"
+                  min="1"
+                  max="20"
+                  value="1"
+                  required
+                  aria-label="Số hành khách"
+                >
+                <button type="submit" class="btn btn-vj-primary flex-shrink-0 px-3" aria-label="Tìm chuyến bay">
+                  <i class="bi bi-search me-1"></i>Tìm kiếm
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Khối Tra Cứu Thời Tiết Điểm Đến (Open-Meteo Live) -->
+    <section class="container mb-5" aria-labelledby="weather-widget-heading">
+      <div class="card border shadow-sm" style="border-radius: 16px;">
+        <div class="card-body p-4">
+          <div class="row g-4 align-items-center">
+            <div class="col-12 col-lg-5">
+              <span class="badge-demo mb-2 d-inline-block">
+                <i class="bi bi-cloud-sun-fill text-danger me-1"></i>Open-Meteo API
+              </span>
+              <h2 id="weather-widget-heading" class="h5 fw-bold mb-1">Tra Cứu Thời Tiết Hiện Tại Điểm Đến</h2>
+              <p class="small text-secondary mb-3">
+                Nhập tên thành phố để kiểm tra nhiệt độ và tình trạng thời tiết hiện tại trước chuyến bay hoặc hành trình tour của bạn.
+              </p>
+
+              <form id="weather-search-form" class="mb-2" novalidate>
+                <label for="weather-city-input" class="visually-hidden">Tên thành phố</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-white"><i class="bi bi-geo-alt text-danger"></i></span>
+                  <input
+                    type="text"
+                    id="weather-city-input"
+                    class="form-control"
+                    placeholder="Nhập tên thành phố (VD: Hà Nội, Đà Nẵng, Bangkok...)"
+                    value="Hà Nội"
+                    required
+                  >
+                  <button type="submit" class="btn btn-vj-primary">
+                    <i class="bi bi-cloud-check me-1"></i>Xem thời tiết
+                  </button>
+                </div>
+              </form>
+
+              <div class="d-flex flex-wrap align-items-center gap-1 mt-2">
+                <span class="small text-secondary me-1">Chọn nhanh:</span>
+                <button type="button" class="btn btn-sm btn-vj-outline py-0 px-2 small" data-weather-city="Hồ Chí Minh">TP.HCM</button>
+                <button type="button" class="btn btn-sm btn-vj-outline py-0 px-2 small" data-weather-city="Hà Nội">Hà Nội</button>
+                <button type="button" class="btn btn-sm btn-vj-outline py-0 px-2 small" data-weather-city="Đà Nẵng">Đà Nẵng</button>
+                <button type="button" class="btn btn-sm btn-vj-outline py-0 px-2 small" data-weather-city="Phú Quốc">Phú Quốc</button>
+                <button type="button" class="btn btn-sm btn-vj-outline py-0 px-2 small" data-weather-city="Đà Lạt">Đà Lạt</button>
+                <button type="button" class="btn btn-sm btn-vj-outline py-0 px-2 small" data-weather-city="Singapore">Singapore</button>
+                <button type="button" class="btn btn-sm btn-vj-outline py-0 px-2 small" data-weather-city="Bangkok">Bangkok</button>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-7">
+              <div id="weather-result-box" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 Tour Du Lịch Nổi Bật -->
+    <section class="container mb-5" aria-labelledby="featured-tours-heading">
+      <div class="d-flex flex-wrap align-items-end justify-content-between gap-2 mb-4">
+        <div>
+          <span class="badge-demo mb-2 d-inline-block">Gợi ý hành trình trọn gói</span>
+          <h2 id="featured-tours-heading" class="h3 fw-bold mb-1">8 Tour Du Lịch Nổi Bật</h2>
+          <p class="text-secondary small mb-0">
+            Bao gồm vé máy bay khứ hồi, khách sạn tiêu chuẩn và lịch trình tham quan đặc sắc (Giá tham khảo dữ liệu mẫu).
+          </p>
+        </div>
+        <a href="tours.html" class="btn btn-vj-outline btn-sm">
+          Xem tất cả tour <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+      <div id="featured-tours-grid" class="row g-4">
+        <!-- Trạng thái Loading -->
+        <div class="col-12 text-center py-5">
+          <div class="spinner-border text-danger" role="status"></div>
+          <p class="small text-secondary mt-2 mb-0">Đang tải danh sách 8 tour nổi bật từ SQLite...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Các Hãng Hàng Không -->
+    <section class="py-5 bg-light border-top border-bottom" aria-labelledby="airlines-section-heading">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-2 mb-4">
+          <div>
+            <span class="badge-demo mb-2 d-inline-block">Đối tác vận chuyển minh họa</span>
+            <h2 id="airlines-section-heading" class="h3 fw-bold mb-1">Các Hãng Hàng Không Khai Thác</h2>
+            <p class="text-secondary small mb-0">
+              Nhấp vào logo hãng hàng không bất kỳ để lọc nhanh danh sách các chuyến bay của hãng đó.
+            </p>
+          </div>
+          <a href="flights.html" class="btn btn-vj-outline btn-sm">
+            Tất cả chuyến bay <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+
+        <div id="airlines-grid" class="row g-3">
+          <div class="col-12 text-center py-4">
+            <div class="spinner-border spinner-border-sm text-danger" role="status"></div>
+            <span class="small text-secondary ms-2">Đang tải danh sách hãng hàng không...</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer dùng chung -->
+  <div id="site-footer"></div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Main Application Script -->
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

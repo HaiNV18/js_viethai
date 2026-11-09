@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <rect width="240" height="80" rx="12" fill="#fff5f5" stroke="#fecaca" stroke-width="1.5"/>
+  <circle cx="44" cy="40" r="22" fill="#ed1d23"/>
+  <path d="M35 42 L42 30 L46 39 L55 34 L41 51 Z" fill="#ffd700"/>
+  <text x="78" y="38" font-family="Arial, sans-serif" font-weight="800" font-size="20" fill="#ed1d23">VietJet Air</text>
+  <text x="78" y="55" font-family="Arial, sans-serif" font-weight="600" font-size="11" fill="#6b7280">BAY LÀ THÍCH NGAY (DEMO)</text>
+</svg>

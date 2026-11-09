@@ -1,0 +1,470 @@
+/* ==========================================================================
+   Vietjet Travel & Flights Demo – Main Stylesheet
+   ========================================================================== */
+
+:root {
+  --vj-primary: #ed1d23;
+  --vj-primary-hover: #c9151b;
+  --vj-primary-soft: #fff1f2;
+  --vj-text: #252525;
+  --vj-text-secondary: #6b7280;
+  --vj-bg: #ffffff;
+  --vj-bg-soft: #f7f7f8;
+  --vj-border: #e5e7eb;
+  --vj-success: #16834a;
+  --vj-warning: #b7791f;
+  --vj-danger: #d93025;
+  --vj-radius: 14px;
+  --vj-radius-sm: 10px;
+  --vj-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --vj-shadow-md: 0 10px 26px rgba(15, 23, 42, 0.09);
+  --vj-font: 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--vj-font);
+  color: var(--vj-text);
+  background-color: var(--vj-bg);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* Modern Web Guidance: improve-text-layout-and-legibility */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--vj-text);
+  font-weight: 700;
+  line-height: 1.28;
+  text-wrap: balance;
+}
+
+p, blockquote, li, .pretty-text {
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--vj-primary);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+a:hover {
+  color: var(--vj-primary-hover);
+}
+
+/* Focus visibility for keyboard accessibility */
+:focus-visible {
+  outline: 3px solid rgba(237, 29, 35, 0.45);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Buttons & Badges
+   ========================================================================== */
+.btn-vj-primary {
+  background-color: var(--vj-primary);
+  border: 1px solid var(--vj-primary);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: var(--vj-radius-sm);
+  padding: 0.625rem 1.25rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.12s ease;
+}
+
+.btn-vj-primary:hover,
+.btn-vj-primary:focus {
+  background-color: var(--vj-primary-hover);
+  border-color: var(--vj-primary-hover);
+  color: #ffffff;
+}
+
+.btn-vj-primary:disabled {
+  background-color: #f87171;
+  border-color: #f87171;
+  color: #ffffff;
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.btn-vj-outline {
+  background-color: #ffffff;
+  border: 1px solid var(--vj-border);
+  color: var(--vj-text);
+  font-weight: 600;
+  border-radius: var(--vj-radius-sm);
+  padding: 0.625rem 1.25rem;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-vj-outline:hover,
+.btn-vj-outline:focus {
+  border-color: var(--vj-primary);
+  color: var(--vj-primary);
+  background-color: var(--vj-primary-soft);
+}
+
+.badge-demo {
+  background-color: #fffbeb;
+  color: var(--vj-warning);
+  border: 1px solid #fde68a;
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+}
+
+.price-highlight {
+  color: var(--vj-primary);
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+/* ==========================================================================
+   Header & Footer
+   ========================================================================== */
+.site-header {
+  background-color: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--vj-border);
+  z-index: 1030;
+}
+
+.brand-logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-text {
+  font-weight: 800;
+  font-size: 1.45rem;
+  color: var(--vj-primary);
+  letter-spacing: -0.02em;
+}
+
+.navbar-nav .nav-link {
+  color: var(--vj-text);
+  font-weight: 600;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--vj-primary);
+  background-color: var(--vj-primary-soft);
+}
+
+.cart-nav-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--vj-border);
+  background-color: #ffffff;
+  color: var(--vj-text);
+  font-weight: 600;
+}
+
+.cart-nav-btn:hover,
+.cart-nav-btn.active {
+  border-color: var(--vj-primary);
+  color: var(--vj-primary);
+  background-color: var(--vj-primary-soft);
+}
+
+.cart-badge {
+  background-color: var(--vj-primary);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+}
+
+.demo-banner-bar {
+  background-color: #fff8f8;
+  border-bottom: 1px solid #fecdd3;
+  color: #881337;
+  font-size: 0.84rem;
+  padding: 0.4rem 0;
+}
+
+.site-footer {
+  background-color: var(--vj-bg-soft);
+  border-top: 1px solid var(--vj-border);
+  padding: 3rem 0 2rem;
+  margin-top: 4rem;
+  color: var(--vj-text-secondary);
+}
+
+/* ==========================================================================
+   Hero & Search Panel
+   ========================================================================== */
+.hero-section {
+  background: linear-gradient(125deg, #ed1d23 0%, #c9151b 60%, #881337 100%);
+  color: #ffffff;
+  padding: 3rem 0 4.25rem;
+  position: relative;
+}
+
+.hero-section h1 {
+  color: #ffffff;
+}
+
+.search-panel-card {
+  background-color: #ffffff;
+  color: var(--vj-text);
+  border-radius: var(--vj-radius);
+  border: 1px solid var(--vj-border);
+  box-shadow: var(--vj-shadow-md);
+  padding: 1.5rem;
+  margin-top: -2.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   Cards (Tour, Airline, Flight, Fare)
+   ========================================================================== */
+.vj-card {
+  background-color: #ffffff;
+  border: 1px solid var(--vj-border);
+  border-radius: var(--vj-radius);
+  box-shadow: var(--vj-shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.vj-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--vj-shadow-md);
+  border-color: #d1d5db;
+}
+
+.tour-thumb-wrapper {
+  aspect-ratio: 3 / 2;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--vj-bg-soft);
+  position: relative;
+}
+
+.tour-thumb-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.vj-card:hover .tour-thumb-wrapper img {
+  transform: scale(1.03);
+}
+
+.airline-card {
+  background-color: #ffffff;
+  border: 1px solid var(--vj-border);
+  border-radius: var(--vj-radius);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+
+.airline-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--vj-primary);
+  box-shadow: var(--vj-shadow-sm);
+}
+
+.airline-card img {
+  max-width: 180px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* Flight Result Card */
+.flight-card {
+  background-color: #ffffff;
+  border: 1px solid var(--vj-border);
+  border-radius: var(--vj-radius);
+  padding: 1.25rem;
+  box-shadow: var(--vj-shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flight-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: var(--vj-shadow-md);
+}
+
+.flight-timeline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.flight-timeline-line {
+  flex: 1;
+  height: 2px;
+  background-color: #cbd5e1;
+  position: relative;
+  min-width: 60px;
+}
+
+.flight-timeline-line::after {
+  content: "✈";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 0 6px;
+  color: var(--vj-primary);
+  font-size: 0.85rem;
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+  background-color: #ffffff;
+  border: 1px solid var(--vj-border);
+  border-radius: var(--vj-radius);
+  padding: 1.25rem;
+}
+
+@media (min-width: 992px) {
+  .filter-sidebar-sticky {
+    position: sticky;
+    top: 90px;
+  }
+}
+
+/* Fare Selection Cards */
+.fare-card {
+  border: 2px solid var(--vj-border);
+  border-radius: var(--vj-radius);
+  padding: 1.35rem;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  height: 100%;
+}
+
+.fare-card:hover {
+  border-color: #fca5a5;
+}
+
+.fare-card.selected {
+  border-color: var(--vj-primary);
+  background-color: #fffafb;
+  box-shadow: var(--vj-shadow-sm);
+}
+
+.fare-check-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--vj-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  transition: all 0.2s ease;
+}
+
+.fare-card.selected .fare-check-badge {
+  background-color: var(--vj-primary);
+  border-color: var(--vj-primary);
+  color: #ffffff;
+}
+
+/* Itinerary Timeline */
+.itinerary-step {
+  border-left: 3px solid var(--vj-primary);
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.itinerary-step::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: var(--vj-primary);
+  position: absolute;
+  left: -8px;
+  top: 4px;
+}
+
+/* ==========================================================================
+   Form Validation & Accessible Error Announcement
+   ========================================================================== */
+.field-error-msg {
+  display: none;
+  color: var(--vj-danger);
+  font-size: 0.82rem;
+  margin-top: 0.3rem;
+  font-weight: 500;
+}
+
+/* Apply error styles to both native :user-invalid and fallback/explicit invalid state */
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid,
+input.user-invalid-fallback,
+select.user-invalid-fallback,
+textarea.user-invalid-fallback,
+.is-invalid-field {
+  border-color: var(--vj-danger) !important;
+  background-color: #fff8f8;
+}
+
+input:user-invalid ~ .field-error-msg,
+select:user-invalid ~ .field-error-msg,
+textarea:user-invalid ~ .field-error-msg,
+input.user-invalid-fallback ~ .field-error-msg,
+select.user-invalid-fallback ~ .field-error-msg,
+textarea.user-invalid-fallback ~ .field-error-msg,
+.is-invalid-field ~ .field-error-msg,
+.field-error-msg.show-error {
+  display: block;
+}
+
+/* Toast notification container */
+.vj-toast-container {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 1080;
+  max-width: 380px;
+}

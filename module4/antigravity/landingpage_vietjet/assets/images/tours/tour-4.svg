@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#4338ca"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg4)"/>
+  <rect x="380" y="150" width="24" height="160" fill="#818cf8"/>
+  <rect x="420" y="150" width="24" height="160" fill="#818cf8"/>
+  <rect x="460" y="150" width="24" height="160" fill="#818cf8"/>
+  <rect x="365" y="135" width="135" height="18" rx="9" fill="#c7d2fe"/>
+  <rect x="0" y="310" width="600" height="90" fill="#312e81"/>
+  <rect x="24" y="24" width="175" height="34" rx="17" fill="#ed1d23"/>
+  <text x="111" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="#ffffff">SINGAPORE • 4N3Đ</text>
+  <text x="36" y="175" font-family="Arial, sans-serif" font-weight="800" font-size="32" fill="#ffffff">Khám Phá Quốc Đảo Sư Tử</text>
+  <text x="36" y="215" font-family="Arial, sans-serif" font-weight="600" font-size="17" fill="#e0e7ff">Gardens by the Bay • Sentosa • Jewel Changi</text>
+</svg>

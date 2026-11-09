@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <rect width="240" height="80" rx="12" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+  <circle cx="44" cy="40" r="22" fill="#581c87"/>
+  <path d="M36 40 C40 28 48 28 52 40 C48 52 40 52 36 40 Z" fill="#facc15"/>
+  <text x="78" y="38" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#581c87">Thai Airways</text>
+  <text x="78" y="55" font-family="Arial, sans-serif" font-weight="600" font-size="11" fill="#6b7280">SMOOTH AS SILK (DEMO)</text>
+</svg>
