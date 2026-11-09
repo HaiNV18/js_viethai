@@ -1,0 +1,46 @@
+ChatGPT
+
+Tôi muốn dùng Antigravity để tạo website lĩnh vực du lịch.
+Hãy tạo cho tôi các file .MD để tôi dùng cho Antigravity
+
+Tên website: Vietjet
+Ngôn ngữ lập trình: HTML, CSS, JavaScript thuần, không có backend.
+Database: SQLite
+Background: tông màu sáng, nền trắng, màu đỏ (#ed1d23)
+
+Trang chủ:
+Phần chọn ngày, tìm chuyến bay, điểm xuất phát, điểm đến, vé khứ hồi, vé một chiều. Click Tìm Kiếm dẫn đến trang Chuyến Bay (Flights)
+Phần tour du lịch: 8 tour du lịch nổi bật. Hình thumbnail 600x400, hãng du lịch, số ngày/đêm, giá tour. Click vào dẫn đến trang Tour
+Phần hãng hàng không: hiện các logo của các hãng bay như VietJet Air, Vietnam Airlines, Singapore Airlines... Click vào logo sẽ dẫn đến trang Chuyến Bay (Flights)
+
+Chuyến bay (Flights):
+Bên trái: filter giá vé tăng/giảm dần, vé khứ hồi, vé một chiều, bay thẳng, nhiều thành phố, các hãng hàng không, thời gian cất cánh (giờ), hạng dịch vụ (phổ thông, thương gia)
+Bên phải: các chuyến bay của các hãng, ngày cất cánh, thời gian bay, giá tiền, dịch vụ
+Click chọn chuyến bay sẽ đến trang chi tiết chuyến bay
+
+Chi tiết chuyến bay (Detail Flights):
+Điểm đi, điểm đến, thời gian bay, hãng bay, loại máy bay (Boeing, Airbus...)
+Chọn giá vé: Hạng Phổ Thông, Hạng Thương Gia (giống trong hình)
+Chọn chuyến bay sẽ được lưu vào Giỏ Hàng
+
+Tour
+Bên trái: filter giá vé tăng/giảm dần, các hãng hàng không, thời gian cất cánh (giờ)
+Bên phải: các tour du lịch, hãng bay, ngày cất cánh, thời gian bay, giá tiền, dịch vụ
+Click chọn tour sẽ đến trang chi tiết tour
+
+Chi tiết Tour (Tour):
+Điểm đi, điểm đến, thời gian bay, hãng bay, loại máy bay (Boeing, Airbus...)
+Lịch trình chuyến đi
+Chọn tour sẽ được lưu vào Giỏ Hàng
+
+Giỏ Hàng
+Xem các chuyến bay, tour đã chọn. Có thể xóa giỏ hàng.
+Nhập thông tin cá nhân
+Đăng ký -> Thông báo hoàn thành.
+Một email gửi từ nvhai061993@gmail đến email của khách hàng.
+
+==========
+Antigravity
+
+Hãy đọc các file .md trong folder.
+Hãy tạo project dựa trên các file .md này
