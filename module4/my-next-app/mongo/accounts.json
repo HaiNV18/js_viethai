@@ -1,0 +1,51 @@
+
+[
+  {
+    "firstname": "Admin 1",
+    "lastname": "Account",
+    "username": "admin1",
+    "password": "$2b$10$WCLr2IlshpiJWFbnW9NkZuFDZ7xJ19Rphor9IkhaHXhRB2PvDqdTS",
+    "email": "nvhai2306@gmail.com",
+    "phone": null,
+    "address": null,
+    "role": "ADMIN",
+    "created_at": { "$date": "2026-11-04T00:00:00.000Z" },
+    "updated_at": { "$date": "2026-11-04T00:00:00.000Z" }
+  },
+  {
+    "firstname": "Admin 2",
+    "lastname": "Account",
+    "username": "admin2",
+    "password": "$2b$10$WCLr2IlshpiJWFbnW9NkZuFDZ7xJ19Rphor9IkhaHXhRB2PvDqdTS",
+    "email": "admin2@gmail.com",
+    "phone": null,
+    "address": null,
+    "role": "ADMIN",
+    "created_at": { "$date": "2026-11-04T00:00:00.000Z" },
+    "updated_at": { "$date": "2026-11-04T00:00:00.000Z" }
+  },
+  {
+    "firstname": "User 1",
+    "lastname": "Account",
+    "username": "user1",
+    "password": "$2b$10$WCLr2IlshpiJWFbnW9NkZuFDZ7xJ19Rphor9IkhaHXhRB2PvDqdTS",
+    "email": "user1@gmail.com",
+    "phone": null,
+    "address": null,
+    "role": "USER",
+    "created_at": { "$date": "2026-11-04T00:00:00.000Z" },
+    "updated_at": { "$date": "2026-11-04T00:00:00.000Z" }
+  },
+  {
+    "firstname": "User 2",
+    "lastname": "Account",
+    "username": "user2",
+    "password": "$2b$10$WCLr2IlshpiJWFbnW9NkZuFDZ7xJ19Rphor9IkhaHXhRB2PvDqdTS",
+    "email": "user2@gmail.com",
+    "phone": null,
+    "address": null,
+    "role": "USER",
+    "created_at": { "$date": "2026-11-04T00:00:00.000Z" },
+    "updated_at": { "$date": "2026-11-04T00:00:00.000Z" }
+  }
+]
