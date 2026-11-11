@@ -1,0 +1,23 @@
+[
+  {
+    "id": 101,
+    "name": "A-10.01",
+    "area": "75m2",
+    "bedrooms": 2,
+    "id_floor": 1
+  },
+  {
+    "id": 102,
+    "name": "B-15.02",
+    "area": "110m2",
+    "bedrooms": 3,
+    "id_floor": 2
+  },
+  {
+    "id": 103,
+    "name": "V1-05.08",
+    "area": "60m2",
+    "bedrooms": 1,
+    "id_floor": 3
+  }
+]

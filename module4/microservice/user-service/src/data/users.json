@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Nguyễn Văn A",
+    "age": 28,
+    "id_apartment": 101
+  },
+  {
+    "id": 2,
+    "name": "Trần Thị B",
+    "age": 32,
+    "id_apartment": 102
+  },
+  {
+    "id": 3,
+    "name": "Lê Văn C",
+    "age": 25,
+    "id_apartment": 103
+  }
+]

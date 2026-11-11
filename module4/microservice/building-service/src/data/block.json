@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Block A",
+    "id_building": 1
+  },
+  {
+    "id": 2,
+    "name": "Block B",
+    "id_building": 1
+  },
+  {
+    "id": 3,
+    "name": "Block V1",
+    "id_building": 2
+  }
+]

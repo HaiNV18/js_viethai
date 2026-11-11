@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Tầng 10",
+    "floor_number": 10,
+    "id_block": 1
+  },
+  {
+    "id": 2,
+    "name": "Tầng 15",
+    "floor_number": 15,
+    "id_block": 2
+  },
+  {
+    "id": 3,
+    "name": "Tầng 5",
+    "floor_number": 5,
+    "id_block": 3
+  }
+]
