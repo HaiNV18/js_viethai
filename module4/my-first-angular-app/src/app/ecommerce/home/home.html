@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <!-- Hero Banner -->
 <section class="hero">
     <div class="container hero-grid">
@@ -20,46 +22,42 @@
 </section>
 
 <!-- Danh mục -->
-<section class="categories container">
+<!-- <section class="categories container">
     <div class="category-list">
         @for (cat of categories; track cat; let first = $first) {
         <button class="category-pill" [class.active]="first">{{ cat }}</button>
         }
     </div>
-</section>
+</section> -->
 
 <!-- Danh sách sản phẩm -->
-<section id="products" class="products container">
-    <div class="section-header">
-        <div>
-            <h2>Sản phẩm nổi bật</h2>
-            <p>Được săn đón nhiều nhất tuần này</p>
-        </div>
-    </div>
+<section class="products container">
+    <h2>Danh sách sản phẩm</h2>
 
+    <!-- Hiển thị khi đang tải API -->
+    @if (isLoading()) {
+    <p>Đang tải sản phẩm...</p>
+    } @else {
+    <!-- Hiển thị lưới sản phẩm khi đã có dữ liệu -->
     <div class="product-grid">
-        @for (item of products; track item.id) {
+        @for (item of products(); track item.id) {
         <article class="product-card">
             <div class="product-img-wrap">
-                @if (item.badge) {
-                <span class="product-badge">{{ item.badge }}</span>
-                }
-                <img [src]="item.image" [alt]="item.name" />
+                <span class="product-badge">-{{ item.discountPercentage }}%</span>
+                <img [src]="item.thumbnail" [alt]="item.title" />
             </div>
+
             <div class="product-info">
                 <span class="product-cat">{{ item.category }}</span>
-                <h3>{{ item.name }}</h3>
+                <h3>{{ item.title }}</h3>
+
                 <div class="product-bottom">
-                    <div class="price-group">
-                        <span class="price">{{ item.price }}</span>
-                        @if (item.oldPrice) {
-                        <span class="old-price">{{ item.oldPrice }}</span>
-                        }
-                    </div>
+                    <span class="price">${{ item.price }}</span>
                     <button type="button" class="add-cart-btn">+ Thêm</button>
                 </div>
             </div>
         </article>
         }
     </div>
+    }
 </section>

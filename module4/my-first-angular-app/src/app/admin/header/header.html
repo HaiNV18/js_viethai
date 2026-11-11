@@ -1,0 +1,92 @@
+<header class="admin-header">
+  <!-- Left: Logo Admin Page -->
+  <div class="header-left">
+    <a routerLink="/dashboard" class="admin-brand">
+      <span class="brand-logo" aria-hidden="true">
+        <lucide-icon [img]="ShieldCheck" [size]="22"></lucide-icon>
+      </span>
+      <div class="brand-title">
+        <span class="brand-name">Admin <span>Page</span></span>
+        <span class="brand-sub">NovaMart Management</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Center: Quick Search -->
+  <search class="header-search">
+    <lucide-icon [img]="Search" [size]="17" class="search-icon" aria-hidden="true"></lucide-icon>
+    <input
+      type="search"
+      placeholder="Tìm nhanh đơn hàng, sản phẩm, khách hàng..."
+      aria-label="Tìm kiếm trong trang quản trị"
+    />
+  </search>
+
+  <!-- Right: Actions & Avatar Dropdown -->
+  <div class="header-right">
+    <a routerLink="/" class="store-link">Xem cửa hàng</a>
+
+    <button type="button" class="icon-btn" aria-label="Thông báo">
+      <lucide-icon [img]="Bell" [size]="19" aria-hidden="true"></lucide-icon>
+      <span class="notif-dot" aria-hidden="true"></span>
+    </button>
+
+    <!-- Avatar Dropdown -->
+    <div class="user-menu-wrapper">
+      <button
+        type="button"
+        class="avatar-trigger"
+        [attr.aria-expanded]="isDropdownOpen()"
+        aria-haspopup="menu"
+        (click)="toggleDropdown()"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&q=80"
+          alt="Ảnh đại diện Admin"
+          width="36"
+          height="36"
+          class="avatar-img"
+        />
+        <div class="user-meta">
+          <span class="user-name">Minh Anh</span>
+          <span class="user-role">Super Admin</span>
+        </div>
+        <lucide-icon
+          [img]="ChevronDown"
+          [size]="16"
+          class="chevron-icon"
+          [class.rotated]="isDropdownOpen()"
+          aria-hidden="true"
+        ></lucide-icon>
+      </button>
+
+      @if (isDropdownOpen()) {
+        <div class="dropdown-menu" role="menu" aria-label="Tài khoản quản trị">
+          <div class="dropdown-user-info">
+            <strong>Minh Anh</strong>
+            <span>admin&#64;novamart.vn</span>
+          </div>
+
+          <hr class="dropdown-divider" />
+
+          <button type="button" class="dropdown-item" role="menuitem" (click)="onProfileClick()">
+            <lucide-icon [img]="User" [size]="17" aria-hidden="true"></lucide-icon>
+            <span>Profile</span>
+          </button>
+
+          <hr class="dropdown-divider" />
+
+          <button
+            type="button"
+            class="dropdown-item danger"
+            role="menuitem"
+            (click)="onLogout()"
+          >
+            <lucide-icon [img]="LogOut" [size]="17" aria-hidden="true"></lucide-icon>
+            <span>Logout</span>
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+</header>

@@ -1,0 +1,76 @@
+<aside class="admin-sidebar" aria-label="Menu quản trị">
+  <div class="sidebar-section-label">MAIN MENU</div>
+
+  <nav class="sidebar-nav">
+    <!-- 1. Dashboard -->
+    <button
+      type="button"
+      class="nav-item"
+      [class.active]="activeMenu() === 'dashboard'"
+      (click)="selectMenu('dashboard')"
+    >
+      <lucide-icon [img]="LayoutDashboard" [size]="19" aria-hidden="true"></lucide-icon>
+      <span>Dashboard</span>
+    </button>
+
+    <!-- 2. Products -> List & Insert -->
+    <details class="nav-group" open>
+      <summary class="nav-item nav-summary" [class.parent-active]="isProductsActive()">
+        <span class="summary-left">
+          <lucide-icon [img]="Package" [size]="19" aria-hidden="true"></lucide-icon>
+          <span>Products</span>
+        </span>
+        <lucide-icon
+          [img]="ChevronRight"
+          [size]="16"
+          class="submenu-arrow"
+          aria-hidden="true"
+        ></lucide-icon>
+      </summary>
+
+      <ul class="submenu-list">
+        <li>
+          <button
+            type="button"
+            class="submenu-item"
+            [class.active]="activeMenu() === 'products-list'"
+            (click)="selectMenu('products-list')"
+          >
+            <lucide-icon [img]="List" [size]="16" aria-hidden="true"></lucide-icon>
+            <span>List</span>
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="submenu-item"
+            [class.active]="activeMenu() === 'products-insert'"
+            (click)="selectMenu('products-insert')"
+          >
+            <lucide-icon [img]="PlusCircle" [size]="16" aria-hidden="true"></lucide-icon>
+            <span>Insert</span>
+          </button>
+        </li>
+      </ul>
+    </details>
+
+    <!-- 3. Setting -->
+    <button
+      type="button"
+      class="nav-item"
+      [class.active]="activeMenu() === 'setting'"
+      (click)="selectMenu('setting')"
+    >
+      <lucide-icon [img]="Settings" [size]="19" aria-hidden="true"></lucide-icon>
+      <span>Setting</span>
+    </button>
+  </nav>
+
+  <!-- Sidebar Footer Card -->
+  <div class="sidebar-footer">
+    <div class="version-box">
+      <strong>NovaMart Admin v2.1</strong>
+      <span>Hệ thống hoạt động ổn định</span>
+    </div>
+  </div>
+</aside>

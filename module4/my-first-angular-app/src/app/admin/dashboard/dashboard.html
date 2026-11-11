@@ -1,0 +1,172 @@
+<div class="admin-shell">
+  <!-- Top Header: Logo Admin Page & Avatar Dropdown (Profile, Logout) -->
+  <app-header (profileSelected)="openProfile()"></app-header>
+
+  <div class="admin-body">
+    <!-- Left Sidebar: Dashboard, Products -> List & Insert, Setting -->
+    <app-sidebar
+      [activeMenu]="activeMenu()"
+      (menuChange)="onMenuChange($event)"
+    ></app-sidebar>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      @switch (activeMenu()) {
+        @case ('dashboard') {
+          <div class="page-head">
+            <div>
+              <h1>Dashboard Overview</h1>
+              <p>Chào mừng trở lại! Dưới đây là tình hình kinh doanh hôm nay.</p>
+            </div>
+            <button
+              type="button"
+              class="quick-insert-btn"
+              (click)="onMenuChange('products-insert')"
+            >
+              <lucide-icon [img]="PlusCircle" [size]="17" aria-hidden="true"></lucide-icon>
+              <span>Thêm sản phẩm mới</span>
+            </button>
+          </div>
+
+          <!-- KPI Cards -->
+          <section class="stats-grid" aria-label="Chỉ số kinh doanh">
+            @for (stat of stats; track stat.label) {
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span class="stat-label">{{ stat.label }}</span>
+                  <span class="stat-icon" [attr.data-tone]="stat.tone" aria-hidden="true">
+                    <lucide-icon [img]="stat.icon" [size]="20"></lucide-icon>
+                  </span>
+                </div>
+                <strong class="stat-value">{{ stat.value }}</strong>
+                <span class="stat-change">{{ stat.change }}</span>
+              </article>
+            }
+          </section>
+
+          <!-- Recent Orders -->
+          <section class="card-section">
+            <div class="card-head">
+              <h2>Đơn hàng gần đây</h2>
+              <button
+                type="button"
+                class="text-btn"
+                (click)="onMenuChange('products-list')"
+              >
+                Quản lý sản phẩm &rarr;
+              </button>
+            </div>
+
+            <div class="table-wrap">
+              <table class="orders-table">
+                <thead>
+                  <tr>
+                    <th>Mã đơn</th>
+                    <th>Khách hàng</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (order of recentOrders; track order.id) {
+                    <tr>
+                      <td class="order-id">{{ order.id }}</td>
+                      <td>{{ order.customer }}</td>
+                      <td class="order-total">{{ order.total }}</td>
+                      <td>
+                        <span class="order-badge">{{ order.status }}</span>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </section>
+        }
+
+        @case ('products-list') {
+          <app-products
+            mode="list"
+            (modeChange)="onProductModeChange($event)"
+          ></app-products>
+        }
+
+        @case ('products-insert') {
+          <app-products
+            mode="insert"
+            (modeChange)="onProductModeChange($event)"
+          ></app-products>
+        }
+
+        @case ('setting') {
+          <section class="card-section">
+            <div class="card-head">
+              <div>
+                <h1>Setting</h1>
+                <p>Cấu hình thông tin cửa hàng và hệ thống quản trị</p>
+              </div>
+            </div>
+
+            <form class="settings-form">
+              <div class="setting-field">
+                <label for="store-name">Tên cửa hàng</label>
+                <input
+                  id="store-name"
+                  name="storeName"
+                  type="text"
+                  [(ngModel)]="storeName"
+                />
+              </div>
+
+              <div class="setting-field">
+                <label for="support-email">Email hỗ trợ</label>
+                <input
+                  id="support-email"
+                  name="supportEmail"
+                  type="email"
+                  [(ngModel)]="supportEmail"
+                />
+              </div>
+
+              <div class="setting-check">
+                <input
+                  id="maintenance"
+                  name="maintenanceMode"
+                  type="checkbox"
+                  [(ngModel)]="maintenanceMode"
+                />
+                <label for="maintenance">Bật chế độ bảo trì hệ thống</label>
+              </div>
+
+              <button type="button" class="quick-insert-btn">Lưu cấu hình</button>
+            </form>
+          </section>
+        }
+
+        @case ('profile') {
+          <section class="card-section">
+            <div class="card-head">
+              <div>
+                <h1>Admin Profile</h1>
+                <p>Thông tin tài khoản quản trị viên hiện tại</p>
+              </div>
+            </div>
+
+            <div class="profile-box">
+              <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&q=80"
+                alt="Ảnh đại diện Minh Anh"
+                width="72"
+                height="72"
+              />
+              <div>
+                <h3>Minh Anh</h3>
+                <p>Vai trò: Super Admin &bull; Email: admin&#64;novamart.vn</p>
+              </div>
+            </div>
+          </section>
+        }
+      }
+    </main>
+  </div>
+</div>

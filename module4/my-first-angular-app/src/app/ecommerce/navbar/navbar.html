@@ -9,7 +9,9 @@
         <!-- Thanh tìm kiếm -->
         <div class="search-box">
             <input type="text" placeholder="Tìm kiếm sản phẩm, thương hiệu..." />
-            <button type="button">Tìm</button>
+            <button type="button">
+                <lucide-icon [img]="Search" [size]="20"></lucide-icon>
+            </button>
         </div>
 
         <!-- Links & Giỏ hàng -->
@@ -20,8 +22,11 @@
             <a routerLink="/about" routerLinkActive="active">
                 Về chúng tôi
             </a>
+            <a routerLink="/login" routerLinkActive="active">
+                Đăng nhập
+            </a>
             <button class="cart-btn" type="button">
-                🛒 Giỏ hàng
+                <lucide-icon [img]="ShoppingCart" [size]="20"></lucide-icon> Giỏ hàng
                 <span class="badge">{{ cartCount() }}</span>
             </button>
         </nav>

@@ -1,0 +1,50 @@
+<section class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-header">
+            <div class="auth-icon">
+                <img src="/assets/images/angular-logo.png" alt="Logo Angular" width="100" />
+            </div>
+            <h1>Chào mừng trở lại</h1>
+            <p>Đăng nhập để tiếp tục mua sắm tại NovaMart</p>
+        </div>
+
+        <!-- Hiển thị thông báo lỗi nếu sai tài khoản/mật khẩu -->
+        @if (errorMessage()) {
+        <div
+            style="background: #fee2e2; color: #b91c1c; padding: 0.75rem; border-radius: 0.6rem; margin-bottom: 1rem; text-align: center;">
+            {{ errorMessage() }}
+        </div>
+        }
+
+        <form (ngSubmit)="onLogin()">
+            <div class="form-group">
+                <label for="username">Tên đăng nhập (Username)</label>
+                <input id="username" name="username" type="text" class="form-control" placeholder="Ví dụ: emilys"
+                    [(ngModel)]="username" required />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input id="password" name="password" type="password" class="form-control" placeholder="••••••••"
+                    [(ngModel)]="password" required />
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <input type="checkbox" name="rememberMe" [(ngModel)]="rememberMe" />
+                    Ghi nhớ đăng nhập
+                </label>
+                <a routerLink="/forgot-password" class="auth-link">Quên mật khẩu?</a>
+            </div>
+
+            <button type="submit" class="btn-submit" [disabled]="isLoading()">
+                {{ isLoading() ? 'Đang xử lý...' : 'Đăng nhập' }}
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            Chưa có tài khoản?
+            <a routerLink="/register" class="auth-link">Đăng ký ngay</a>
+        </div>
+    </div>
+</section>

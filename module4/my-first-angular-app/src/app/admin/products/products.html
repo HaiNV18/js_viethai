@@ -1,0 +1,131 @@
+@if (mode() === 'list') {
+  <section class="panel-card">
+    <div class="panel-header">
+      <div>
+        <h2>Products &rarr; List</h2>
+        <p>Quản lý danh sách sản phẩm hiện có trong cửa hàng</p>
+      </div>
+      <button type="button" class="btn-primary" (click)="switchMode('insert')">
+        <lucide-icon [img]="PlusCircle" [size]="17" aria-hidden="true"></lucide-icon>
+        <span>Thêm sản phẩm (Insert)</span>
+      </button>
+    </div>
+
+    <div class="table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Mã SP</th>
+            <th>Tên sản phẩm</th>
+            <th>Danh mục</th>
+            <th>Giá bán</th>
+            <th>Tồn kho</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of products(); track item.id) {
+            <tr>
+              <td class="id-col">#{{ item.id }}</td>
+              <td class="name-col">{{ item.name }}</td>
+              <td>{{ item.category }}</td>
+              <td class="price-col">{{ item.price.toLocaleString('vi-VN') }}₫</td>
+              <td>{{ item.stock }}</td>
+              <td>
+                <span
+                  class="status-badge"
+                  [class.low]="item.status === 'Sắp hết'"
+                >
+                  {{ item.status }}
+                </span>
+              </td>
+              <td>
+                <div class="row-actions">
+                  <button type="button" class="action-btn" aria-label="Sửa sản phẩm">
+                    <lucide-icon [img]="Pencil" [size]="15" aria-hidden="true"></lucide-icon>
+                  </button>
+                  <button
+                    type="button"
+                    class="action-btn danger"
+                    aria-label="Xóa sản phẩm"
+                    (click)="deleteProduct(item.id)"
+                  >
+                    <lucide-icon [img]="Trash2" [size]="15" aria-hidden="true"></lucide-icon>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+} @else {
+  <section class="panel-card">
+    <div class="panel-header">
+      <div>
+        <h2>Products &rarr; Insert</h2>
+        <p>Thêm sản phẩm mới vào hệ thống NovaMart</p>
+      </div>
+      <button type="button" class="btn-outline" (click)="switchMode('list')">
+        Xem danh sách (List)
+      </button>
+    </div>
+
+    <form class="insert-form" (ngSubmit)="onInsertProduct()">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="prod-name">Tên sản phẩm</label>
+          <input
+            id="prod-name"
+            name="newName"
+            type="text"
+            placeholder="Nhập tên sản phẩm..."
+            [(ngModel)]="newName"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="prod-category">Danh mục</label>
+          <select id="prod-category" name="newCategory" [(ngModel)]="newCategory">
+            <option value="Âm thanh">Âm thanh</option>
+            <option value="Đồng hồ">Đồng hồ</option>
+            <option value="Phụ kiện">Phụ kiện</option>
+            <option value="Nhiếp ảnh">Nhiếp ảnh</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="prod-price">Giá bán (VNĐ)</label>
+          <input
+            id="prod-price"
+            name="newPrice"
+            type="number"
+            placeholder="Ví dụ: 1990000"
+            [(ngModel)]="newPrice"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="prod-stock">Số lượng tồn kho</label>
+          <input
+            id="prod-stock"
+            name="newStock"
+            type="number"
+            placeholder="Ví dụ: 25"
+            [(ngModel)]="newStock"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-outline" (click)="switchMode('list')">Hủy</button>
+        <button type="submit" class="btn-primary">Lưu sản phẩm</button>
+      </div>
+    </form>
+  </section>
+}
