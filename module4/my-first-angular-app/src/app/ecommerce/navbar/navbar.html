@@ -1,0 +1,29 @@
+<header class="navbar">
+    <div class="container navbar-inner">
+        <!-- Logo -->
+        <a routerLink="/" class="brand">
+            <span class="brand-icon">🛍️</span>
+            <span class="brand-text">Nova<span>Mart</span></span>
+        </a>
+
+        <!-- Thanh tìm kiếm -->
+        <div class="search-box">
+            <input type="text" placeholder="Tìm kiếm sản phẩm, thương hiệu..." />
+            <button type="button">Tìm</button>
+        </div>
+
+        <!-- Links & Giỏ hàng -->
+        <nav class="nav-links">
+            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                Trang chủ
+            </a>
+            <a routerLink="/about" routerLinkActive="active">
+                Về chúng tôi
+            </a>
+            <button class="cart-btn" type="button">
+                🛒 Giỏ hàng
+                <span class="badge">{{ cartCount() }}</span>
+            </button>
+        </nav>
+    </div>
+</header>

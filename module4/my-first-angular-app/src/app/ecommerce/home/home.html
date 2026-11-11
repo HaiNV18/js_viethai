@@ -1,0 +1,65 @@
+<!-- Hero Banner -->
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <span class="hero-tag">🔥 Siêu Sale Mùa Lễ Hội</span>
+            <h1>Nâng tầm phong cách sống hiện đại cùng <span>NovaMart</span></h1>
+            <p>
+                Khám phá hàng ngàn sản phẩm công nghệ & phụ kiện chính hãng với ưu đãi lên đến 40%,
+                giao hàng nhanh trong 2 giờ.
+            </p>
+            <div class="hero-actions">
+                <a href="#products" class="btn-primary">Mua sắm ngay</a>
+                <a routerLink="/about" class="btn-outline">Tìm hiểu thêm</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80" alt="Featured Tech" />
+        </div>
+    </div>
+</section>
+
+<!-- Danh mục -->
+<section class="categories container">
+    <div class="category-list">
+        @for (cat of categories; track cat; let first = $first) {
+        <button class="category-pill" [class.active]="first">{{ cat }}</button>
+        }
+    </div>
+</section>
+
+<!-- Danh sách sản phẩm -->
+<section id="products" class="products container">
+    <div class="section-header">
+        <div>
+            <h2>Sản phẩm nổi bật</h2>
+            <p>Được săn đón nhiều nhất tuần này</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        @for (item of products; track item.id) {
+        <article class="product-card">
+            <div class="product-img-wrap">
+                @if (item.badge) {
+                <span class="product-badge">{{ item.badge }}</span>
+                }
+                <img [src]="item.image" [alt]="item.name" />
+            </div>
+            <div class="product-info">
+                <span class="product-cat">{{ item.category }}</span>
+                <h3>{{ item.name }}</h3>
+                <div class="product-bottom">
+                    <div class="price-group">
+                        <span class="price">{{ item.price }}</span>
+                        @if (item.oldPrice) {
+                        <span class="old-price">{{ item.oldPrice }}</span>
+                        }
+                    </div>
+                    <button type="button" class="add-cart-btn">+ Thêm</button>
+                </div>
+            </div>
+        </article>
+        }
+    </div>
+</section>

@@ -1,0 +1,39 @@
+<section class="about-hero container">
+    <span class="subtitle">VỀ NOVAMART</span>
+    <h1>Trải nghiệm mua sắm công nghệ minh bạch, nhanh chóng và tận tâm</h1>
+    <p>
+        Ra đời với sứ mệnh kết nối người tiêu dùng Việt Nam với những sản phẩm công nghệ và phong cách
+        sống chất lượng cao, NovaMart luôn đặt sự hài lòng của khách hàng làm trọng tâm.
+    </p>
+</section>
+
+<!-- Thống kê -->
+<section class="stats container">
+    <div class="stats-grid">
+        @for (s of stats; track s.label) {
+        <div class="stat-card">
+            <h3>{{ s.value }}</h3>
+            <p>{{ s.label }}</p>
+        </div>
+        }
+    </div>
+</section>
+
+<!-- Giá trị cốt lõi -->
+<section class="values container">
+    <h2>Tại sao chọn NovaMart?</h2>
+    <div class="values-grid">
+        @for (v of values; track v.title) {
+        <div class="value-card">
+            <div class="value-icon">{{ v.icon }}</div>
+            <h3>{{ v.title }}</h3>
+            <p>{{ v.desc }}</p>
+        </div>
+        }
+    </div>
+
+    <div class="cta-banner">
+        <h3>Sẵn sàng khám phá ưu đãi hôm nay?</h3>
+        <a routerLink="/" class="cta-btn">Quay lại Cửa hàng</a>
+    </div>
+</section>
