@@ -1,13 +1,29 @@
 import mysql from "mysql2/promise";
 
+// =========== Connect to Docker MySQL container ===========
+// const DB_CONFIG = {
+//   host: process.env.DB_HOST ?? "127.0.0.1",
+//   port: Number(process.env.DB_PORT ?? 3306),
+//   user: process.env.DB_USER ?? "root",
+//   password: process.env.DB_PASSWORD ?? "root",
+// };
+
+// const DB_NAME = process.env.DB_NAME ?? "microservice_db";
+
+
+
+// =========== Connect to Aiven MySQL ===========
 const DB_CONFIG = {
   host: process.env.DB_HOST ?? "127.0.0.1",
   port: Number(process.env.DB_PORT ?? 3306),
   user: process.env.DB_USER ?? "root",
   password: process.env.DB_PASSWORD ?? "root",
+  ...(process.env.DB_SSL === "true" && {
+    ssl: { rejectUnauthorized: false },
+  }),
 };
 
-const DB_NAME = process.env.DB_NAME ?? "microservice_db";
+const DB_NAME = process.env.DB_NAME ?? "defaultdb";
 
 export const pool = mysql.createPool({
   ...DB_CONFIG,

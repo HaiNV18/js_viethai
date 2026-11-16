@@ -6,10 +6,18 @@ export const swaggerSpec = {
     description:
       "Tài liệu API cho user-service (tích hợp gọi API sang building-service để lấy thông tin căn hộ)",
   },
+  // Connect to Docker
+  // servers: [
+  //   {
+  //     url: "http://localhost:3001",
+  //     description: "User Service Local Server",
+  //   },
+  // ],
+  // Connect to Render
   servers: [
     {
-      url: "http://localhost:3001",
-      description: "User Service Local Server",
+      url: "/",
+      description: "Current Server (Local / Render)",
     },
   ],
   paths: {
