@@ -13,6 +13,7 @@ import {
 } from './db.js';
 import { updateCartBadge, syncCartWithDatabase } from './cart.js';
 import { initWeatherWidget } from './weather.js';
+import { initChatbotWidget } from './chatbot.js';
 
 /**
  * Hiển thị thông báo Toast góc dưới bên phải (thay thế hoàn toàn alert())
@@ -587,4 +588,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   await initHomePage();
   initWeatherWidget();
+  initChatbotWidget();
 });

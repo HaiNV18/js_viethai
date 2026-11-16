@@ -1,0 +1,5 @@
+# Không bao giờ commit file chứa API Key, Secret hoặc biến môi trường
+.env
+.env.*
+assets/js/config.local.js
+node_modules/

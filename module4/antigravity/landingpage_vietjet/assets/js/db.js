@@ -538,6 +538,22 @@ export function initDB() {
       }
     }
 
+    // Thử nạp file sqlite/vietjet.db từ thư mục sqlite/ trước khi fallback sang seed bằng JS
+    try {
+      const response = await fetch('sqlite/vietjet.db');
+      if (response.ok) {
+        const arrayBuffer = await response.arrayBuffer();
+        if (arrayBuffer && arrayBuffer.byteLength > 0) {
+          dbInstance = new SQL.Database(new Uint8Array(arrayBuffer));
+          createSchemaAndSeed(dbInstance);
+          await saveDatabaseToIndexedDB();
+          return dbInstance;
+        }
+      }
+    } catch (_) {
+      // Nếu chạy ở môi trường không fetch được file .db tĩnh, dùng createSchemaAndSeed bên dưới
+    }
+
     dbInstance = new SQL.Database();
     createSchemaAndSeed(dbInstance);
     await saveDatabaseToIndexedDB();

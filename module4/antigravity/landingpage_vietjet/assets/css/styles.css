@@ -463,8 +463,90 @@ textarea.user-invalid-fallback ~ .field-error-msg,
 /* Toast notification container */
 .vj-toast-container {
   position: fixed;
-  bottom: 1.25rem;
+  bottom: 5.25rem;
   right: 1.25rem;
   z-index: 1080;
   max-width: 380px;
 }
+
+/* ==========================================================================
+   Floating Chatbot Widget (OpenRouter + SQLite Travel Assistant)
+   ========================================================================== */
+.vj-chatbot-fab {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 1070;
+  background-color: var(--vj-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.vj-chatbot-fab:hover,
+.vj-chatbot-fab:focus {
+  background-color: var(--vj-primary-hover);
+  transform: translateY(-2px);
+}
+
+.vj-chatbot-panel {
+  position: fixed;
+  bottom: 4.8rem;
+  right: 1.25rem;
+  width: 360px;
+  max-width: calc(100vw - 2rem);
+  height: 490px;
+  max-height: calc(100vh - 7rem);
+  background-color: #ffffff;
+  border: 1px solid var(--vj-border);
+  border-radius: 16px;
+  z-index: 1075;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.vj-chatbot-header {
+  background: linear-gradient(125deg, #ed1d23 0%, #c9151b 100%);
+  color: #ffffff;
+}
+
+.vj-chatbot-messages {
+  flex: 1;
+  overflow-y: auto;
+  background-color: var(--vj-bg-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.vj-chat-bubble {
+  max-width: 86%;
+  padding: 0.6rem 0.85rem;
+  border-radius: 12px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.vj-chat-bubble.bot {
+  align-self: flex-start;
+  background-color: #ffffff;
+  border: 1px solid var(--vj-border);
+  color: var(--vj-text);
+  border-bottom-left-radius: 4px;
+}
+
+.vj-chat-bubble.user {
+  align-self: flex-end;
+  background-color: var(--vj-primary);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+
