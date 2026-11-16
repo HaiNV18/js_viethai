@@ -62,12 +62,101 @@ INSERT INTO channels (
 ('UCCzUftO8KOVkV4wQG1vkU1g', 'Marine Ch. 宝鐘マリン', '@HoushouMarine', 'houshou-marine-channel-thumbnail.jpg', 'houshou-marine-channel-banner.jpg', 4440000, '4.44M', 'VTuber', 565, 'https://www.youtube.com/@HoushouMarine', NULL, NULL, NULL, NULL)
 ON CONFLICT (id) DO NOTHING;
 
--- UCCzUftO8KOVkV4wQG1vkU1g Marine Ch. 宝鐘マリン
--- UC5CwaMl1eIgY8h02uZw7M2g Suisei Channel
--- UC1DCedRgGHBdm81E1llLhOQ Pekora Ch. 兎田ぺこら
--- UC-hM6YJuNYVAmUWxeIr9FeA Kuzuha Channel
--- UCspv01oxUFf_MTSipURRhkA Kanae Channel
--- UC0ZTVxCHkZanT5dnP2FZD4Q Mori Calliope Ch. hololive-EN
--- UCMwGHR0BTZuLsmjY_NT5Pwg Takanashi Kiara Ch. hololive-EN
--- UCr1yE6Q0n8QzG6v0fY3j6aQ ironmouse
--- UCX7YkU9nEeaoZbkVLVajcMg にじさんじ
+
+
+
+INSERT INTO channels (
+    id,
+    name,
+    handle,
+    avatar,
+    banner,
+    subscribers,
+    subscribers_formatted,
+    category,
+    videos_count,
+    url,
+    website,
+    facebook,
+    twitter,
+    tiktok
+) VALUES
+(
+    'UC5CwaMl1eIgY8h02uZw7u8A',
+    'Suisei Channel',
+    '@HoshimachiSuisei',
+    'hoshimachi-suisei-channel-thumbnail.jpg',
+    'hoshimachi-suisei-channel-banner.jpg',
+    75400,
+    '75.4K',
+    'VTuber',
+    497,
+    'https://www.youtube.com/@HoshimachiSuisei',
+    NULL, NULL, NULL, NULL
+),
+(
+    'UC1DCedRgGHBdm81E1llLhOQ',
+    'Pekora Ch. 兎田ぺこら',
+    '@usadapekora',
+    'usada-pekora-channel-thumbnail.jpg',
+    'usada-pekora-channel-banner.jpg',
+    75400,
+    '75.4K',
+    'VTuber',
+    497,
+    'https://www.youtube.com/@usadapekora',
+    NULL, NULL, NULL, NULL
+),
+(
+    'UC-hM6YJuNYVAmUWxeIr9FeA',
+    'Miko Ch. さくらみこ',
+    '@SakuraMiko',
+    'sakura-miko-channel-thumbnail.jpg',
+    'sakura-miko-channel-banner.jpg',
+    75400,
+    '75.4K',
+    'VTuber',
+    497,
+    'https://www.youtube.com/@sakuramiko35',
+    NULL, NULL, NULL, NULL
+),
+(
+    'UC7jHm3zfoSZWV5d1cxfJ-BA',
+    'Ngọc Trinh Official',
+    '@ngoctrinhofficial9626',
+    'ngoc-trinh-channel-thumbnail.jpg',
+    'ngoc-trinh-channel-banner.jpg',
+    75400,
+    '75.4K',
+    'Entertainment',
+    341,
+    'https://www.youtube.com/@ngoctrinhofficial9626',
+    NULL, NULL, NULL, NULL
+),
+(
+    'UCfdNM3NAhaBOXCafH7krzrA',
+    'The Infographics Show',
+    '@TheInfographicsShow',
+    'the-infographics-show-channel-thumbnail.jpg',
+    'the-infographics-show-channel-banner.jpg',
+    75400,
+    '75.4K',
+    'News',
+    6391,
+    'https://www.youtube.com/@TheInfographicsShow',
+    NULL, NULL, NULL, NULL
+),
+(
+    'UCTF0ldaORTbCfx2ahvFfYWg',
+    'Phê Game',
+    '@daylaphegame',
+    'phe-game-channel-thumbnail.jpg',
+    'phe-game-channel-banner.jpg',
+    75400,
+    '75.4K',
+    'Entertainment',
+    6391,
+    'https://www.youtube.com/@daylaphegame',
+    NULL, NULL, NULL, NULL
+)
+ON CONFLICT (id) DO NOTHING;
